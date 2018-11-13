@@ -1,0 +1,242 @@
+Started by user frank yang
+Running in Durability level: MAX_SURVIVABILITY
+Loading library IntelliPipeline-Agent@master
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/IntelliPipeline-Agent.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/IntelliPipeline-Agent.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials githubAccount
+ > git fetch --tags --progress https://github.com/YoooFeng/IntelliPipeline-Agent.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision b79daea4f524bb0167a68e9bae795476578a92c3 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b79daea4f524bb0167a68e9bae795476578a92c3
+Commit message: "Update IntelliAgent.groovy"
+ > git rev-list --no-walk b52453f587139a796ed8a36435fad5ca936119e5 # timeout=10
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] echo
+Job_Name: Shipping-Local
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Local
+[Pipeline] {
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url file:///home/workplace/Github/shipping # timeout=10
+Fetching upstream changes from file:///home/workplace/Github/shipping
+ > git --version # timeout=10
+ > git fetch --tags --progress file:///home/workplace/Github/shipping +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 0598a996b4e199395d3a359eaade8dde6cb70025 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0598a996b4e199395d3a359eaade8dde6cb70025
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 0598a996b4e199395d3a359eaade8dde6cb70025
+Commit message: "Update build.sh"
+ > git rev-list --no-walk 0598a996b4e199395d3a359eaade8dde6cb70025 # timeout=10
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] echo
+Job_Name: Shipping-Local
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Local
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Local] Running shell script
++ mvn -DskipTests package
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building shipping 1.4.0.RELEASE
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (prepare-agent) @ shipping ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Shipping-Local/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /var/lib/jenkins/workspace/Shipping-Local/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Shipping-Local/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /var/lib/jenkins/workspace/Shipping-Local/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ shipping ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ shipping ---
+[INFO] Building jar: /var/lib/jenkins/workspace/Shipping-Local/target/shipping.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.4.0.RELEASE:repackage (default) @ shipping ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.308 s
+[INFO] Finished at: 2018-07-11T13:10:34+08:00
+[INFO] Final Memory: 34M/206M
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] echo
+Job_Name: Shipping-Local
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Local
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Local] Running shell script
++ chmod +x ./scripts/build.sh
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] echo
+Job_Name: Shipping-Local
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Local
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Local] Running shell script
++ GROUP=weaveworksdemos COMMIT=test ./scripts/build.sh
+
+export BUILD_VERSION="0.0.2-SNAPSHOT"
+export BUILD_DATE=`date +%Y-%m-%dT%T%z`
+date +%Y-%m-%dT%T%z
+
+SCRIPT_DIR=$(dirname "$0")
+dirname "$0"
+
+if [[ -z "$GROUP" ]] ; then
+    echo "Cannot find GROUP env var"
+    exit 1
+fi
+
+if [[ -z "$COMMIT" ]] ; then
+    echo "Cannot find COMMIT env var"
+    exit 1
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    DOCKER_CMD=docker
+else
+    DOCKER_CMD="sudo docker"
+fi
+uname
+CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
+cd $SCRIPT_DIR/..; pwd
+echo $CODE_DIR
+/var/lib/jenkins/workspace/Shipping-Local
+$DOCKER_CMD run --rm -v $HOME/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-8 mvn -DskipTests package
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building shipping 1.4.0.RELEASE
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (prepare-agent) @ shipping ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/usr/src/mymaven/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /usr/src/mymaven/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/src/mymaven/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /usr/src/mymaven/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ shipping ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ shipping ---
+[INFO] Building jar: /usr/src/mymaven/target/shipping.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.4.0.RELEASE:repackage (default) @ shipping ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.157 s
+[INFO] Finished at: 2018-07-11T05:10:55+00:00
+[INFO] Final Memory: 35M/252M
+[INFO] ------------------------------------------------------------------------
+
+cp $CODE_DIR/target/*.jar $CODE_DIR/docker/shipping
+
+for m in ./docker/*/; do
+    REPO=${GROUP}/$(basename $m)
+    $DOCKER_CMD build \
+      --build-arg BUILD_VERSION=$BUILD_VERSION \
+      --build-arg BUILD_DATE=$BUILD_DATE \
+      --build-arg COMMIT=$COMMIT \
+      -t ${REPO}:${COMMIT} $CODE_DIR/$m;
+done;
+basename $m
+Sending build context to Docker daemon  26.34MB
+Step 1/10 : FROM weaveworksdemos/msd-java:jre-latest
+ ---> db3d04a1056f
+Step 2/10 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 6946381d93d1
+Step 3/10 : COPY *.jar ./app.jar
+ ---> 4f169d1b698b
+Step 4/10 : RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
+ ---> Running in 58616661ea4a
+Removing intermediate container 58616661ea4a
+ ---> 6f9f479ee625
+Step 5/10 : USER ${SERVICE_USER}
+ ---> Running in 549f8d4f10e8
+Removing intermediate container 549f8d4f10e8
+ ---> a990d9f89747
+Step 6/10 : ARG BUILD_DATE
+ ---> Running in fc0546542550
+Removing intermediate container fc0546542550
+ ---> 688f08d37feb
+Step 7/10 : ARG BUILD_VERSION
+ ---> Running in 5b4e3693e3fe
+Removing intermediate container 5b4e3693e3fe
+ ---> 6e8ddf7bed09
+Step 8/10 : ARG COMMIT
+ ---> Running in d2440594a2c6
+Removing intermediate container d2440594a2c6
+ ---> 5ddecf85e746
+Step 9/10 : LABEL org.label-schema.vendor="Weaveworks"   org.label-schema.build-date="${BUILD_DATE}"   org.label-schema.version="${BUILD_VERSION}"   org.label-schema.name="Socks Shop: Shipping"   org.label-schema.description="REST API for Shipping service"   org.label-schema.url="https://github.com/microservices-demo/shipping"   org.label-schema.vcs-url="github.com:microservices-demo/shipping.git"   org.label-schema.vcs-ref="${COMMIT}"   org.label-schema.schema-version="1.0"
+ ---> Running in b8ba7a4ee4fc
+Removing intermediate container b8ba7a4ee4fc
+ ---> 54895a60acaf
+Step 10/10 : ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./app.jar", "--port=80"]
+ ---> Running in ee59e844a0fe
+Removing intermediate container ee59e844a0fe
+ ---> 6512998b4799
+Successfully built 6512998b4799
+Successfully tagged weaveworksdemos/shipping:test
+[Pipeline] }
+[Pipeline] // node

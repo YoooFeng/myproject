@@ -1,0 +1,353 @@
+Started by user frank yang
+Running in Durability level: MAX_SURVIVABILITY
+Loading library IntelliPipeline-Agent@master
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/IntelliPipeline-Agent.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/IntelliPipeline-Agent.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials githubAccount
+ > git fetch --tags --progress https://github.com/YoooFeng/IntelliPipeline-Agent.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 4df077642a49fb882bed75d5a4721ab78b5fd22f (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4df077642a49fb882bed75d5a4721ab78b5fd22f
+Commit message: "Retrieve while loop"
+ > git rev-list --no-walk 4df077642a49fb882bed75d5a4721ab78b5fd22f # timeout=10
+Started by user frank yang
+Running in Durability level: MAX_SURVIVABILITY
+Loading library IntelliPipeline-Agent@master
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/IntelliPipeline-Agent.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/IntelliPipeline-Agent.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials githubAccount
+ > git fetch --tags --progress https://github.com/YoooFeng/IntelliPipeline-Agent.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 7b536ba02745e61d03004611655d5606ae64d190 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7b536ba02745e61d03004611655d5606ae64d190
+Commit message: "Modified requestType"
+ > git rev-list --no-walk 7b536ba02745e61d03004611655d5606ae64d190 # timeout=10
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/shipping.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/shipping.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/YoooFeng/shipping.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 2799063a7ba8516f073b9ac685b780fcef81e943 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2799063a7ba8516f073b9ac685b780fcef81e943
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 2799063a7ba8516f073b9ac685b780fcef81e943
+Commit message: "Update 12"
+ > git rev-list --no-walk 2799063a7ba8516f073b9ac685b780fcef81e943 # timeout=10
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Test] Running shell script
++ mvn -DskipTests package
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building shipping 1.4.0.RELEASE
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (prepare-agent) @ shipping ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/var/lib/jenkins/workspace/Shipping-Test/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /var/lib/jenkins/workspace/Shipping-Test/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Shipping-Test/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /var/lib/jenkins/workspace/Shipping-Test/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ shipping ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ shipping ---
+[INFO] Building jar: /var/lib/jenkins/workspace/Shipping-Test/target/shipping.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.4.0.RELEASE:repackage (default) @ shipping ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 13.437 s
+[INFO] Finished at: 2018-05-22T22:02:58+08:00
+[INFO] Final Memory: 34M/200M
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Test] Running shell script
++ chmod +x ./scripts/build.sh
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] sh
+[Shipping-Test] Running shell script
++ GROUP=weaveworksdemos COMMIT=test ./scripts/build.sh
+
+export BUILD_VERSION="0.0.2-SNAPSHOT"
+export BUILD_DATE=`date +%Y-%m-%dT%T%z`
+date +%Y-%m-%dT%T%z
+
+SCRIPT_DIR=$(dirname "$0")
+dirname "$0"
+
+if [[ -z "$GROUP" ]] ; then
+    echo "Cannot find GROUP env var"
+    exit 1
+fi
+
+if [[ -z "$COMMIT" ]] ; then
+    echo "Cannot find COMMIT env var"
+    exit 1
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    DOCKER_CMD=docker
+else
+    DOCKER_CMD="sudo docker"
+fi
+uname
+CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
+cd $SCRIPT_DIR/..; pwd
+echo $CODE_DIR
+/var/lib/jenkins/workspace/Shipping-Test
+$DOCKER_CMD run --rm -v $HOME/.m2:/root/.m2 -v $CODE_DIR:/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-8 mvn -DskipTests package
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building shipping 1.4.0.RELEASE
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.7.6.201602180812:prepare-agent (prepare-agent) @ shipping ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.7.6.201602180812/org.jacoco.agent-0.7.6.201602180812-runtime.jar=destfile=/usr/src/mymaven/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /usr/src/mymaven/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ shipping ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /usr/src/mymaven/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ shipping ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /usr/src/mymaven/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ shipping ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ shipping ---
+[INFO] Building jar: /usr/src/mymaven/target/shipping.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.4.0.RELEASE:repackage (default) @ shipping ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.115 s
+[INFO] Finished at: 2018-05-22T14:03:22+00:00
+[INFO] Final Memory: 42M/285M
+[INFO] ------------------------------------------------------------------------
+
+cp $CODE_DIR/target/*.jar $CODE_DIR/docker/shipping
+
+for m in ./docker/*/; do
+    REPO=${GROUP}/$(basename $m)
+    $DOCKER_CMD build \
+      --build-arg BUILD_VERSION=$BUILD_VERSION \
+      --build-arg BUILD_DATE=$BUILD_DATE \
+      --build-arg COMMIT=$COMMIT \
+      -t ${REPO}:${COMMIT} $CODE_DIR/$m;
+done;
+basename $m
+Sending build context to Docker daemon  26.34MB
+Step 1/10 : FROM weaveworksdemos/msd-java:jre-latest
+ ---> db3d04a1056f
+Step 2/10 : WORKDIR /usr/src/app
+Removing intermediate container 6ddf2155e43c
+ ---> dbe7f07fbc4f
+Step 3/10 : COPY *.jar ./app.jar
+ ---> 346aacad81f3
+Step 4/10 : RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
+ ---> Running in 03b7ba1ab0c8
+Removing intermediate container 03b7ba1ab0c8
+ ---> 301fe9d17ad2
+Step 5/10 : USER ${SERVICE_USER}
+ ---> Running in 1ff4989be96c
+Removing intermediate container 1ff4989be96c
+ ---> eccdf94b646d
+Step 6/10 : ARG BUILD_DATE
+ ---> Running in 3f704cdce499
+Removing intermediate container 3f704cdce499
+ ---> d2c624841815
+Step 7/10 : ARG BUILD_VERSION
+ ---> Running in 3a4a2954fbc4
+Removing intermediate container 3a4a2954fbc4
+ ---> 84353bca77c9
+Step 8/10 : ARG COMMIT
+ ---> Running in 6cc117cbe256
+Removing intermediate container 6cc117cbe256
+ ---> a036f516f09c
+Step 9/10 : LABEL org.label-schema.vendor="Weaveworks"   org.label-schema.build-date="${BUILD_DATE}"   org.label-schema.version="${BUILD_VERSION}"   org.label-schema.name="Socks Shop: Shipping"   org.label-schema.description="REST API for Shipping service"   org.label-schema.url="https://github.com/microservices-demo/shipping"   org.label-schema.vcs-url="github.com:microservices-demo/shipping.git"   org.label-schema.vcs-ref="${COMMIT}"   org.label-schema.schema-version="1.0"
+ ---> Running in 2b6234286532
+Removing intermediate container 2b6234286532
+ ---> a0a583a41265
+Step 10/10 : ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./app.jar", "--port=80"]
+ ---> Running in ade4d1f79f99
+Removing intermediate container ade4d1f79f99
+ ---> 245272b1dd12
+Successfully built 245272b1dd12
+Successfully tagged weaveworksdemos/shipping:test
+[Pipeline] }
+[Pipeline] // node
+Started by user frank yang
+Running in Durability level: MAX_SURVIVABILITY
+Loading library IntelliPipeline-Agent@master
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/IntelliPipeline-Agent.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/IntelliPipeline-Agent.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials githubAccount
+ > git fetch --tags --progress https://github.com/YoooFeng/IntelliPipeline-Agent.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 7b536ba02745e61d03004611655d5606ae64d190 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7b536ba02745e61d03004611655d5606ae64d190
+Commit message: "Modified requestType"
+ > git rev-list --no-walk 7b536ba02745e61d03004611655d5606ae64d190 # timeout=10
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/shipping.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/shipping.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/YoooFeng/shipping.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 90a58cdb3f683afe8f2dfa68d343ee65b9fdb99a (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 90a58cdb3f683afe8f2dfa68d343ee65b9fdb99a
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 90a58cdb3f683afe8f2dfa68d343ee65b9fdb99a
+Commit message: "Update README.md again!"
+ > git rev-list --no-walk 26ab3a94ce8423d86b70b9bbf50e8771b2a2a21b # timeout=10
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] mail
+[Pipeline] }
+[Pipeline] // node
+Started by user frank yang
+Running in Durability level: MAX_SURVIVABILITY
+Loading library IntelliPipeline-Agent@master
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/IntelliPipeline-Agent.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/IntelliPipeline-Agent.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials githubAccount
+ > git fetch --tags --progress https://github.com/YoooFeng/IntelliPipeline-Agent.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 7b536ba02745e61d03004611655d5606ae64d190 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7b536ba02745e61d03004611655d5606ae64d190
+Commit message: "Modified requestType"
+ > git rev-list --no-walk 7b536ba02745e61d03004611655d5606ae64d190 # timeout=10
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] {
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/YoooFeng/shipping.git # timeout=10
+Fetching upstream changes from https://github.com/YoooFeng/shipping.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/YoooFeng/shipping.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision ba98ac04e51d7e2c512239eecc66a292530493f9 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ba98ac04e51d7e2c512239eecc66a292530493f9
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master ba98ac04e51d7e2c512239eecc66a292530493f9
+Commit message: "Update README.md for test again"
+ > git rev-list --no-walk 67341d9f802b7d6bd12246a64de188923fec8188 # timeout=10
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] echo
+currentResult: SUCCESS
+[Pipeline] readJSON
+Running on Jenkins in /var/lib/jenkins/workspace/Shipping-Test
+[Pipeline] node
+[Pipeline] {
+[Pipeline] mail
+[Pipeline] }
+[Pipeline] // node

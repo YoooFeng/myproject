@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iscas.yf.IntelliPipeline.dao.ProjectDAO">
+    <!-- 目的：为dao接口方法提供sql语句配置 -->
+    <select buildId="queryByName" resultType="Project" parameterType="String">
+        SELECT
+        project_name,
+        github_url
+        FROM
+        Projects
+        WHERE
+        project_name = #{projectName}
+    </select>
+    <select buildId="queryAll" resultType="Project">
+        SELECT
+        *
+        FROM
+        Projects
+        ORDER BY
+        project_name
+        LIMIT #{offset}, #{limit}
+    </select>
+    <insert buildId="insertProject">
+        INSERT INTO
+        Projects
+        VALUES
+        (#{project.projectName}, #{project.gitURL})
+    </insert>
+</mapper>
