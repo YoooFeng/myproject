@@ -8,78 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f61afb6-6f8e-463e-82e6-4ca5f15ff0ae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/log4j-1.2.15.jar" afterPath="$PROJECT_DIR$/lib/log4j-1.2.15.jar" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/new/dashboard.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/new/dashboard.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/new/jquery-ui-1.10.4.custom.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/new/jquery-ui-1.10.4.custom.min.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/new/sticky.full.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/new/sticky.full.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/new/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/new/style.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/new/table.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/new/table.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBig.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBig.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigBlack.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigBlack.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigBlackH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigBlackH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectBigH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmall.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmall.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallBlack.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallBlack.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallBlackH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallBlackH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRectSmallH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBig.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBig.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigBlack.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigBlack.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigBlackH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigBlackH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundBigH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmall.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmall.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallBlack.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallBlack.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallBlackH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallBlackH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/dragIconRoundSmallH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/eraserIcon.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/eraserIcon.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/eraserIconH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/eraserIconH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/lens.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/lens.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/lensWhite.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/lensWhite.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/pencilIcon.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/pencilIcon.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/pencilIconH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/pencilIconH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/xIcon.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/xIcon.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/xIconH.svg" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/images/xIconH.svg" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/lang/uk.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/lang/uk.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/lang/zh.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/lang/zh.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/dataloader.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/dataloader.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/MSFT_events.csv" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/MSFT_events.csv" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/gantt.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/gantt.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/gauge.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/gauge.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/map.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/map.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/map_areas.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/map_areas.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/pie.csv" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/pie.csv" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/pie.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/pie.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial.csv" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial.csv" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial2.json" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/examples/data/serial2.json" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/cs.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/cs.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/en.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/en.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/fr.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/fr.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/lt.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/lang/lt.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/license.txt" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/license.txt" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/readme.md" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/dataloader/readme.md" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/export.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/export.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/cs.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/cs.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/de.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/de.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/en.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/en.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/es.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/es.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/hu.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/hu.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/it.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/it.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/ko.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/ko.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/lt.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/lt.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/pl.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/pl.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/tr.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/tr.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/zh.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/export/lang/zh.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/license.txt" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/license.txt" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/readme.md" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/readme.md" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/responsive.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/plugins/responsive/responsive.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/black.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/black.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/chalk.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/chalk.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/dark.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/dark.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/light.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/light.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/patterns.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/amcharts/themes/patterns.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/login/grid.locale-en.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/login/grid.locale-en.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.timer.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery.timer.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/workflow.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/workflow.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/GrepConsole.xml" afterPath="$PROJECT_DIR$/.idea/GrepConsole.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -113,7 +49,7 @@
       <file leaf-file-name="DecisionMaker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/DecisionMaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="114">
               <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
               <folding>
                 <element signature="e#2142#2190#0" expanded="false" />
@@ -132,13 +68,49 @@
       <file leaf-file-name="panel.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="254" column="38" lean-forward="false" selection-start-line="254" selection-start-column="38" selection-end-line="254" selection-end-column="38" />
+            <state relative-caret-position="188">
+              <caret line="65" column="79" lean-forward="true" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <marker date="1542094718057" expanded="false" signature="4201:4220" ph="..." />
-                <marker date="1542094718057" expanded="false" signature="5909:5928" ph="..." />
-                <marker date="1542094718057" expanded="false" signature="6752:6771" ph="..." />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1542351331351" expanded="false" signature="4224:4243" ph="..." />
+                <marker date="1542351331351" expanded="false" signature="5932:5951" ph="..." />
+                <marker date="1542351331351" expanded="false" signature="6775:6794" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="426" column="30" lean-forward="true" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
+              <folding>
+                <element signature="e#2001#2024#0" expanded="false" />
+                <marker date="1542350032075" expanded="true" signature="873:884" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="930:941" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="1007:1018" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="1823:1833" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="4687:4704" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="4853:4860" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="4853:4867" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="4870:4925" ph="..." />
+                <marker date="1542350032075" expanded="true" signature="12259:12274" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="837">
+              <caret line="68" column="27" lean-forward="false" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,32 +119,32 @@
       <file leaf-file-name="workflow-orchestration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="130" column="52" lean-forward="false" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+            <state relative-caret-position="321">
+              <caret line="196" column="33" lean-forward="false" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="33" />
               <folding>
-                <element signature="e#15256#15291#0" expanded="false" />
-                <element signature="e#16533#17153#0" expanded="false" />
-                <element signature="e#16535#16564#0" expanded="false" />
-                <element signature="e#24148#24187#0" expanded="false" />
-                <element signature="e#27577#27600#0" expanded="false" />
-                <element signature="e#28744#28791#0" expanded="false" />
-                <element signature="e#35237#35250#0" expanded="false" />
-                <element signature="e#36288#36326#0" expanded="false" />
-                <element signature="e#43843#43859#0" expanded="false" />
-                <element signature="e#44238#44247#0" expanded="false" />
-                <element signature="e#44843#44867#0" expanded="false" />
-                <element signature="e#45259#45295#0" expanded="false" />
-                <element signature="e#48352#49354#0" expanded="false" />
-                <element signature="e#49969#50012#0" expanded="false" />
-                <marker date="1542096356150" expanded="true" signature="42508:42527" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="42813:42832" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="46550:46569" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="46841:46860" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="51184:51196" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="51184:51242" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="51257:51275" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="53433:53445" ph="..." />
-                <marker date="1542096356150" expanded="true" signature="53506:53524" ph="..." />
+                <element signature="e#15558#15593#0" expanded="false" />
+                <element signature="e#16835#17455#0" expanded="false" />
+                <element signature="e#16837#16866#0" expanded="false" />
+                <element signature="e#24450#24489#0" expanded="false" />
+                <element signature="e#27879#27902#0" expanded="false" />
+                <element signature="e#29046#29093#0" expanded="false" />
+                <element signature="e#35539#35552#0" expanded="false" />
+                <element signature="e#36590#36628#0" expanded="false" />
+                <element signature="e#44234#44250#0" expanded="false" />
+                <element signature="e#44629#44638#0" expanded="false" />
+                <element signature="e#45234#45258#0" expanded="false" />
+                <element signature="e#45650#45686#0" expanded="false" />
+                <element signature="e#48743#49745#0" expanded="false" />
+                <element signature="e#50360#50403#0" expanded="false" />
+                <marker date="1542351876753" expanded="true" signature="42899:42918" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="43204:43223" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="46941:46960" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="47232:47251" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="51575:51587" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="51575:51633" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="51648:51666" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="53824:53836" ph="..." />
+                <marker date="1542351876753" expanded="true" signature="53897:53915" ph="..." />
               </folding>
             </state>
           </provider>
@@ -181,8 +153,8 @@
       <file leaf-file-name="ClassifierController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="56" column="20" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+            <state relative-caret-position="392">
+              <caret line="126" column="23" lean-forward="false" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,15 +162,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/BuildController.java">
+      <file leaf-file-name="WekaClassifier.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="203" column="8" lean-forward="false" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="61" />
+            <state relative-caret-position="293">
+              <caret line="233" column="30" lean-forward="true" selection-start-line="233" selection-start-column="30" selection-end-line="233" selection-end-column="30" />
               <folding>
-                <element signature="docComment;method#startBuild#0;class#BuildController#0" expanded="false" />
-                <element signature="method#startBuild#0;class#BuildController#0" expanded="false" />
-                <element signature="e#13921#13937#0" expanded="false" />
+                <element signature="e#4697#4776#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -220,17 +190,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>保存节点信息</find>
-      <find>load</find>
-      <find>STATUS ==</find>
-      <find>stageName</find>
-      <find>stopBuildProcess</find>
-      <find>确定要执行</find>
-      <find>save-</find>
       <find>save</find>
       <find>initEvents</find>
       <find>getBuildStopBtnHtml</find>
-      <find>btn-save</find>
       <find>saves</find>
       <find>new</find>
       <find>requestAppC</find>
@@ -250,6 +212,14 @@
       <find>\&lt;legend\&gt;\&lt;h4\&gt;构建的执行策略\&lt;\/h4\&gt;\&lt;\/legend\&gt;\n                                            \&lt;label\&gt;\&lt;input type\=\&quot;checkbox\&quot; id\=\&quot;timeIntervalCheckBox\&quot; onclick\=\&quot;appPanel\.timeIntervalCheckBoxClick\(\)\&quot; \/\&gt;距上一次任务执行时间大于\n                                                \&lt;input type\=\&quot;text\&quot; id\=\&quot;timeIntervalText\&quot; class\=\&quot;form\-control\&quot; name\=\&quot;time\&quot; value\=\&quot;0\.5\&quot; onkeyup\=\&quot;appPanel\.inputSize\(this\)\&quot; size\=\&quot;2\&quot;\/\&gt;\n                                                小时\&lt;\/label\&gt;\&lt;br\&gt;\n                   \n                                        \&lt;label\&gt;\&lt;input type\=\&quot;checkbox\&quot;</find>
       <find>data</find>
       <find>switch</find>
+      <find>构建</find>
+      <find>showBuildingProcess</find>
+      <find>showBuildingP</find>
+      <find>showBuildProcess</find>
+      <find>btn-save</find>
+      <find>initForBuild</find>
+      <find>callback</find>
+      <find>prediction</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -285,7 +255,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/rules/TimeIntervalStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-plumb.js" />
         <option value="$PROJECT_DIR$/src/main/resources/JenkinsProperties.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/dataview/BuildStrategyView.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/dataservice/BuildStrategyServiceImpl.java" />
@@ -299,7 +268,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/gitgraph.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/gitgraph/gitgraph.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-gitgraph.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/package.json" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/gitgraph-react/public/index.html" />
@@ -317,10 +285,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/gitgraph/graph.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/fonts/fonts.googleapis.com.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/uri.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/DecisionMaker.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/DecisionMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" />
       </list>
     </option>
@@ -713,6 +683,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="ipipeline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntelliPipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="ipipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntelliPipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -733,6 +722,16 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntelliPipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="gitgraph" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
@@ -1199,7 +1198,7 @@
       <workItem from="1531629760848" duration="18944000" />
       <workItem from="1534128280802" duration="37908000" />
       <workItem from="1537235369996" duration="151432000" />
-      <workItem from="1540133303685" duration="187179000" />
+      <workItem from="1540133303685" duration="217252000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit.">
       <created>1542099993887</created>
@@ -1212,7 +1211,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1571480000" />
+    <option name="totallyTimeSpent" value="1601553000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1240,13 +1239,13 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6692427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662538" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9799073" sideWeight="0.49402392" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6687307" sideWeight="0.49402392" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9659969" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32031873" sideWeight="0.4358578" order="3" side_tool="true" content_ui="tabs" />
@@ -1413,43 +1412,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding>
-            <element signature="e#2001#2024#0" expanded="false" />
-            <marker date="1540134113545" expanded="true" signature="873:884" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="930:941" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="1007:1018" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="1823:1833" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="4687:4704" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="4853:4860" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="4853:4867" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="4870:4925" ph="..." />
-            <marker date="1540134113545" expanded="true" signature="12259:12274" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/new.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="50" column="14" lean-forward="true" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-gitgraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1717">
@@ -1535,29 +1497,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/gitgraph-react/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1723,22 +1667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="136" column="10" lean-forward="true" selection-start-line="136" selection-start-column="10" selection-end-line="136" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1899">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/gitgraph.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1771,59 +1699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/uri.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="83" column="43" lean-forward="false" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="228" column="30" lean-forward="true" selection-start-line="228" selection-start-column="30" selection-end-line="228" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4795#4874#0" expanded="false" />
-            <element signature="e#8464#8646#0" expanded="false" />
-            <element signature="e#8645#8646#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="130" column="52" lean-forward="false" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
-          <folding>
-            <element signature="e#15256#15291#0" expanded="false" />
-            <element signature="e#16533#17153#0" expanded="false" />
-            <element signature="e#16535#16564#0" expanded="false" />
-            <element signature="e#24148#24187#0" expanded="false" />
-            <element signature="e#27577#27600#0" expanded="false" />
-            <element signature="e#28744#28791#0" expanded="false" />
-            <element signature="e#35237#35250#0" expanded="false" />
-            <element signature="e#36288#36326#0" expanded="false" />
-            <element signature="e#43843#43859#0" expanded="false" />
-            <element signature="e#44238#44247#0" expanded="false" />
-            <element signature="e#44843#44867#0" expanded="false" />
-            <element signature="e#45259#45295#0" expanded="false" />
-            <element signature="e#48352#49354#0" expanded="false" />
-            <element signature="e#49969#50012#0" expanded="false" />
-            <marker date="1542096356150" expanded="true" signature="42508:42527" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="42813:42832" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="46550:46569" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="46841:46860" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="51184:51196" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="51184:51242" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="51257:51275" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="53433:53445" ph="..." />
-            <marker date="1542096356150" expanded="true" signature="53506:53524" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/util/GitHubRepoService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1832,19 +1707,6 @@
             <element signature="method#listLinesOfCode#0;class#GitHubRepoService#0" expanded="false" />
             <element signature="e#19329#19385#0" expanded="false" />
             <element signature="e#21285#21344#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="254" column="38" lean-forward="false" selection-start-line="254" selection-start-column="38" selection-end-line="254" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1542094718057" expanded="false" signature="4201:4220" ph="..." />
-            <marker date="1542094718057" expanded="false" signature="5909:5928" ph="..." />
-            <marker date="1542094718057" expanded="false" signature="6752:6771" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1861,9 +1723,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="83" column="44" lean-forward="false" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1186">
+          <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/flow.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="426" column="30" lean-forward="true" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
+          <folding>
+            <element signature="e#2001#2024#0" expanded="false" />
+            <marker date="1542350032075" expanded="true" signature="873:884" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="930:941" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="1007:1018" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="1823:1833" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4687:4704" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4853:4860" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4853:4867" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4870:4925" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="12259:12274" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="68" column="27" lean-forward="false" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="65" column="79" lean-forward="true" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1542351331351" expanded="false" signature="4224:4243" ph="..." />
+            <marker date="1542351331351" expanded="false" signature="5932:5951" ph="..." />
+            <marker date="1542351331351" expanded="false" signature="6775:6794" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/uri.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="84" column="48" lean-forward="false" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/DecisionMaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="114">
           <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
           <folding>
             <element signature="e#2142#2190#0" expanded="false" />
@@ -1878,10 +1817,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="196" column="33" lean-forward="false" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="33" />
+          <folding>
+            <element signature="e#15558#15593#0" expanded="false" />
+            <element signature="e#16835#17455#0" expanded="false" />
+            <element signature="e#16837#16866#0" expanded="false" />
+            <element signature="e#24450#24489#0" expanded="false" />
+            <element signature="e#27879#27902#0" expanded="false" />
+            <element signature="e#29046#29093#0" expanded="false" />
+            <element signature="e#35539#35552#0" expanded="false" />
+            <element signature="e#36590#36628#0" expanded="false" />
+            <element signature="e#44234#44250#0" expanded="false" />
+            <element signature="e#44629#44638#0" expanded="false" />
+            <element signature="e#45234#45258#0" expanded="false" />
+            <element signature="e#45650#45686#0" expanded="false" />
+            <element signature="e#48743#49745#0" expanded="false" />
+            <element signature="e#50360#50403#0" expanded="false" />
+            <marker date="1542351876753" expanded="true" signature="42899:42918" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="43204:43223" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="46941:46960" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="47232:47251" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="51575:51587" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="51575:51633" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="51648:51666" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="53824:53836" ph="..." />
+            <marker date="1542351876753" expanded="true" signature="53897:53915" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/nz/ac/waikato/cms/weka/weka-stable/3.8.3/weka-stable-3.8.3.jar!/weka/gui/treevisualizer/TreeVisualizer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2038">
+          <caret line="100" column="61" lean-forward="false" selection-start-line="100" selection-start-column="58" selection-end-line="100" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="254" column="52" lean-forward="false" selection-start-line="254" selection-start-column="36" selection-end-line="254" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="233" column="30" lean-forward="true" selection-start-line="233" selection-start-column="30" selection-end-line="233" selection-end-column="30" />
+          <folding>
+            <element signature="e#4697#4776#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="56" column="20" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+        <state relative-caret-position="392">
+          <caret line="126" column="23" lean-forward="false" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

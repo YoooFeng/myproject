@@ -2,7 +2,9 @@ package com.iscas.yf.IntelliPipeline.controller;
 
 import com.iscas.yf.IntelliPipeline.entity.Build;
 import com.iscas.yf.IntelliPipeline.entity.Project;
+import com.iscas.yf.IntelliPipeline.entity.record.BuildRecord;
 import com.iscas.yf.IntelliPipeline.service.classifier.WekaClassifier;
+import com.iscas.yf.IntelliPipeline.service.dataservice.BuildService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.ProjectService;
 import com.iscas.yf.IntelliPipeline.service.decision.DecisionMaker;
 import com.iscas.yf.IntelliPipeline.service.util.GitHubRepoService;
@@ -34,31 +36,48 @@ public class ClassifierController {
     @Autowired
     ServletContext servletContext;
 
+    @Autowired
+    BuildService buildService;
+
     /**
      * 获取分类器预测结果
      * */
-    @RequestMapping(value = {"/get/{projectId}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/get/{buildId}"}, method = RequestMethod.GET)
     @ResponseBody
-    public String getPrediction(@PathVariable("projectId") Long id) throws Exception{
+    public String getPrediction(@PathVariable("buildId") Long buildId) throws Exception{
 
-        Project project = projectService.getProject(id);
+        // 传送过来的参数实际上有两个, 用'-'分割
+        // String[] ids = id.split("-");
+        // Long projectId = Long.parseLong(ids[0]);
+        // Long buildId = Long.parseLong(ids[1]);
+
+        // 预测过程: commit触发构建 -> build对象建立 -> 进行预测 -> 分析配置规则
+        // -> 规则和预测结果共同决定构建是否执行
+        Build build = buildService.getBuild(buildId);
+        BuildRecord record = build.getRecord();
+
+        Project project = build.getProject();
         List<Build> builds = project.getBuilds();
 
         if(builds.size() == 0) {
             return "unknown";
         }
 
-        Build latestBuild = builds.get(builds.size() - 1);
-
         String projectName = project.getProjectName();
         // 获取/WEB-INF/resources/ 本地路径
         String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
 
-        // 获取代码仓库的差异
-        Git git = DecisionMaker.getGit(rootPath, latestBuild);
-        Map<String, String> diff = GitHubRepoService.compareLocalAndRemote(git);
+        // 没有必要获取代码仓库的差异, 因为相关数据已经包含在BuildRecord中
+        // Git git = DecisionMaker.getGit(rootPath, latestBuild);
+        // Map<String, String> diff = GitHubRepoService.compareLocalAndRemote(git);
 
+        BuildRecord mockRecord = new BuildRecord();
+        mockRecord.setModified_lines(50L);
+        mockRecord.setCommitter_num(11);
 
+        // 获得实例字符串, 进行预测.
+        // String instance = record.toPredictionString();
+        String mockInstance = mockRecord.toPredictionString();
 
         // 存放分类器模型的目录
         String modelPath = rootPath + "LocalRepo/" + projectName + "/model/";
@@ -72,17 +91,32 @@ public class ClassifierController {
             // 模型用项目名保存, 直接读取
             Classifier model = WekaClassifier.loadModel(projectName, modelPath);
 
-
+            // 返回值介于0-1之间,
+            // 越接近0, 说明失败的概率越高; 越接近1, 说明成功的概率越高.
+            double prediction = WekaClassifier.predict(model, mockInstance);
+            if(prediction >= 0.5 && prediction <= 1.0) {
+                return "passed";
+            } else if(prediction <= 0.5 && prediction >= 0.0) {
+                return "failed";
+            }
 
         } else {
             try {
                 // TODO: 否则重新训练模型. 这里获取的数据应该是travistorrent的构建数据.
                 // 所以projectName应该是模板项目的项目名
                 Instances trainData = WekaClassifier
-                        .getInstanceFromDatabase("", "");
+                        .getInstanceFromDatabase("", "java");
 
                 Classifier model = WekaClassifier.trainModel(trainData);
 
+                // 返回值介于0-1之间,
+                // 越接近0, 说明失败的概率越高; 越接近1, 说明成功的概率越高.
+                double prediction = WekaClassifier.predict(model, mockInstance);
+                if(prediction >= 0.5 && prediction <= 1.0) {
+                    return "passed";
+                } else if(prediction <= 0.5 && prediction >= 0.0) {
+                    return "failed";
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -90,7 +124,7 @@ public class ClassifierController {
 
         }
 
-        return "";
+        return "unknown";
     }
 
     @RequestMapping(value = {"/show/{projectId}"}, method = RequestMethod.GET)
@@ -114,7 +148,7 @@ public class ClassifierController {
             Classifier model = WekaClassifier.loadModel(projectName, modelPath);
 
             // 进行预测
-            String result = WekaClassifier.predict(model, "");
+            double result = WekaClassifier.predict(model, "");
 
         } else {
             try {

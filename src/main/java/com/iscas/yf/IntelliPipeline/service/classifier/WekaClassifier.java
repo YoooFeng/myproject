@@ -9,10 +9,7 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.meta.AttributeSelectedClassifier;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.classifiers.trees.J48;
-import weka.core.Attribute;
-import weka.core.Debug;
-import weka.core.Instances;
-import weka.core.SerializationHelper;
+import weka.core.*;
 import weka.experiment.InstanceQuery;
 import weka.filters.unsupervised.attribute.Remove;
 import weka.gui.treevisualizer.*;
@@ -219,42 +216,61 @@ public class WekaClassifier extends Applet{
      * @Param projectName: 项目名, 利用项目名可以在HQL查找得到构建的历史数据.
      *                     但是未进行的构建需要实时获得相关特征值来进行预测.
      * */
-    public static String predict(Classifier model, String buildRecord) {
+    public static double predict(Classifier model, String buildRecord) {
 
-        // 用来测试的Instance, 转化为BuildRecord的字符串形式
-        String mock = "4,100,?";
+        // 逗号将三个属性分割, 最后一个tr_status属性值为"?", 不需要加入instance
+        String[] strs = buildRecord.split(",");
 
-        ArrayList<String> classVal = new ArrayList<>();
-        classVal.add(mock);
+        Attribute team_size = new Attribute("gh_team_size");
+        Attribute loc = new Attribute("git_diff_src_churn");
+        Attribute status = new Attribute("tr_status");
         ArrayList<Attribute> atts = new ArrayList<>();
-        atts.add(new Attribute("content", (ArrayList<String>)null));
-        atts.add(new Attribute("@@class@@", classVal));
+        atts.add(team_size);
+        atts.add(loc);
+        atts.add(status);
+
+        double[] attValues = new double[3];
+        // attValues[0] = 0;
+        // attValues[1] = 100;
+        attValues[0] = Double.parseDouble(strs[0]);
+        attValues[1] = Double.parseDouble(strs[1]);
+        // 这里设置的权重(weight)指的是这个instance的权重
+        BinarySparseInstance i = new BinarySparseInstance(1.0, attValues);
+
+        // atts.add(new Attribute("gh_team_size", "4"));
+        // atts.add(new Attribute("git_diff_src_churn", "100"));
 
         Instances instance = new Instances("TestInstances", atts, 0);
+        instance.add(i);
         instance.setClassIndex(instance.numAttributes() - 1);
 
         try {
             // 进行判断
             Evaluation eval = new Evaluation(instance);
-            // 分类第一个实例, 实际上也只有一个实例
-            eval.evaluateModelOnce(model, instance.firstInstance());
+
+            // 对一个实例进行分类, 如何查看分类结果?
+            // eval.evaluateModelOnce(model, instance.firstInstance());
 
             // 看看测试结果
-            System.out.println(eval.toSummaryString());
+            System.out.println("Classify only one instance");
+            System.out.println(eval.evaluateModelOnce(model, instance.firstInstance()));
 
+            // 预测会得到一个0-1之间的值, 越接近0, 说明失败的概率越高, 越接近1, 说明成功的概率越高.
+            return eval.evaluateModelOnce(model, instance.firstInstance());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-        return "";
+        // 预测失败, 返回0L
+        return 0L;
     }
 
     /**
      * 在JFrame框体中初始化决策树可视化图形.
+     * @Param String dottyString -
      * */
     public static void visualizeTree(String dottyString) {
-        final javax.swing.JFrame jf = new javax.swing.JFrame("J48 classifier");
+        final javax.swing.JFrame jf = new javax.swing.JFrame("Decision Tree");
         jf.setSize(1000, 800);
         jf.getContentPane().setLayout(new BorderLayout());
         TreeVisualizer tv = new TreeVisualizer(null, dottyString, new PlaceNode2());
@@ -271,20 +287,20 @@ public class WekaClassifier extends Applet{
     }
 
     public static void main(String[] args) throws Exception {
-        Instances trainData = getInstanceFromDatabase("myronmarston/vcr");
+        Instances trainData = getInstanceFromDatabase("intridea/omniauth", "");
 
         // 删除得到记录的第一个属性, 通常是build_id等无关的特征, 删掉不参与构建决策树
         trainData.deleteAttributeAt(0);
+        System.out.println(trainData.toSummaryString());
 
         J48 tree = trainModel(trainData);
-        // J48 tree = loadModel("TestModel");
+        // J48 tree = loadModel("TestModel", MODEL_STORAGE_DIR);
 
-        // predict("TestModel");
+        // saveModel(tree, "TestModel", MODEL_STORAGE_DIR);
 
-        // saveModel(tree, "TestModel", "");
+        // 预测结果
+        predict(tree, "");
 
-        // predict("TestModel");
-        //
         visualizeTree(tree.graph());
 
         // trainData.setClassIndex(trainData.numAttributes() - 1);

@@ -13,10 +13,7 @@ var appPanel = {
     currentTimer : null,
 	init : function(param) {
 		// this.requestHosts();
-		// 初始化组件列表
-		this.requestComponentList();
-		// 初始化事件
-		this.initEvents();
+
 		// this.initCustomFileList();
 
 		this.initReady = 2;
@@ -30,7 +27,11 @@ var appPanel = {
 		console.log("初始化拓扑图"+appPanel.initReady);
 		if (appPanel.initReady == 2) {
 			console.log("进入初始化");
+
+            // 清空画板
 			appPanel.clearGraph();
+
+			// 请求project
 			appPanel.requestApp(param.appId);
 
 			// 保存按钮暂时不需要
@@ -38,7 +39,15 @@ var appPanel = {
 
             // 初始化策略配置按钮
             appPanel.showStrategyBtn();
-            appPanel.showClassifierBtn();
+
+            // 初始化分类器按钮
+            // appPanel.showClassifierBtn();
+
+            // 初始化事件(执行构建按钮)
+            appPanel.initEvents();
+
+            // 初始化组件列表(Step列表)
+            appPanel.requestComponentList();
 
 			appPanel.currentTab = param.tab;
 			if (appPanel.currentTab == 2 || appPanel.currentTab == 3) {
@@ -53,6 +62,15 @@ var appPanel = {
 			}, 2000);
 		}
 	},
+
+    // 可视化构建过程初始化
+    initForBuildProcess : function(buildId) {
+
+	    // 初始化分类器按钮
+        appPanel.showClassifierBtn(buildId);
+
+        // 初始化当前构建的统计信息
+    },
 
 	// 初始化用户编写的workflow.yaml文件, 可从文件中读取CI流
 	initCustomFileList : function(selectedFile) {
@@ -119,7 +137,7 @@ var appPanel = {
     /**
      * 显示分类器预测结果的窗口
      * */
-    showClassifierBtn: function() {
+    showClassifierBtn: function(buildId) {
         // 显示该按钮
         $("#btn-classifier").show();
         $("#btn-classifier").unbind("click");
@@ -127,9 +145,9 @@ var appPanel = {
         // 点击按钮的事件
         $("#btn-classifier").click(function () {
 
-            // 根据当前的项目, 读取预测结果
-            ajaxGetJsonAuthc(dURIs.classifierURI.getPrediction + "/" + appId, null,
-                appPanel.showPrediction(), null);
+            // 根据当前的构建id, 读取预测结果
+            ajaxGetJsonAuthc(dURIs.classifierURI.getPrediction + "/" + buildId, null,
+                appPanel.showPrediction, null);
             // For test
             // appPanel.showPrediction("unknown");
 
@@ -1248,6 +1266,10 @@ var appPanel = {
 	showBuildingProcess : function(build){
         // 首先清理缓存, TODO: 并且把不需要的按钮和列表隐藏起来
         appPanel.cachedNodes.clear();
+
+        // 显示界面上的按钮, 把按钮上的事件与buildId绑定
+        appPanel.initForBuildProcess(build.id);
+
         // appInstance.clearGraph();
         // orcheHtml.clear();
 

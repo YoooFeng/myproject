@@ -57,7 +57,7 @@
         </div>
         <div id="group-list" class="col-sm-2">
             <div>
-                <div id="btn-save" class="save-btn">
+                <div id="btn-save" class="save-btn" style="display: none;">
                     <i class="fa fa-save"></i> 执行构建
                 </div>
                 <div id="btn-save-as" class="save-btn" style="display: none;">

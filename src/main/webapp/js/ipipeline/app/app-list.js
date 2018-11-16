@@ -392,6 +392,7 @@ var appList = {
         chart.invalidateSize();
     },
 
+    // 展示动态的构建过程
     showBuildProcess : function (buildId) {
         ajaxGetJsonAuthc(dURIs.buildDataURI.getBuildById + "/" + buildId, null, appList.requestBuildingCallback, null);
 

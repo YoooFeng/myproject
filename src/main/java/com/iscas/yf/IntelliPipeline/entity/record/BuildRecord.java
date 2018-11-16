@@ -42,13 +42,17 @@ public class BuildRecord extends IdEntity{
     @Column(name = "project_history")
     private Long project_history;
 
-    // 记录本次构建的相关提交者, 多个提交者用空格分割
+    // 记录本次构建的相关提交者, 多个提交者用 空格 分割
     @Column(name = "committer")
     private String committer;
 
     // 记录本次构建被修改的代码行数
     @Column(name = "modified_lines")
     private Long modified_lines;
+
+    // 计算从上次构建到本次构建, 参与commit的开发者数量
+    @Column(name = "committer_num")
+    private int committer_num;
 
     // Non-arg constructor
     public BuildRecord() {
@@ -64,23 +68,33 @@ public class BuildRecord extends IdEntity{
 
         // 保存当前构建累积变更的作者列表
         if(analysis.get("Authors") != null) {
-            this.committer = analysis.get("Authors");
-        } else this.committer = null;
+            this.setCommitter(analysis.get("Authors"));
+
+            // 用空格切分
+            String[] committers = this.getCommitter().split(" ");
+
+            // 得到开发者数量
+            this.setCommitter_num(committers.length);
+
+        } else {
+            this.setCommitter(null);
+            this.setCommitter_num(0);
+        }
 
         // 保存本次构建累积的代码修改行数
         if(analysis.get("ModifiedLines") != null
                 && !analysis.get("ModifiedLines").equals("0")) {
             // 将String转化为Long
-            this.modified_lines = Long.parseLong(analysis.get("ModifiedLines"));
+            this.setModified_lines(Long.parseLong(analysis.get("ModifiedLines")));
+        } else {
+            this.setModified_lines(0L);
         }
 
-        // 上一次构建的结果
+        // 上一次构建的结果. 先创建Build对象才有BuildRecord
         if(builds.size() > 0) {
             // 获取当前项目倒数第二个构建的状态
-            this.last_build = builds.get(builds.size() - 2).getStatus();
-        } else this.last_build = null;
-
-        // project_recent - 该项目最近几次构建的成功率
+            this.setLast_build(builds.get(builds.size() - 2).getStatus());
+        } else this.setLast_build(null);
 
         // project_history - 该项目历史构建的成功率
         if(builds.size() > 0) {
@@ -88,16 +102,36 @@ public class BuildRecord extends IdEntity{
             int succeess = 0;
             int fail = 0;
 
+            // 用来标记最近的10次构建
+            int flag = 0;
+
             for(Build b : builds) {
-                if(b.getStatus().equals(Build.Status.FAIL)) fail += 1;
-                else if(b.getStatus().equals(Build.Status.SUCCEED)) succeess += 1;
-                else continue;
-                total += 1;
+                if(b.getStatus().equals(Build.Status.FAIL)) {
+                    fail++;
+                }
+                else if(b.getStatus().equals(Build.Status.SUCCEED)) {
+                    succeess += 1;
+                }
+                else {
+                    // 不计数 中断的 跳过的 构建记录
+                    continue;
+                }
+                total++;
+                flag++;
+                if(flag == 10) {
+                    this.setProject_recent( (long)succeess/(long)total );
+                }
+            }
+            if(flag < 10 && flag > 1) {
+                this.setProject_recent( (long)succeess/(long)total );
             }
 
-            this.project_history = (long)succeess / (long)total;
+            this.setProject_history( (long)succeess / (long)total );
 
-        } else this.project_history = 0L;
+        } else {
+            this.setProject_recent(0L);
+            this.setProject_history(0L);
+        }
 
     }
 
@@ -183,6 +217,15 @@ public class BuildRecord extends IdEntity{
         this.project_history = project_history;
     }
 
+    // 开发者的数量
+    public int getCommitter_num() {
+        return committer_num;
+    }
+
+    public void setCommitter_num(int committer_num) {
+        this.committer_num = committer_num;
+    }
+
     // 保存到数据库之前将所需的参数在本函数中计算完成
     public void doCalculate() {
 
@@ -205,6 +248,15 @@ public class BuildRecord extends IdEntity{
             // TODO: 通过Build记录获取所有的committer
             this.committer = null;
         }
+    }
+
+    // 将需要的特征以特定形式的字符串返回
+    public String toPredictionString() {
+        return  String.valueOf(this.getCommitter_num())
+                + ","
+                + this.getModified_lines()
+                + ","
+                + "?";
     }
 
 }
