@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class WekaClassifier extends Applet{
 
     // 将模型文件保存在项目目录下
-    private static String MODEL_STORAGE_DIR = "/home/workplace/Github/IntelliPipeline/target/IntelliPipeline-1.0-SNAPSHOT/WEB-INF/resources/LocalRepo/test/";
+    private static String MODEL_STORAGE_DIR = "/home/workplace/Github/IntelliPipeline/target/IntelliPipeline-1.0-SNAPSHOT/WEB-INF/resources/LocalRepo/java/";
 
     // 模型后缀
     private static String MODEL_EXTENSION = ".model";
@@ -287,7 +287,7 @@ public class WekaClassifier extends Applet{
     }
 
     public static void main(String[] args) throws Exception {
-        Instances trainData = getInstanceFromDatabase("intridea/omniauth", "");
+        Instances trainData = getInstanceFromDatabase("", "java");
 
         // 删除得到记录的第一个属性, 通常是build_id等无关的特征, 删掉不参与构建决策树
         trainData.deleteAttributeAt(0);
@@ -296,10 +296,10 @@ public class WekaClassifier extends Applet{
         J48 tree = trainModel(trainData);
         // J48 tree = loadModel("TestModel", MODEL_STORAGE_DIR);
 
-        // saveModel(tree, "TestModel", MODEL_STORAGE_DIR);
+        saveModel(tree, "java", MODEL_STORAGE_DIR);
 
         // 预测结果
-        predict(tree, "");
+        // predict(tree, "");
 
         visualizeTree(tree.graph());
 

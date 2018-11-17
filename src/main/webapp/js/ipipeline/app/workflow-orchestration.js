@@ -40,6 +40,7 @@ var appPanel = {
             // 初始化策略配置按钮
             appPanel.showStrategyBtn();
 
+            $("#refresh-btn").hide();
             // 初始化分类器按钮
             // appPanel.showClassifierBtn();
 
@@ -467,6 +468,7 @@ var appPanel = {
 	// 初始化点击执行构建的事件
 	initEvents : function() {
 		// 构建按钮(名字是save系列没改)
+        $("#btn-save").show();
 		$("#btn-save").unbind("click");
 		$("#btn-save").click(function() {
 			// 模态框的保存按钮(真正提交任务的按钮)
