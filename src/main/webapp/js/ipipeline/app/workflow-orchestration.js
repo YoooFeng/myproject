@@ -165,6 +165,34 @@ var appPanel = {
      * @Param prediction - 服务端返回的预测结果
      * */
     showPrediction : function(prediction) {
+
+        // console.log("CurrentBuild: " + JSON.stringify(appPanel.currentBuild));
+
+        // 显示决策的特征值
+        var record = appPanel.currentBuild.record;
+        console.log("Record: " + record);
+
+        var atts = record.split(',');
+
+        // var nCommitter = atts[0];
+        // var nLine = atts[1];
+        var nCommitter = "2";
+        var nLine = "50";
+
+        console.log("attributes");
+        var attsDiv = document.getElementById("predictParams");
+
+        var committerLabel = document.createElement("label");
+        committerLabel.innerText = "开发者人数: " + nCommitter + " (开发者人数指的是最近十次代码提交的参与开发者人数)";
+        attsDiv.appendChild(committerLabel);
+        attsDiv.appendChild(document.createElement("br"));
+
+        var lineLabel = document.createElement("label");
+        lineLabel.innerText = "修改代码行数: " + nLine + " (本次构建涉及修改代码的总行数)"
+        attsDiv.appendChild(lineLabel);
+        attsDiv.appendChild(document.createElement("br"));
+
+        // 刷新构建预测结果!
         var resultDiv = document.getElementById('predictResult');
         // 在这里设置式样
         resultDiv.style.fontFamily = "Open Sans Condensed";

@@ -16,6 +16,7 @@ public class BuildGraph {
     public List<StepNode> nodes;
     public List<StepRelation> relations;
     public Long id;
+    public String record;
 
     // 构造函数
     public BuildGraph(){

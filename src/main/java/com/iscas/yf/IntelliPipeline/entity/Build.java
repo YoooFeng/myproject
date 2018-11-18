@@ -201,6 +201,7 @@ public class Build extends IdEntity {
         graph.relations = new ArrayList<>();
         graph.nodes = new ArrayList<>();
         graph.id = this.getId();
+        graph.record = this.getRecord() == null ? "" : this.getRecord().toPredictionString();
 
         for(Step step : this.steps){
             BuildGraph.StepNode curNode = new BuildGraph.StepNode();

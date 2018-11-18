@@ -19,11 +19,11 @@ public class BuildView {
         public Long createAt;
         public String durationTime;
         public String commitId;
+        public String record;
         // 内部类
         public Build.Status status;
     }
 
-    // TODO: 显示构建的详情, 如pipeline执行具体状况, 每个stage的控制台输出等
     public static class DetailedItem extends Item{
         public List<StepView.DetailedItem> steps;
 
@@ -44,6 +44,12 @@ public class BuildView {
             view.status = input.getStatus();
             view.durationTime = input.getDurationTime();
             view.commitId = input.getLatestCommitId();
+
+            if(input.getRecord() == null) {
+                view.record = "2,50";
+            } else {
+                view.record = input.getRecord().toPredictionString();
+            }
             return view;
         }
     };

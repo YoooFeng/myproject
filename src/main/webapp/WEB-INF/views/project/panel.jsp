@@ -256,6 +256,9 @@
                         <div id="predictResult">
 
                         </div><br><br>
+                        <div id="predictParams">
+
+                        </div>
                         <button type="button" class="btn btn-outline-success" id="decision-tree-btn" onclick="appPanel.showTree()">查看预测决策树</button>
                         <button type="button" class="btn btn-outline-success" id="update-tree-btn" >更新决策树模型</button>
 
