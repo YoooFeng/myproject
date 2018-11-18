@@ -49,7 +49,6 @@
             Step来定制符合您需求的持续集成流程.
         </p>
     </div>
-    <i class="fa fa-circle-o-notch text-success small"></i>
     <a class="link-btn" id="refresh-btn" href="javascript:appPanel.refreshBuildProcess()">开启自动刷新构建流程图</a>
     <div id="app-panel" class="content-board">
         <div id="graph-panel" class="col-sm-10" style="overflow: auto;">
@@ -212,7 +211,7 @@
                             <div class="col-sm-7" id="strategy-right">
                                 <form id="authorLevel">
                                     <legend><h4>构建的跳过策略</h4></legend>
-                                    <label><input type="checkbox" id="skipPathCheckBox" value="Experienced" onclick="appPanel.skipPathCheckBoxClick()" />只有非关键文件发生变更</label>
+                                    <label><input type="checkbox" id        ="skipPathCheckBox" value="Experienced" onclick="appPanel.skipPathCheckBoxClick()" />只有非关键文件发生变更</label>
                                     <div id="skipPathDiv" style="display: none">
                                         <input type="text" id="skipPathText" placeholder="文件路径(多个路径用逗号隔开)"/></div><br>
                                 </form><br><br>

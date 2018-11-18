@@ -8,13 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f61afb6-6f8e-463e-82e6-4ca5f15ff0ae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GrepConsole.xml" afterPath="$PROJECT_DIR$/.idea/GrepConsole.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" afterPath="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,49 +65,16 @@
       <file leaf-file-name="panel.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="65" column="79" lean-forward="true" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+            <state relative-caret-position="986">
+              <caret line="230" column="29" lean-forward="true" selection-start-line="230" selection-start-column="29" selection-end-line="230" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1542351331351" expanded="false" signature="4224:4243" ph="..." />
-                <marker date="1542351331351" expanded="false" signature="5932:5951" ph="..." />
-                <marker date="1542351331351" expanded="false" signature="6775:6794" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app-list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="426" column="30" lean-forward="true" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
-              <folding>
-                <element signature="e#2001#2024#0" expanded="false" />
-                <marker date="1542350032075" expanded="true" signature="873:884" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="930:941" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="1007:1018" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="1823:1833" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="4687:4704" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="4853:4860" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="4853:4867" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="4870:4925" ph="..." />
-                <marker date="1542350032075" expanded="true" signature="12259:12274" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
-              <caret line="68" column="27" lean-forward="false" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-              <folding>
-                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1542464605964" expanded="false" signature="4164:4183" ph="..." />
+                <marker date="1542464605964" expanded="false" signature="5872:5891" ph="..." />
+                <marker date="1542464605964" expanded="false" signature="6715:6734" ph="..." />
               </folding>
             </state>
           </provider>
@@ -119,32 +83,32 @@
       <file leaf-file-name="workflow-orchestration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="196" column="33" lean-forward="false" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="33" />
+            <state relative-caret-position="167">
+              <caret line="44" column="42" lean-forward="false" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
               <folding>
-                <element signature="e#15558#15593#0" expanded="false" />
-                <element signature="e#16835#17455#0" expanded="false" />
-                <element signature="e#16837#16866#0" expanded="false" />
-                <element signature="e#24450#24489#0" expanded="false" />
-                <element signature="e#27879#27902#0" expanded="false" />
-                <element signature="e#29046#29093#0" expanded="false" />
-                <element signature="e#35539#35552#0" expanded="false" />
-                <element signature="e#36590#36628#0" expanded="false" />
-                <element signature="e#44234#44250#0" expanded="false" />
-                <element signature="e#44629#44638#0" expanded="false" />
-                <element signature="e#45234#45258#0" expanded="false" />
-                <element signature="e#45650#45686#0" expanded="false" />
-                <element signature="e#48743#49745#0" expanded="false" />
-                <element signature="e#50360#50403#0" expanded="false" />
-                <marker date="1542351876753" expanded="true" signature="42899:42918" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="43204:43223" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="46941:46960" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="47232:47251" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="51575:51587" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="51575:51633" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="51648:51666" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="53824:53836" ph="..." />
-                <marker date="1542351876753" expanded="true" signature="53897:53915" ph="..." />
+                <element signature="e#15627#15662#0" expanded="false" />
+                <element signature="e#16904#17524#0" expanded="false" />
+                <element signature="e#16906#16935#0" expanded="false" />
+                <element signature="e#24519#24558#0" expanded="false" />
+                <element signature="e#27948#27971#0" expanded="false" />
+                <element signature="e#29115#29162#0" expanded="false" />
+                <element signature="e#35608#35621#0" expanded="false" />
+                <element signature="e#36659#36697#0" expanded="false" />
+                <element signature="e#44303#44319#0" expanded="false" />
+                <element signature="e#44698#44707#0" expanded="false" />
+                <element signature="e#45303#45327#0" expanded="false" />
+                <element signature="e#45719#45755#0" expanded="false" />
+                <element signature="e#48812#49814#0" expanded="false" />
+                <element signature="e#50429#50472#0" expanded="false" />
+                <marker date="1542463167175" expanded="true" signature="42968:42987" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="43273:43292" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="47010:47029" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="47301:47320" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="51644:51656" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="51644:51702" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="51717:51735" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="53893:53905" ph="..." />
+                <marker date="1542463167175" expanded="true" signature="53966:53984" ph="..." />
               </folding>
             </state>
           </provider>
@@ -153,8 +117,8 @@
       <file leaf-file-name="ClassifierController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="126" column="23" lean-forward="false" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
+            <state relative-caret-position="256">
+              <caret line="121" column="34" lean-forward="false" selection-start-line="121" selection-start-column="28" selection-end-line="121" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,8 +129,8 @@
       <file leaf-file-name="WekaClassifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="233" column="30" lean-forward="true" selection-start-line="233" selection-start-column="30" selection-end-line="233" selection-end-column="30" />
+            <state relative-caret-position="274">
+              <caret line="206" column="26" lean-forward="false" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
               <folding>
                 <element signature="e#4697#4776#0" expanded="false" />
               </folding>
@@ -190,8 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>save</find>
-      <find>initEvents</find>
       <find>getBuildStopBtnHtml</find>
       <find>saves</find>
       <find>new</find>
@@ -215,11 +177,13 @@
       <find>构建</find>
       <find>showBuildingProcess</find>
       <find>showBuildingP</find>
-      <find>showBuildProcess</find>
-      <find>btn-save</find>
       <find>initForBuild</find>
       <find>callback</find>
       <find>prediction</find>
+      <find>btn-save</find>
+      <find>showBuildProcess</find>
+      <find>开启</find>
+      <find>refresh</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -287,9 +251,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/uri.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/decision/DecisionMaker.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/entity/record/BuildRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java" />
       </list>
@@ -731,7 +695,7 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="gitgraph" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
@@ -741,7 +705,7 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="share" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IntelliPipeline" type="b2602c69:ProjectViewProjectNode" />
@@ -782,7 +746,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.43632773" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
@@ -826,7 +790,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat Local Server">
+  <component name="RunManager" selected="Application.WekaClassifier">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -1198,7 +1162,7 @@
       <workItem from="1531629760848" duration="18944000" />
       <workItem from="1534128280802" duration="37908000" />
       <workItem from="1537235369996" duration="151432000" />
-      <workItem from="1540133303685" duration="217252000" />
+      <workItem from="1540133303685" duration="225420000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit.">
       <created>1542099993887</created>
@@ -1207,11 +1171,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542099993887</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update Classifier function.">
+      <created>1542361356958</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542361356958</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1601553000" />
+    <option name="totallyTimeSpent" value="1609721000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1249,7 +1220,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9659969" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32031873" sideWeight="0.4358578" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3258964" sideWeight="0.56414217" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27011952" sideWeight="0.56414217" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27808765" sideWeight="0.3353941" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1310,7 +1281,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit." />
+    <MESSAGE value="Update Classifier function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Classifier function." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1333,8 +1305,20 @@
           <properties />
           <option name="timeStamp" value="253" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java</url>
+          <line>82</line>
+          <properties />
+          <option name="timeStamp" value="260" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="261" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="260" />
+      <option name="time" value="262" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1412,14 +1396,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="1" lean-forward="true" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/gitgraph-react/public/favicon.ico">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1747,51 +1723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="426" column="30" lean-forward="true" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
-          <folding>
-            <element signature="e#2001#2024#0" expanded="false" />
-            <marker date="1542350032075" expanded="true" signature="873:884" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="930:941" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="1007:1018" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="1823:1833" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="4687:4704" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="4853:4860" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="4853:4867" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="4870:4925" ph="..." />
-            <marker date="1542350032075" expanded="true" signature="12259:12274" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="68" column="27" lean-forward="false" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="65" column="79" lean-forward="true" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1542351331351" expanded="false" signature="4224:4243" ph="..." />
-            <marker date="1542351331351" expanded="false" signature="5932:5951" ph="..." />
-            <marker date="1542351331351" expanded="false" signature="6775:6794" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/uri.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -1817,38 +1748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="196" column="33" lean-forward="false" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="33" />
-          <folding>
-            <element signature="e#15558#15593#0" expanded="false" />
-            <element signature="e#16835#17455#0" expanded="false" />
-            <element signature="e#16837#16866#0" expanded="false" />
-            <element signature="e#24450#24489#0" expanded="false" />
-            <element signature="e#27879#27902#0" expanded="false" />
-            <element signature="e#29046#29093#0" expanded="false" />
-            <element signature="e#35539#35552#0" expanded="false" />
-            <element signature="e#36590#36628#0" expanded="false" />
-            <element signature="e#44234#44250#0" expanded="false" />
-            <element signature="e#44629#44638#0" expanded="false" />
-            <element signature="e#45234#45258#0" expanded="false" />
-            <element signature="e#45650#45686#0" expanded="false" />
-            <element signature="e#48743#49745#0" expanded="false" />
-            <element signature="e#50360#50403#0" expanded="false" />
-            <marker date="1542351876753" expanded="true" signature="42899:42918" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="43204:43223" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="46941:46960" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="47232:47251" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="51575:51587" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="51575:51633" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="51648:51666" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="53824:53836" ph="..." />
-            <marker date="1542351876753" expanded="true" signature="53897:53915" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/nz/ac/waikato/cms/weka/weka-stable/3.8.3/weka-stable-3.8.3.jar!/weka/gui/treevisualizer/TreeVisualizer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2038">
@@ -1865,10 +1764,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/app-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="426" column="30" lean-forward="true" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
+          <folding>
+            <element signature="e#2001#2024#0" expanded="false" />
+            <marker date="1542350032075" expanded="true" signature="873:884" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="930:941" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="1007:1018" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="1823:1833" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4687:4704" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4853:4860" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4853:4867" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="4870:4925" ph="..." />
+            <marker date="1542350032075" expanded="true" signature="12259:12274" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-730">
+          <caret line="68" column="27" lean-forward="false" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/project/panel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="230" column="29" lean-forward="true" selection-start-line="230" selection-start-column="29" selection-end-line="230" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1542464605964" expanded="false" signature="4164:4183" ph="..." />
+            <marker date="1542464605964" expanded="false" signature="5872:5891" ph="..." />
+            <marker date="1542464605964" expanded="false" signature="6715:6734" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/ipipeline/app/workflow-orchestration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="44" column="42" lean-forward="false" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
+          <folding>
+            <element signature="e#15627#15662#0" expanded="false" />
+            <element signature="e#16904#17524#0" expanded="false" />
+            <element signature="e#16906#16935#0" expanded="false" />
+            <element signature="e#24519#24558#0" expanded="false" />
+            <element signature="e#27948#27971#0" expanded="false" />
+            <element signature="e#29115#29162#0" expanded="false" />
+            <element signature="e#35608#35621#0" expanded="false" />
+            <element signature="e#36659#36697#0" expanded="false" />
+            <element signature="e#44303#44319#0" expanded="false" />
+            <element signature="e#44698#44707#0" expanded="false" />
+            <element signature="e#45303#45327#0" expanded="false" />
+            <element signature="e#45719#45755#0" expanded="false" />
+            <element signature="e#48812#49814#0" expanded="false" />
+            <element signature="e#50429#50472#0" expanded="false" />
+            <marker date="1542463167175" expanded="true" signature="42968:42987" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="43273:43292" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="47010:47029" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="47301:47320" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="51644:51656" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="51644:51702" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="51717:51735" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="53893:53905" ph="..." />
+            <marker date="1542463167175" expanded="true" signature="53966:53984" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/service/classifier/WekaClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="233" column="30" lean-forward="true" selection-start-line="233" selection-start-column="30" selection-end-line="233" selection-end-column="30" />
+        <state relative-caret-position="274">
+          <caret line="206" column="26" lean-forward="false" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
           <folding>
             <element signature="e#4697#4776#0" expanded="false" />
           </folding>
@@ -1877,8 +1861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iscas/yf/IntelliPipeline/controller/ClassifierController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="126" column="23" lean-forward="false" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
+        <state relative-caret-position="256">
+          <caret line="121" column="34" lean-forward="false" selection-start-line="121" selection-start-column="28" selection-end-line="121" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1891,11 +1875,11 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>IntelliPipeline:war exploded</last-edited>
+          <last-edited>IntelliPipeline:ejb exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43632773" />
                 <option value="0.5" />
               </list>
             </option>
@@ -1908,7 +1892,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43632773" />
               </list>
             </option>
           </splitter-proportions>
@@ -1919,7 +1903,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43632773" />
               </list>
             </option>
           </splitter-proportions>
@@ -1931,7 +1915,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.43632773" />
               </list>
             </option>
           </splitter-proportions>
@@ -1939,7 +1923,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring|IntelliPipeline</last-edited>
+          <last-edited>EJB|IntelliPipeline</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1951,7 +1935,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final</last-edited>
+          <last-edited>Maven: org.hibernate:hibernate-core:4.3.6.Final</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

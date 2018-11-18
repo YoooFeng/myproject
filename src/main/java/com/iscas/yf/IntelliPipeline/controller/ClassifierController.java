@@ -103,11 +103,15 @@ public class ClassifierController {
         } else {
             try {
                 // TODO: 否则重新训练模型. 这里获取的数据应该是travistorrent的构建数据.
-                // 所以projectName应该是模板项目的项目名
-                Instances trainData = WekaClassifier
-                        .getInstanceFromDatabase("", "java");
+                // 否则直接读取训练好的Java模型
+                String javaPath = rootPath + "LocalRepo/java/";
+                Classifier model = WekaClassifier.loadModel(javaPath, "java");
 
-                Classifier model = WekaClassifier.trainModel(trainData);
+                // 所以projectName应该是模板项目的项目名
+                // Instances trainData = WekaClassifier
+                //         .getInstanceFromDatabase("", "java");
+                // 重新训练模型时间太长且影响性能
+                // Classifier model = WekaClassifier.trainModel(trainData);
 
                 // 返回值介于0-1之间,
                 // 越接近0, 说明失败的概率越高; 越接近1, 说明成功的概率越高.
