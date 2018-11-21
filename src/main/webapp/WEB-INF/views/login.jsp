@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="<c:url value='/css/ace/ace.min.css' />" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="<c:url value='/css/ace/ace-part2.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='../../css/ace/ace-part2.min.css' />" />
     <![endif]-->
     <link rel="stylesheet" href="<c:url value='/css/ace/ace-rtl.min.css' />" />
 

@@ -53,7 +53,7 @@
                         <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                     </button>
                     <h4 class="modal-title">
-                        文件预览 <span id="scanFileName" class="control-label"></span>
+                        控制台输出 <span id="scanFileName" class="control-label"></span>
                     </h4>
                 </div>
                 <div class="modal-body" style="height: 500px">
@@ -97,7 +97,7 @@
         </div>
     </div>
 
-    <!-- TODO: 停止构建确认对话框 -->
+    <!-- TODO: 停止构建确认对话框 未使用-->
     <div style="margin-top: 200px;" class="modal fade" id="stopModal"
          tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true" data-backdrop="static">

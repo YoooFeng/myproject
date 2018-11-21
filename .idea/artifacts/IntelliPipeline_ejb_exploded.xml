@@ -4,6 +4,7 @@
     <root id="root">
       <element id="javaee-facet-resources" facet="IntelliPipeline/ejb/EJB" />
       <element id="javaee-facet-classes" facet="IntelliPipeline/ejb/EJB" />
+      <element id="module-output" name="IntelliPipeline" />
     </root>
   </artifact>
 </component>

@@ -256,18 +256,17 @@
                         <div id="predictResult">
 
                         </div><br><br>
-                        <div id="predictParams">
-
-                        </div>
-                        <button type="button" class="btn btn-outline-success" id="decision-tree-btn" onclick="appPanel.showTree()">查看预测决策树</button>
+                        <div id="predictParams"></div>
+                        <br><br>
+                        <button type="button" class="btn btn-outline-success" id="decision-tree-btn">查看预测决策树</button>
                         <button type="button" class="btn btn-outline-success" id="update-tree-btn" >更新决策树模型</button>
 
                     </form>
                 </div>
                 <%--下方的按钮--%>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default editCancel" id="classifierCancel" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary editSave" id="classifierSave">确定</button>
+                    <button type="button" class="btn btn-default editCancel" id="classifier-cancel-btn" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary editSave" id="classifier-save-btn">确定</button>
                 </div>
 
             </div>
@@ -307,6 +306,34 @@
         </div>
     </div>
     <!-- task commit end -->
+
+    <!--显示字符串形式的决策树 -->
+    <div id="treeStringModal" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">
+                        决策树模型 <span id="treeStringName" class="control-label"></span>
+                    </h4>
+                </div>
+                <div class="modal-body" style="height: 500px">
+								<textarea id="treeStringBody" readonly
+                                          style="resize: none; width: 100%; height: 100%">
+								</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <%--结束--%>
 
     <!-- 任务可执行操作对话框 -->
     <div style="margin-top: 200px;" class="modal fade" id="operationModal"

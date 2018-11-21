@@ -1,4 +1,4 @@
-
+import { Gitgraph, render } from "./gitgraph-v2/gitgraph-node/src";
 
 // 将git commit记录转化为json
 const git2json = require('./git2json.js');
@@ -14,6 +14,12 @@ const exportedFields = {
 };
 
 // 执行函数, 然后输出结果到控制台
-git2json
-    .run({ path })
-    .then(console.log);
+const jsonData = git2json
+    .run({ path });
+
+// GitGraph是GitGraphCore的超集
+const gitgraph = new Gitgraph();
+
+gitgraph.import(jsonData);
+
+render(gitgraph);

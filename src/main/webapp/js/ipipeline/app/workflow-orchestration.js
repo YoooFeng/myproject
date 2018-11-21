@@ -155,9 +155,62 @@ var appPanel = {
             // 生成显示决策树模型的按钮
             // appPanel.genCheckbox();
 
+            var classifierSaveBtn = $("#classifier-save-btn");
+            classifierSaveBtn.unbind("click");
+
+            // 点击确定之后, 移除之前的所有内容, 然后关闭窗口
+            classifierSaveBtn.click(function() {
+                var attsDiv = document.getElementById("predictParams");
+                while(attsDiv.hasChildNodes()) {
+                    attsDiv.removeChild(attsDiv.firstChild);
+                }
+                $("#classifierModal").modal('hide');
+            });
+
+
+            var classifierUpdateBtn = $("#update-tree-btn");
+            classifierUpdateBtn.unbind("click");
+
+            // 点击更新之后, 更新决策树模型
+            classifierUpdateBtn.click(function() {
+                appPanel.updateModel();
+            });
+
+
+            var decisionTreeBtn = $("#decision-tree-btn");
+            decisionTreeBtn.unbind("click");
+            decisionTreeBtn.click(function () {
+                appPanel.showTreeString();
+            });
+
             // 显示窗口
             $("#classifierModal").modal('show');
         });
+    },
+
+    showTreeString : function() {
+        var buildId = appPanel.currentBuild.id;
+
+        ajaxGetJsonAuthc(dURIs.classifierURI.showTreeString + "/" + buildId, null,
+            appPanel.showTreeStringCallback,
+            showError("更新模型失败!"));
+
+    },
+
+    showTreeStringCallback : function(treeString) {
+        $("#treeStringModal").modal('show');
+        $("#treeStringBody").html(treeString);
+    },
+
+
+    updateModel : function () {
+        console.log("update btn clicked.")
+        var buildId = appPanel.currentBuild.id;
+        console.log("buildId: " + buildId);
+
+        ajaxGetJsonAuthc(dURIs.classifierURI.updateModel + "/" + buildId, null,
+            showSuccess("更新模型成功!"),
+            showError("更新模型失败!"));
     },
 
     /**
@@ -167,30 +220,6 @@ var appPanel = {
     showPrediction : function(prediction) {
 
         // console.log("CurrentBuild: " + JSON.stringify(appPanel.currentBuild));
-
-        // 显示决策的特征值
-        var record = appPanel.currentBuild.record;
-        console.log("Record: " + record);
-
-        var atts = record.split(',');
-
-        // var nCommitter = atts[0];
-        // var nLine = atts[1];
-        var nCommitter = "2";
-        var nLine = "50";
-
-        console.log("attributes");
-        var attsDiv = document.getElementById("predictParams");
-
-        var committerLabel = document.createElement("label");
-        committerLabel.innerText = "开发者人数: " + nCommitter + " (开发者人数指的是最近十次代码提交的参与开发者人数)";
-        attsDiv.appendChild(committerLabel);
-        attsDiv.appendChild(document.createElement("br"));
-
-        var lineLabel = document.createElement("label");
-        lineLabel.innerText = "修改代码行数: " + nLine + " (本次构建涉及修改代码的总行数)"
-        attsDiv.appendChild(lineLabel);
-        attsDiv.appendChild(document.createElement("br"));
 
         // 刷新构建预测结果!
         var resultDiv = document.getElementById('predictResult');
@@ -215,12 +244,75 @@ var appPanel = {
                 console.log("case unknown");
                 resultDiv.innerHTML = "unknown";
                 resultDiv.style.color = "#d1d213";
-                // resultDiv.className = "unknown";
+            // resultDiv.className = "unknown";
+        }
+
+        // 刷新决策的特征值
+        var record = appPanel.currentBuild.record;
+        console.log("Record: " + record);
+
+        var atts = record.split(',');
+
+        var nCommitter = atts[0];
+        var nLine = atts[1];
+        var lastBuild = atts[2];
+        var projectHistory = atts[3];
+        var projectRecent = atts[4];
+
+        if(nCommitter === undefined || nCommitter === " " || nCommitter === "") {
+            nCommitter = "数据不存在, 无法进行分类"
+        }
+        if(nLine === undefined || nLine === "" || nLine === " ") {
+            nLine = "数据不存在, 无法分类"
+        }
+
+        // mock test
+        // var nCommitter = "2";
+        // var nLine = "50";
+
+        console.log("attributes");
+        var attsDiv = document.getElementById("predictParams");
+
+        var committerLabel = document.createElement("label");
+        committerLabel.innerText = "开发者人数: " + nCommitter + " (开发者人数指的是最近三个月代码提交的参与开发者人数)";
+        committerLabel.style.fontSize = "20px";
+
+        var lineLabel = document.createElement("label");
+        lineLabel.innerText = "修改代码行数: " + nLine + " (本次构建涉及修改代码的总行数)";
+        lineLabel.style.fontSize = "20px";
+
+        var lastBuildLabel = document.createElement("label");
+        lastBuildLabel.innerText = "上次构建结果为: " + lastBuild
+            + " (上次构建的结果反映了构建上下文)";
+        lastBuildLabel.style.fontSize = "20px";
+
+        var projectHistoryLabel = document.createElement("label");
+        projectHistoryLabel.innerText = "项目历史构建成功率为: " + projectHistory
+            + " (历史构建成功率指的是当前项目的所有构建中成功构建的占比)";
+        projectHistoryLabel.style.fontSize = "20px";
+
+        var projectRecentLabel = document.createElement("label");
+        projectRecentLabel.innerText = "项目近期构建成功率为: " + projectRecent
+            + " (近期构建成功率指的是当前构建的前五次构建的成功率)";
+        projectRecentLabel.style.fontSize = "20px";
+
+        // 没有child
+        if(!attsDiv.hasChildNodes()) {
+            attsDiv.appendChild(committerLabel);
+            attsDiv.appendChild(document.createElement("br"));
+            attsDiv.appendChild(lineLabel);
+            attsDiv.appendChild(document.createElement("br"));
+            attsDiv.appendChild(lastBuildLabel);
+            attsDiv.appendChild(document.createElement("br"));
+            attsDiv.appendChild(projectRecentLabel);
+            attsDiv.appendChild(document.createElement("br"));
+            attsDiv.appendChild(projectHistoryLabel);
+            attsDiv.appendChild(document.createElement("br"));
         }
 
     },
 
-    showTree : function () {
+    showTreeGraph : function () {
         var appId = appPanel.id;
 
         // 直接发送请求, 显示分类器决策树的可视化模型

@@ -34,61 +34,76 @@ public class WekaClassifier extends Applet{
     public static Instances getInstanceFromDatabase(String projectName, String language) throws Exception{
         InstanceQuery query = new InstanceQuery();
 
-        query.setDatabaseURL("jdbc:mysql://localhost:3306/travistorrent");
+        query.setDatabaseURL("jdbc:mysql://localhost:3306/travistorrent_calculated");
         // 为查询配置数据库帐号和密码
         query.setUsername("root");
         query.setPassword("123456");
 
+        // 两个参数都未指定
+        if(projectName.equals("") && language.equals("")) {
+            query.setQuery("select "
+                    + "build_id, "
+                    + "team_size, "
+                    // + "git_branch, "
+                    + "modified_lines, "
+                    + "last_build, "
+                    + "project_history, "
+                    + "project_recent, "
+                    + "status "
+                    + "from travistorrent_calculated_20_11 ");
+        }
         // 没有指定projectName的情况
-        if(projectName.equals("")) {
+        else if(projectName.equals("")) {
 
             query.setQuery("select "
-                    + "distinct(tr_build_id), "
-                    + "gh_team_size,"
+                    + "build_id, "
+                    + "team_size, "
                     // + "git_branch, "
-                    + "git_diff_src_churn, "
-                    + "tr_status "
-                    + "from travistorrent_8_2_2017 "
-                    + "where gh_lang = '"
-                    + language
-                    + "' and "
-                    + "(tr_status = 'passed' or tr_status = 'failed')");
+                    + "modified_lines, "
+                    + "last_build, "
+                    + "project_history, "
+                    + "project_recent, "
+                    + "status "
+                    + "from travistorrent_calculated_20_11 "
+                    + "where language = '"
+                    + language + "'");
 
         }
         // 没有指定项目编程语言的情况
         else if(language.equals("")) {
 
             query.setQuery("select "
-                    + "distinct(tr_build_id), "
-                    + "gh_team_size,"
+                    + "build_id, "
+                    + "team_size, "
                     // + "git_branch, "
-                    + "git_diff_src_churn, "
-                    + "tr_status "
-                    + "from travistorrent_8_2_2017 "
-                    + "where gh_project_name = '"
-                    + projectName
-                    + "' and "
-                    + "(tr_status = 'passed' or tr_status = 'failed')");
+                    + "modified_lines, "
+                    + "last_build, "
+                    + "project_history, "
+                    + "project_recent, "
+                    + "status "
+                    + "from travistorrent_calculated_20_11 "
+                    + "where project_name = '"
+                    + projectName + "'");
 
         }
-        // 两个参数都指定的情况
+        // 两个参数都指定的情况或都不指定
         else {
             query.setQuery("select "
-                    + "distinct(tr_build_id), "
-                    // + "gh_project_name, "
-                    + "gh_team_size,"
+                    + "build_id, "
+                    + "team_size, "
                     // + "git_branch, "
-                    + "git_diff_src_churn, "
-                    + "tr_status "
-                    + "from travistorrent_8_2_2017 "
-                    + "where gh_project_name='"
+                    + "modified_lines, "
+                    + "last_build, "
+                    + "project_history, "
+                    + "project_recent, "
+                    + "status "
+                    + "from travistorrent_calculated_20_11 "
+                    + "where project_name='"
                     + projectName
                     + "' and "
-                    + "gh_lang = '"
-                    + language
-                    + "' and "
-                    + "(tr_status = 'passed' or tr_status = 'failed')");
-            // + "'");
+                    + "language = '"
+                    + language + "'");
+
         }
 
         // 从查询结果中获取数据并返回
@@ -198,7 +213,7 @@ public class WekaClassifier extends Applet{
     }
 
     /**
-     * 读取模型. Usage: Classifier j48 = readModel("name");
+     * 读取模型.
      * */
     public static <T> T loadModel(String name, String dir) {
         Classifier classifier = null;
@@ -218,27 +233,46 @@ public class WekaClassifier extends Applet{
      * */
     public static double predict(Classifier model, String buildRecord) {
 
-        // 逗号将三个属性分割, 最后一个tr_status属性值为"?", 不需要加入instance
+        // 逗号将三个属性分割, 最后一个status属性值为"?", 不需要加入instance
         String[] strs = buildRecord.split(",");
 
-        Attribute team_size = new Attribute("gh_team_size");
-        Attribute loc = new Attribute("git_diff_src_churn");
-        Attribute status = new Attribute("tr_status");
+        // 用于分类的决策因子
+        // 近期开发者数量
+        Attribute team_size = new Attribute("team_size");
+        // 修改代码行数
+        Attribute loc = new Attribute("modified_lines");
+        // 项目构建历史成功率
+        Attribute project_history = new Attribute("project_history");
+        // 项目构建近期成功率
+        Attribute project_recent = new Attribute("project_recent");
+        // 构建上下文(上一次构建是否成功)
+        Attribute last_build = new Attribute("last_build");
+
+        Attribute status = new Attribute("status");
         ArrayList<Attribute> atts = new ArrayList<>();
+
+        // 这里要注意添加的顺序, 与record传过来的严格对应
         atts.add(team_size);
         atts.add(loc);
+        atts.add(last_build);
+        atts.add(project_history);
+        atts.add(project_recent);
         atts.add(status);
 
-        double[] attValues = new double[3];
+        double[] attValues = new double[6];
         // attValues[0] = 0;
         // attValues[1] = 100;
         attValues[0] = Double.parseDouble(strs[0]);
         attValues[1] = Double.parseDouble(strs[1]);
+        attValues[2] = Double.parseDouble(strs[2]);
+        attValues[3] = Double.parseDouble(strs[3]);
+        attValues[4] = Double.parseDouble(strs[4]);
+
         // 这里设置的权重(weight)指的是这个instance的权重
         BinarySparseInstance i = new BinarySparseInstance(1.0, attValues);
 
-        // atts.add(new Attribute("gh_team_size", "4"));
-        // atts.add(new Attribute("git_diff_src_churn", "100"));
+        // atts.add(new Attribute("team_size", "4"));
+        // atts.add(new Attribute("modified_lines", "100"));
 
         Instances instance = new Instances("TestInstances", atts, 0);
         instance.add(i);
@@ -286,22 +320,40 @@ public class WekaClassifier extends Applet{
         tv.fitToScreen();
     }
 
-    public static void main(String[] args) throws Exception {
+    /**
+     * 更新模型的函数.
+     * */
+    public static void updateModel() throws Exception{
         Instances trainData = getInstanceFromDatabase("", "java");
+    }
+
+    /**
+     * 返回决策树的字符串表示
+     * */
+    public static String getTreeString(String projectName, String dir) throws Exception{
+        J48 tree = loadModel("java", MODEL_STORAGE_DIR);
+        return tree.graph();
+    }
+
+    public static void main(String[] args) throws Exception {
+        // Instances trainData = getInstanceFromDatabase("", "");
 
         // 删除得到记录的第一个属性, 通常是build_id等无关的特征, 删掉不参与构建决策树
-        trainData.deleteAttributeAt(0);
-        System.out.println(trainData.toSummaryString());
+        // trainData.deleteAttributeAt(0);
+        // System.out.println(trainData.toSummaryString());
 
-        J48 tree = trainModel(trainData);
+        // J48 tree = trainModel(trainData);
         // J48 tree = loadModel("TestModel", MODEL_STORAGE_DIR);
 
-        saveModel(tree, "java", MODEL_STORAGE_DIR);
-
+        // saveModel(tree, "java", MODEL_STORAGE_DIR);
+        J48 tree = loadModel("java", MODEL_STORAGE_DIR);
+        System.out.println(tree.graph());
         // 预测结果
         // predict(tree, "");
 
         visualizeTree(tree.graph());
+
+        predict(tree, "2,35,0,0.11,0,?");
 
         // trainData.setClassIndex(trainData.numAttributes() - 1);
         //

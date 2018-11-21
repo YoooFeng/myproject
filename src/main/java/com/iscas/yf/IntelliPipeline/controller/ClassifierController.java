@@ -59,7 +59,8 @@ public class ClassifierController {
         Project project = build.getProject();
         List<Build> builds = project.getBuilds();
 
-        if(builds.size() == 0) {
+        // 下列的情况不进行判断, 直接返回
+        if(builds.size() == 0 || build == null || record == null || record.toPredictionString().equals("unknown")) {
             return "unknown";
         }
 
@@ -71,13 +72,13 @@ public class ClassifierController {
         // Git git = DecisionMaker.getGit(rootPath, latestBuild);
         // Map<String, String> diff = GitHubRepoService.compareLocalAndRemote(git);
 
-        BuildRecord mockRecord = new BuildRecord();
-        mockRecord.setModified_lines(50L);
-        mockRecord.setCommitter_num(11);
+        // BuildRecord mockRecord = new BuildRecord();
+        // mockRecord.setModified_lines(23L);
+        // mockRecord.setCommitter_num(2);
 
         // 获得实例字符串, 进行预测.
-        // String instance = record.toPredictionString();
-        String mockInstance = mockRecord.toPredictionString();
+        String instance = record.toPredictionString();
+        // String mockInstance = mockRecord.toPredictionString();
 
         // 存放分类器模型的目录
         String modelPath = rootPath + "LocalRepo/" + projectName + "/model/";
@@ -93,7 +94,7 @@ public class ClassifierController {
 
             // 返回值介于0-1之间,
             // 越接近0, 说明失败的概率越高; 越接近1, 说明成功的概率越高.
-            double prediction = WekaClassifier.predict(model, mockInstance);
+            double prediction = WekaClassifier.predict(model, instance);
             if(prediction >= 0.5 && prediction <= 1.0) {
                 return "passed";
             } else if(prediction <= 0.5 && prediction >= 0.0) {
@@ -105,7 +106,7 @@ public class ClassifierController {
                 // TODO: 否则重新训练模型. 这里获取的数据应该是travistorrent的构建数据.
                 // 否则直接读取训练好的Java模型
                 String javaPath = rootPath + "LocalRepo/java/";
-                Classifier model = WekaClassifier.loadModel(javaPath, "java");
+                Classifier model = WekaClassifier.loadModel( "java", javaPath);
 
                 // 所以projectName应该是模板项目的项目名
                 // Instances trainData = WekaClassifier
@@ -115,7 +116,7 @@ public class ClassifierController {
 
                 // 返回值介于0-1之间,
                 // 越接近0, 说明失败的概率越高; 越接近1, 说明成功的概率越高.
-                double prediction = WekaClassifier.predict(model, mockInstance);
+                double prediction = WekaClassifier.predict(model, instance);
                 if(prediction >= 0.5 && prediction <= 1.0) {
                     return "passed";
                 } else if(prediction <= 0.5 && prediction >= 0.0) {
@@ -131,11 +132,15 @@ public class ClassifierController {
         return "unknown";
     }
 
-    @RequestMapping(value = {"/show/{projectId}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/show/{buildId}"}, method = RequestMethod.GET)
     @ResponseBody
-    public void showClassifierTree(@PathVariable("projectId") Long id) {
-        Project project = projectService.getProject(id);
+    public void showClassifierTree(@PathVariable("buildId") Long id) {
+        Build build = buildService.getBuild(id);
+
+        Project project = build.getProject();
+
         String projectName = project.getProjectName();
+
         // 获取/WEB-INF/resources/ 本地路径
         String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
 
@@ -169,5 +174,64 @@ public class ClassifierController {
 
         }
 
+    }
+
+    /**
+     * 更新项目的分类树模型
+     * @return int - 1表示更新成功, 0表示失败
+     */
+    @RequestMapping(value = {"/update/{buildId}"}, method = RequestMethod.GET)
+    @ResponseBody
+    public int updateClassifier(@PathVariable("buildId") Long id) throws Exception{
+        Build build = buildService.getBuild(id);
+
+        Project project = build.getProject();
+
+        String projectName = project.getProjectName();
+
+        // 获取/WEB-INF/resources/ 本地路径
+        String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
+
+        // 存放分类器模型的目录
+        String modelPath = rootPath + "LocalRepo/" + projectName + "/model/";
+        // String modelFile = projectName + ".model";
+
+        // 这个是Java项目的数据
+        Instances trainData = WekaClassifier
+                .getInstanceFromDatabase("", "");
+
+        // TODO: 加入该项目本身的构建记录
+
+        Classifier model = WekaClassifier.trainModel(trainData);
+
+        // 持久化保存训练好的决策树模型
+        WekaClassifier.saveModel(model, projectName, modelPath);
+
+        return 1;
+    }
+
+    /**
+     * 获得决策树模型的字符串表示形式.
+     * @return String - 决策树模型的字符串表示
+     * */
+    @RequestMapping(value = {"/string/{buildId}"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String getTreeString(@PathVariable("buildId") Long id) throws Exception{
+        Build build = buildService.getBuild(id);
+
+        Project project = build.getProject();
+
+        String projectName = project.getProjectName();
+
+        // 获取/WEB-INF/resources/ 本地路径
+        String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
+
+        // 存放分类器模型的目录
+        String modelPath = rootPath + "LocalRepo/java/";
+
+        // ../java/java.model
+        J48 model = WekaClassifier.loadModel("java",modelPath);
+
+        return model.graph();
     }
 }

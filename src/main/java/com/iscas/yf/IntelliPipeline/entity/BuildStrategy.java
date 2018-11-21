@@ -12,15 +12,15 @@ public class BuildStrategy extends IdEntity {
 
     // 构建时间间隔
     @Column(name = "time_interval")
-    private long time_interval;
+    private Long time_interval;
 
     // 累积修改的代码行数
     @Column(name = "modified_lines")
-    private int modified_lines;
+    private Integer modified_lines;
 
     // 是否修改过模型?比较模糊
     @Column(name = "model_modified")
-    private boolean model_modified;
+    private Boolean model_modified;
 
     // separated by ','
     // 关键路径
@@ -45,7 +45,7 @@ public class BuildStrategy extends IdEntity {
     }
 
 
-    public long getTime_interval() {
+    public Long getTime_interval() {
         return time_interval;
     }
 
@@ -53,15 +53,15 @@ public class BuildStrategy extends IdEntity {
         this.time_interval = timeInterval;
     }
 
-    public int getModified_lines() {
-        return modified_lines;
+    public Integer getModified_lines() {
+        return modified_lines == null ? 0 : modified_lines;
     }
 
     public void setModified_lines(int modifiedLOC) {
         this.modified_lines = modifiedLOC;
     }
 
-    public boolean isModel_modified() {
+    public Boolean isModel_modified() {
         return model_modified;
     }
 

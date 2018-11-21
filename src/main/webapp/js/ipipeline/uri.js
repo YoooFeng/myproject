@@ -82,7 +82,9 @@ var dURIs = {
 
     classifierURI:{
 	    showTree : rootURI() + "/classifier/show",
-        getPrediction : rootURI() + "/classifier/get"
+        getPrediction : rootURI() + "/classifier/get",
+		updateModel : rootURI() + "/classifier/update",
+        showTreeString : rootURI() + "/classifier/string"
     },
 
 	swfs : rootURI() + "/swf",

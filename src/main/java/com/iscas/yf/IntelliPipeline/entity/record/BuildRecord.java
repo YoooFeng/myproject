@@ -22,7 +22,7 @@ public class BuildRecord extends IdEntity{
 
     // 保存的特征, 当有新的构建数据加入时需要动态计算
     @Column(name = "last_build")
-    private Build.Status last_build;
+    private Integer last_build;
 
     @Column(name = "committer_recent")
     private Long committer_recent;
@@ -93,8 +93,16 @@ public class BuildRecord extends IdEntity{
         // 上一次构建的结果. 先创建Build对象才有BuildRecord
         if(builds.size() > 0) {
             // 获取当前项目倒数第二个构建的状态
-            this.setLast_build(builds.get(builds.size() - 2).getStatus());
-        } else this.setLast_build(null);
+            Build.Status lastStatus = builds.get(builds.size() - 2).getStatus();
+            if(lastStatus.equals(Build.Status.SUCCEED)) {
+                this.setLast_build(1);
+            } else if(lastStatus.equals(Build.Status.FAIL)) {
+                this.setLast_build(0);
+            } else {
+                this.setLast_build(-1);
+            }
+
+        } else this.setLast_build(-1);
 
         // project_history - 该项目历史构建的成功率
         if(builds.size() > 0) {
@@ -110,7 +118,7 @@ public class BuildRecord extends IdEntity{
                     fail++;
                 }
                 else if(b.getStatus().equals(Build.Status.SUCCEED)) {
-                    succeess += 1;
+                    succeess++;
                 }
                 else {
                     // 不计数 中断的 跳过的 构建记录
@@ -118,14 +126,15 @@ public class BuildRecord extends IdEntity{
                 }
                 total++;
                 flag++;
-                if(flag == 10) {
+                if(flag == 5) {
                     this.setProject_recent( (long)succeess/(long)total );
                 }
             }
-            if(flag < 10 && flag > 1) {
+            // 不足5次
+            if(flag < 5 && flag > 1) {
                 this.setProject_recent( (long)succeess/(long)total );
             }
-
+            // 项目全局成功率
             this.setProject_history( (long)succeess / (long)total );
 
         } else {
@@ -163,12 +172,12 @@ public class BuildRecord extends IdEntity{
     }
 
     // 获取上一次构建的结果并保存
-    public Build.Status getLast_build() {
+    public int getLast_build() {
         return last_build;
     }
 
     // 记录上一次构建的结果
-    public void setLast_build(Build.Status last_build) {
+    public void setLast_build(int last_build) {
         this.last_build = last_build;
     }
 
@@ -242,8 +251,8 @@ public class BuildRecord extends IdEntity{
         // 第一次构建, 只有当前这个构建记录
         if(builds.size() == 1) {
 
-            // 没有上一次构建, 赋值为null
-            this.last_build = null;
+            // 没有上一次构建, 赋值为1表示成功
+            this.last_build = 1;
 
             // TODO: 通过Build记录获取所有的committer
             this.committer = null;
@@ -252,9 +261,19 @@ public class BuildRecord extends IdEntity{
 
     // 将需要的特征以特定形式的字符串返回
     public String toPredictionString() {
+        if(this.getCommitter_num() == 0 || this.getModified_lines() == null) {
+            return "unknown";
+        }
+
         return  String.valueOf(this.getCommitter_num())
                 + ","
                 + this.getModified_lines()
+                + ","
+                + String.valueOf(this.last_build)
+                + ","
+                + String.valueOf(this.project_history)
+                + ","
+                + String.valueOf(this.project_recent)
                 + ","
                 + "?";
     }

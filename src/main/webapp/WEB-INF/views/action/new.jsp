@@ -55,7 +55,7 @@
             </tbody>
         </table>
         <div style="position: absolute; top: 122px; left: 300px;" id="addImg">
-            <img src="<c:url value='/img/add.png' />" />
+            <img src="<c:url value='../../../img/add.png' />" />
         </div>
 
 
