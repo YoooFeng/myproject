@@ -4,7 +4,9 @@ import com.iscas.yf.IntelliPipeline.dao.BuildRecordDAO;
 import com.iscas.yf.IntelliPipeline.entity.record.BuildRecord;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BuildRecordServiceImpl implements BuildRecordService {
 
     private Logger logger = Logger.getLogger(BuildRecordServiceImpl.class);

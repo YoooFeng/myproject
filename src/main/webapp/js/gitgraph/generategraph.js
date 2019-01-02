@@ -1,25 +1,28 @@
-import { Gitgraph, render } from "./gitgraph-v2/gitgraph-node/src";
-
-// 将git commit记录转化为json
+// 将git commit记录转化为json格式的数据
 const git2json = require('./git2json.js');
+// import git2json from '/js/gitgraph/git2json';
 
-// path需要指定.git所在的路径, 这里作为参数传入
+const fs = require('fs');
+
+// TODO: path需要指定.git所在的路径, 这里作为参数传入
 const path = '/home/workplace/Github/IntelliPipeline/target/IntelliPipeline-1.0-SNAPSHOT/WEB-INF/resources/LocalRepo/Shipping-Local/GitResource';
 
-// 指定输出的格式, 使之满足我们的需求
-const exportedFields = {
-    tag : git2json.defaultFields['refs'],
-    branch : git2json.defaultFields[''],
+const filePath = path.join(path, '..');
 
-};
+getJsonData(path);
 
-// 执行函数, 然后输出结果到控制台
-const jsonData = git2json
-    .run({ path });
+function getJsonData(path) {
+    git2json
+        .run({ path })
+        .then(jsonData => writeJsonData(jsonData, 'data'))
+        .catch((error) => {
+            console.log("Promise error.")
+        });
+}
 
-// GitGraph是GitGraphCore的超集
-const gitgraph = new Gitgraph();
-
-gitgraph.import(jsonData);
-
-render(gitgraph);
+/**
+ * 将获得的Json数据写入文件中
+ * */
+function writeJsonData(jsonData, filename) {
+    fs.writeFile(`${path}/${filename}.json`, JSON.stringify(jsonData));
+}

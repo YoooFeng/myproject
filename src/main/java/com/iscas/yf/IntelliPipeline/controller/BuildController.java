@@ -5,6 +5,7 @@ import com.iscas.yf.IntelliPipeline.entity.*;
 import com.iscas.yf.IntelliPipeline.entity.pipelinecomponent.Step;
 import com.iscas.yf.IntelliPipeline.entity.pipelinecomponent.StepParam;
 import com.iscas.yf.IntelliPipeline.entity.record.BuildRecord;
+import com.iscas.yf.IntelliPipeline.service.dataservice.BuildRecordService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.BuildService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.ProjectService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.StepService;
@@ -56,6 +57,7 @@ public class BuildController {
 
     private Build build;
 
+    private BuildRecord record;
     // 从yaml文件中读取Stage List
     // private List<Step> steps = YamlResolver.testResolving("/home/workplace/sample.yaml");
 
@@ -70,6 +72,9 @@ public class BuildController {
 
     @Autowired
     ServletContext servletContext;
+
+    @Autowired
+    BuildRecordService recordService;
 
     /**
      * 开始一次构建, 将projectName作为URL参数传递
@@ -150,7 +155,7 @@ public class BuildController {
         int stepNumber = Integer.parseInt(request.get("stepNumber"));
         String buildNumber = request.get("buildNumber");
 
-        // currentResult目前构建的结果
+        // currentResult 是Jenkins返回的目前构建结果
         String currentResult = request.get("currentResult");
         logger.info("Current result: " + currentResult);
 
@@ -168,7 +173,7 @@ public class BuildController {
                     // 为当前的controller保存build对象
                     this.build = latestBuild;
                 }
-                // 否则是由远程钩子触发的构建, 需要新建一个构建对象并执行
+                // 否则是由远程钩子触发的构建, 需要新建一个Build对象并执行
                 else {
                     // 根据项目和最新一次构建创建新的build. 执行的流程与上次构建相同
                     Build newBuild = new Build(curProject, latestBuild);
@@ -179,7 +184,7 @@ public class BuildController {
                     this.build = newBuild;
 
                     // 数据库中先保存build
-                    buildService.saveBuild(this.build);
+                    this.build = buildService.saveBuild(this.build);
                     // 数据库中更新项目, 同时级联保存build和其他对象?
                     projectService.saveProject(curProject);
                 }
@@ -205,35 +210,72 @@ public class BuildController {
         // 得到对比的数据集
         Map<String, String> analysis = GitHubRepoService.compareLocalAndRemote(git);
 
-        // TODO: Build新建好了, 接下来新建BuildRecord记录供分类器
-        BuildRecord record = new BuildRecord(this.build, analysis);
+        // 保存Build对应的Record, 如果已经有了Record就不再重复新建, 否测JPA会报错
+        if(this.build.getRecord() == null && requestType.equals("START")) {
+            logger.info("Attention: Create a new record!!!");
+            record = new BuildRecord(this.build, analysis);
+            this.build.setRecord(record);
+            // recordService.createBuildRecord(record);
+        }
 
 
-        // 开始构建, Jenkins先执行从git仓库获取最新代码的step. 这个Step静默执行, 不在本地留下记录
-        if(requestType.equals("START")){
-            Step gitStep = new Step("git");
-            StepParam param = new StepParam("url", this.build.getProject().getGitURL());
-            gitStep.getStepParams().add(param);
 
-            res.setNameAndParams(gitStep);
-            res.setDecisionType("RETRY");
+        switch (requestType) {
+            case "START":
+                // 开始构建, Jenkins先执行从git仓库获取最新代码的step. 这个Step静默执行, 不在本地留下记录
+                Step gitStep = new Step("git");
+                StepParam param = new StepParam("url", this.build.getProject().getGitURL());
+                gitStep.getStepParams().add(param);
 
-            // 这里直接返回res结果, 不需要后续的判断
-            return res;
+                res.setNameAndParams(gitStep);
+                res.setDecisionType("RETRY");
+
+                // 这里直接返回res结果, 不需要后续的判断
+                return res;
+            case "INIT":
+                // 如果decision==END, build的状态会被改为SKIPPED, 一些Step也会被改为SKIPPED
+                decision = DecisionMaker.getInitDecision(request, this.build, analysis, git);
+                break;
+            case "FAILURE":
+                // 将本次构建以及构建所有的step状态都改为FAIL
+                this.build.changeStatusToFail();
+                decision = "END";
+
+                // TODO: 加上发送Email通知的步骤?
+
+                break;
+            default:
+                decision = DecisionMaker.getRuntimeDecision(request, this.build);
+
         }
-        // 注意要在构建过程中使用了Git step, 才会有commitSet!
-        else if(requestType.equals("INIT")) {
-            // 如果decision==END, build的状态会被改为SKIPPED, 一些Step也会被改为SKIPPED
-            decision = DecisionMaker.getInitDecision(request, this.build, analysis, git);
-        }
-        else if(requestType.equals("FAILURE")){
-            // 将本次构建以及构建所有的step状态都改为FAIL
-            this.build.changeStatusToFail();
-            decision = "END";
-        }
-        else {
-            decision = DecisionMaker.getRuntimeDecision(request, this.build);
-        }
+
+        // 被switch改写的部分
+        // // 开始构建, Jenkins先执行从git仓库获取最新代码的step. 这个Step静默执行, 不在本地留下记录
+        // if(requestType.equals("START")){
+        //     Step gitStep = new Step("git");
+        //     StepParam param = new StepParam("url", this.build.getProject().getGitURL());
+        //     gitStep.getStepParams().add(param);
+        //
+        //     res.setNameAndParams(gitStep);
+        //     res.setDecisionType("RETRY");
+        //
+        //     // 这里直接返回res结果, 不需要后续的判断
+        //     return res;
+        // }
+        // // 注意要在构建过程中使用了Git step, 才会有commitSet!
+        // else if(requestType.equals("INIT")) {
+        //     // 如果decision==END, build的状态会被改为SKIPPED, 一些Step也会被改为SKIPPED
+        //     decision = DecisionMaker.getInitDecision(request, this.build, analysis, git);
+        // }
+        // else if(requestType.equals("FAILURE")){
+        //     // 将本次构建以及构建所有的step状态都改为FAIL
+        //     this.build.changeStatusToFail();
+        //     decision = "END";
+        // }
+        // else {
+        //     decision = DecisionMaker.getRuntimeDecision(request, this.build);
+        // }
+
         logger.info("Decision: " + decision);
 
         String durationTime = request.get("durationTime");
@@ -248,7 +290,6 @@ public class BuildController {
         this.build.setDurationTime(durationTime);
 
         // TODO: 解耦变成一个有步骤被执行且上一个步骤成功, 根据执行结果更新前一个step的状态.
-        // TODO: Doing 修改Agent中出错后的处理机制
         if(stepNumber <= steps.size() + 1 && !decision.equals("END")) {
             if(currentResult.equals("SUCCESS") && stepNumber != 1) {
                 Step preStep = steps.get(stepNumber - 2);
@@ -263,12 +304,15 @@ public class BuildController {
                 preStep.setStatus(Step.Status.FAIL);
                 stepService.modifyStep(preStep);
             }
-        } else if(decision.equals("END")){
+        } else if(decision.equals("END") && !this.build.getStatus().equals(Build.Status.FAIL)){
             // END, 执行结束
             Step preStep = steps.get(steps.size() - 1);
             preStep.setStatus(Step.Status.SUCCESS);
             stepService.modifyStep(preStep);
         }
+        // else if(decision.equals("END") && this.build.getStatus().equals(Build.Status.FAIL)) {
+        //     // END, 执行结束, 且是以失败的方式结束, 保持所有step状态为失败
+        // }
 
 
         // 运行时决策获取
@@ -300,12 +344,15 @@ public class BuildController {
                 res.setNameAndParams(exeStep);
             }
         } else if(decision.equals("END") && this.build.getStatus().equals(Build.Status.FAIL)) {
-            // 当前构建状态为失败, 判定结束构建
+            // 当前构建状态为失败, 判定结束构建.
 
         }
 
-        // 更新数据库中的build, 同时也更新了step的状态
-        this.build = buildService.saveBuild(this.build);
+        // 这时再更新一次控制台输出日志
+        JenkinsUtils.getConsoleOutput(this.build.getProject().getProjectName(), buildNumber, rootPath);
+
+        // 更新数据库中的build, 同时也更新了Step的状态, BuildRecord的状态
+        buildService.saveBuild(this.build);
 
         logger.info("Response: " + JSON.toJSONString(res));
 

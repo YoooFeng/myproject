@@ -53,10 +53,12 @@ var dURIs = {
         buildOrchestration : rootURI() + "/views/project/panel",
         projectListView : rootURI() + "/views/project/list",
 		createProject : rootURI() + "/views/project/new",
+        gitgraphView : rootURI() + "/views/project/gitgraph",
 
         // About action
         actionListView : rootURI() + "/views/action/list",
         createAction : rootURI() + "/views/action/new",
+
 	},
 
     // Added for IntelliPipeline

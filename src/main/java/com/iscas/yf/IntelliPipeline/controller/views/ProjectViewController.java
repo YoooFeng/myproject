@@ -44,4 +44,14 @@ public class ProjectViewController {
     public String panelPage(){
         return "project/panel";
     }
+
+    /**
+     * 项目的代码提交记录时间轴图
+     * http://localhost:8180/IntelliPipeline/views/project/gitgraph
+     * @return
+     * */
+    @RequestMapping(value={"/gitgraph"}, method = RequestMethod.GET)
+    public String gitGraphPage() {
+        return "project/gitgraph";
+    }
 }

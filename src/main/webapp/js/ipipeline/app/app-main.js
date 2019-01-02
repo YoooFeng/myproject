@@ -58,6 +58,13 @@ var appMain = {
             // newProject : rootURI() + "/views/action/list"
             loadPage(dURIs.viewsURI.actionListView, null);
         });
+        $("#gitgrapgh-btn").click(function () {
+            appMain.cleanState();
+            $(this).addClass("active");
+            // GitGraph : rootURI() + "/views/project/gitgraph"
+            loadPage(dURIs.viewsURI.gitgraphView, null);
+        });
+
         // 待扩展
 		// $("#domain-btn").click(function() {
 		// 	appMain.cleanState();

@@ -37,7 +37,7 @@ public class BuildStrategy extends IdEntity {
 
     // OneToOne, 策略跟项目是一对一关系
     @OneToOne(targetEntity = Project.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id", unique = true)
+    @PrimaryKeyJoinColumn(name = "project_id", referencedColumnName = "project_id")
     private Project project;
 
     public BuildStrategy(){

@@ -1201,7 +1201,9 @@ var appPanel = {
     executeBuildCallback : function(buildId){
         console.log("ExecuteBuildCallBack");
         // 要有接收到返回数据, 这样才能判断是否执行成功
-        ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId, null, appPanel.triggerBuildCallBack, null);
+        // ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId, null, appPanel.triggerBuildCallBack, null);
+        ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId,
+            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)), showError("构建执行失败!"));
     },
 
     // 直接返回到项目列表界面

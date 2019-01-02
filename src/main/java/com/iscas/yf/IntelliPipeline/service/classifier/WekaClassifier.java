@@ -18,6 +18,7 @@ import javax.servlet.ServletContext;
 import java.applet.Applet;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class WekaClassifier extends Applet{
 
@@ -352,6 +353,10 @@ public class WekaClassifier extends Applet{
         // predict(tree, "");
 
         visualizeTree(tree.graph());
+
+        Enumeration<String> factors = tree.enumerateMeasures();
+
+        // while(factors.nextElement())
 
         predict(tree, "2,35,0,0.11,0,?");
 

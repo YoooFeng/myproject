@@ -76,6 +76,10 @@
                     class="name">新建项目</span><span class="title">New Project</span></a>
                 <div class="cool-border"></div></li>
 
+            <li id="gitgrapgh-btn"><a><span
+                    class="glyphicon glyphicon-th-list cool-blue"></span><span
+                    class="name">代码提交历史</span><span class="title">Commit History</span></a>
+                <div class="cool-border"></div></li>
 
             <li id="sys-list-btn"><a><span
                     class="glyphicon glyphicon-bookmark cool-orange"></span><span
