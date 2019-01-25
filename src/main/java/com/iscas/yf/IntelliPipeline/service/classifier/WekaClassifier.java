@@ -40,18 +40,32 @@ public class WekaClassifier extends Applet{
         query.setUsername("root");
         query.setPassword("123456");
 
-        // 两个参数都未指定
+        query.setQuery("select "
+                + "build_id, "
+                + "git_num_all_built_commits"
+                + "num_all_files_modified, "
+                // + "git_branch, "
+                + "modified_lines, "
+                + "last_build, "
+                + "project_history, "
+                + "project_recent, "
+                + "status "
+                + "from travistorrent_calculated_09_01 ");
+
+
+        // TODO: 两个参数都未指定
         if(projectName.equals("") && language.equals("")) {
             query.setQuery("select "
                     + "build_id, "
-                    + "team_size, "
+                    + "git_num_all_built_commits"
+                    + "num_all_files_modified, "
                     // + "git_branch, "
                     + "modified_lines, "
                     + "last_build, "
                     + "project_history, "
                     + "project_recent, "
                     + "status "
-                    + "from travistorrent_calculated_20_11 ");
+                    + "from travistorrent_calculated_09_01 ");
         }
         // 没有指定projectName的情况
         else if(projectName.equals("")) {
@@ -65,7 +79,7 @@ public class WekaClassifier extends Applet{
                     + "project_history, "
                     + "project_recent, "
                     + "status "
-                    + "from travistorrent_calculated_20_11 "
+                    + "from travistorrent_calculated_09_01 "
                     + "where language = '"
                     + language + "'");
 
@@ -82,7 +96,7 @@ public class WekaClassifier extends Applet{
                     + "project_history, "
                     + "project_recent, "
                     + "status "
-                    + "from travistorrent_calculated_20_11 "
+                    + "from travistorrent_calculated_09_01 "
                     + "where project_name = '"
                     + projectName + "'");
 
@@ -98,7 +112,7 @@ public class WekaClassifier extends Applet{
                     + "project_history, "
                     + "project_recent, "
                     + "status "
-                    + "from travistorrent_calculated_20_11 "
+                    + "from travistorrent_calculated_09_01 "
                     + "where project_name='"
                     + projectName
                     + "' and "
@@ -111,7 +125,7 @@ public class WekaClassifier extends Applet{
         return query.retrieveInstances();
     }
 
-    // 训练数据得到分类器模型, 以 项目名.arff 的格式存放在项目本地目录下
+    // 训练数据得到分类器模型, 存放在项目本地目录下
     public static J48 trainModel(Instances trainData) throws Exception {
 
         // setClassIndex的意思是, 用某一个属性(一列)来代表这一条数据
@@ -155,8 +169,6 @@ public class WekaClassifier extends Applet{
         // System.out.println(evaluation.toSummaryString("Classifier Ten fold " ,true));
         // 查看模型的验证结果
         System.out.println(evaluation.toSummaryString());
-
-
 
         // StackOverFlow example=======================================================
         // J48 j48 = new J48();
@@ -234,7 +246,7 @@ public class WekaClassifier extends Applet{
      * */
     public static double predict(Classifier model, String buildRecord) {
 
-        // 逗号将三个属性分割, 最后一个status属性值为"?", 不需要加入instance
+        // 逗号将五个属性分割, 最后一个status属性值为"?", 不需要加入instance
         String[] strs = buildRecord.split(",");
 
         // 用于分类的决策因子
@@ -331,6 +343,7 @@ public class WekaClassifier extends Applet{
     /**
      * 返回决策树的字符串表示
      * */
+    @Deprecated
     public static String getTreeString(String projectName, String dir) throws Exception{
         J48 tree = loadModel("java", MODEL_STORAGE_DIR);
         return tree.graph();
@@ -346,8 +359,8 @@ public class WekaClassifier extends Applet{
         // J48 tree = trainModel(trainData);
         // J48 tree = loadModel("TestModel", MODEL_STORAGE_DIR);
 
-        // saveModel(tree, "java", MODEL_STORAGE_DIR);
-        J48 tree = loadModel("java", MODEL_STORAGE_DIR);
+        // saveModel(tree, "J48-0109", MODEL_STORAGE_DIR);
+        J48 tree = loadModel("J48-0109", MODEL_STORAGE_DIR);
         System.out.println(tree.graph());
         // 预测结果
         // predict(tree, "");

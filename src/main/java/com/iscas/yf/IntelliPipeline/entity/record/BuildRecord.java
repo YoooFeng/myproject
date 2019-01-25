@@ -3,9 +3,9 @@ package com.iscas.yf.IntelliPipeline.entity.record;
 import com.iscas.yf.IntelliPipeline.common.entity.IdEntity;
 import com.iscas.yf.IntelliPipeline.entity.Build;
 import com.iscas.yf.IntelliPipeline.entity.Project;
-import org.apache.log4j.Logger;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -36,11 +36,11 @@ public class BuildRecord extends IdEntity{
 
     // 项目最近的构建成功率
     @Column(name = "project_recent")
-    private Long project_recent;
+    private Float project_recent;
 
     // 项目的历史构建成功率(只计数成功\失败两类构建)
     @Column(name = "project_history")
-    private Long project_history;
+    private Float project_history;
 
     // 记录本次构建的相关提交者, 多个提交者用 空格 分割
     @Column(name = "committer")
@@ -105,6 +105,8 @@ public class BuildRecord extends IdEntity{
             }
         } else this.setLast_build(0);
 
+        DecimalFormat decimalFormat = new DecimalFormat("#.####");
+
         // project_history - 该项目历史构建的成功率
         if(builds.size() > 0) {
             int total = 0;
@@ -127,23 +129,24 @@ public class BuildRecord extends IdEntity{
                 }
                 total++;
                 flag++;
+
                 if(flag == 5) {
-                    if(success == 0 || total == 0) this.setProject_recent(0L);
-                    else this.setProject_recent( (long)success/(long)total );
+                    if(success == 0 || total == 0) this.setProject_recent(0F);
+                    else this.setProject_recent( Float.valueOf(decimalFormat.format( (float)success/(float)total )) );
                 }
             }
             // 不足5次
             if(flag < 5 && flag > 1) {
-                if(success == 0 || total == 0) this.setProject_recent(0L);
-                else this.setProject_recent( (long)success/(long)total );
+                if(success == 0 || total == 0) this.setProject_recent(0F);
+                else this.setProject_recent( Float.valueOf(decimalFormat.format( (float)success/(float)total )) );
             }
             // 项目全局成功率
-            if(success == 0 || total == 0) this.setProject_history(0L);
-            else this.setProject_history( (long)success / (long)total );
+            if(success == 0 || total == 0) this.setProject_history(0F);
+            else this.setProject_history( Float.valueOf(decimalFormat.format( (float)success/(float)total )) );
 
         } else {
-            this.setProject_recent(0L);
-            this.setProject_history(0L);
+            this.setProject_recent(0F);
+            this.setProject_history(0F);
         }
 
     }
@@ -212,21 +215,21 @@ public class BuildRecord extends IdEntity{
         this.committer_exp = committer_exp;
     }
 
-    public Long getProject_recent() {
+    public Float getProject_recent() {
         return project_recent;
     }
 
     // 最近项目的构建成功率, 先group by project_name 然后按照构建的编号来获取
-    public void setProject_recent(Long project_recent) {
+    public void setProject_recent(Float project_recent) {
         this.project_recent = project_recent;
     }
 
-    public Long getProject_history() {
+    public Float getProject_history() {
         return project_history;
     }
 
     // 项目构建的总成功率
-    public void setProject_history(Long project_history) {
+    public void setProject_history(Float project_history) {
         this.project_history = project_history;
     }
 
