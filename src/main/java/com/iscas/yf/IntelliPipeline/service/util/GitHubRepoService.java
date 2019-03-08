@@ -361,7 +361,9 @@ public class GitHubRepoService {
         // 不使用filter而使用Range, 获取本地和Fetch之间的所有Commit hash
         ObjectId localCommit = repo.exactRef("HEAD").getObjectId();
         ObjectId fetchCommit = repo.exactRef("FETCH_HEAD").getObjectId();
-        String latestCommit = fetchCommit.getName();
+
+        // String latestCommit = fetchCommit.getName();
+        String latestCommit = localCommit.getName();
 
         Iterable<RevCommit> commits = git.log().addRange(localCommit ,fetchCommit).call();
 

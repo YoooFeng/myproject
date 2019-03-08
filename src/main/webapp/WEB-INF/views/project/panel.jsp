@@ -203,6 +203,8 @@
                                             <input type="text" id="committerText" placeholder="开发者邮箱(多个路径用逗号隔开)" onkeyup="appPanel.inputSize(this)" size="15" />
                                         </div><br>
 
+                                        <%-- commit message 规则实现 --%>
+
                                     </form><br><br>
                                         <%--<label for="modifiedLines" class="control-label pull-left" style="padding-right: 1em"><h4>修改代码行数阈值</h4></label><br>--%>
                                     <%--<input type="text" id="modifiedLines" class="input-underline" value="0" placeholder="0"/>--%>
