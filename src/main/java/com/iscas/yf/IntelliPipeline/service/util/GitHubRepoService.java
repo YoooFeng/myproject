@@ -362,7 +362,7 @@ public class GitHubRepoService {
         ObjectId localCommit = repo.exactRef("HEAD").getObjectId();
         ObjectId fetchCommit = repo.exactRef("FETCH_HEAD").getObjectId();
 
-        // String latestCommit = fetchCommit.getName();
+        // String latestCommit = fetchCommit.getUsername();
         String latestCommit = localCommit.getName();
 
         Iterable<RevCommit> commits = git.log().addRange(localCommit ,fetchCommit).call();
@@ -380,7 +380,7 @@ public class GitHubRepoService {
             authors.append(authorEmail + " ");
 
             // 用户名
-            // String authorName = authorIdent.getName();
+            // String authorName = authorIdent.getUsername();
             // committer的邮箱地址
             // String authorEmail = authorIdent.getEmailAddress();
             // 提交的时间
@@ -562,7 +562,7 @@ public class GitHubRepoService {
             PersonIdent authorIdent = commit.getAuthorIdent();
 
             // committer的GitHub用户名
-            // String authorName = authorIdent.getName();
+            // String authorName = authorIdent.getUsername();
 
             String authorEmail = authorIdent.getEmailAddress();
             experiencedAuthors.append(authorEmail + " ");

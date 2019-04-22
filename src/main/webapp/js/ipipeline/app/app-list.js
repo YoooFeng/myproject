@@ -480,7 +480,10 @@ var appList = {
 
 	deleteApp: function(appId){
 		if(confirm("delete application?")){
-			ajaxDeleteJsonAuthc(dURIs.projectDataURI.deleteProject + "/" + appId, null, appList.operateSuccess, defaultErrorFunc, true);
+			ajaxDeleteJsonAuthc(dURIs.projectDataURI.deleteProject + "/" + appId, null,
+				showSuccess("删除项目成功!", loadPage(dURIs.viewsURI.projectListView, null)),
+                showSuccess("删除项目成功!", loadPage(dURIs.viewsURI.projectListView, null)), true);
+			// loadPage(dURIs.viewsURI.projectListView, null)
 		}
 	}
 };

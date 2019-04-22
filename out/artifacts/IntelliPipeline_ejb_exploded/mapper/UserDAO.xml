@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iscas.yf.IntelliPipeline.dao.UserDAO">
+    <!-- 目的：为dao接口方法提供sql语句配置 -->
+    <select buildId="queryByName" resultType="User" parameterType="String">
+        SELECT
+        user_id,
+        user_name
+        FROM
+        Users
+        WHERE
+        user_name = #{userName}
+    </select>
+    <insert buildId="insertUser">
+        INSERT INTO
+        Users
+        VALUES
+        (#{user.userName}, #{user.userPassword})
+    </insert>
+</mapper>

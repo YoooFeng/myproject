@@ -14,7 +14,7 @@
     <!-- 获取数据库配置文件 -->
     <!--<bean buildId="config"-->
           <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
+        <!--<property username="locations">-->
             <!--<list>-->
                 <!--<value>classpath:db-config.properties</value>-->
             <!--</list>-->
@@ -23,16 +23,16 @@
 
     <!-- 获取数据源 -->
     <!--<bean buildId="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
-        <!--<property name="driverClassName">-->
+        <!--<property username="driverClassName">-->
             <!--<value>${db.dirverClass}</value>-->
         <!--</property>-->
-        <!--<property name="url">-->
+        <!--<property username="url">-->
             <!--<value>${db.url}</value>-->
         <!--</property>-->
-        <!--<property name="username">-->
+        <!--<property username="username">-->
             <!--<value>${db.username}</value>-->
         <!--</property>-->
-        <!--<property name="password">-->
+        <!--<property username="password">-->
             <!--<value>${db.password}</value>-->
         <!--</property>-->
     <!--</bean>-->

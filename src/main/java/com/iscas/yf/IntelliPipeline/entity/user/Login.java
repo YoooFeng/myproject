@@ -3,6 +3,7 @@ package com.iscas.yf.IntelliPipeline.entity.user;
 /**
  * 用于登录会话的POJO对象
  * */
+@Deprecated
 public class Login {
     private String userName;
     private String userPassword;

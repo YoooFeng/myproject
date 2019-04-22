@@ -1,27 +1,69 @@
 package com.iscas.yf.IntelliPipeline.service.dataservice;
 
+import com.iscas.yf.IntelliPipeline.dao.HibernateDAO;
 import com.iscas.yf.IntelliPipeline.dao.UserDAO;
 import com.iscas.yf.IntelliPipeline.dataview.UserView;
 import com.iscas.yf.IntelliPipeline.entity.user.User;
-import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Transactional
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
-    private Logger logger = Logger.getLogger(UserServiceImpl.class);
+    private UserDAO userDAO;
 
     @Autowired
-    UserDAO userDAO;
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
-    public User createUser(UserView.Item userItem){
-        User user = new User();
+    public User getCurrentUser() {
+        final Long currentUserId = (Long)SecurityUtils.getSubject().getPrincipal();
 
-        user.setName(userItem.name);
-        user.setPassword(userItem.password);
-        user.setEmail(userItem.email);
+        if(currentUserId != null) {
+            return getUser(currentUserId);
+        } else {
+            return null;
+        }
+    }
 
-        userDAO.save(user);
+    public User createUser(User user) {
+
+        userDAO.createUser( user );
+
+        return user;
+
+    }
+
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
+    }
+
+    public User getUser(Long userId) {
+        return userDAO.getUser( userId );
+    }
+
+    public void deleteUser(Long userId) {
+        userDAO.deleteUser( userId );
+    }
+
+    public User updateUser(User user) {
+
+        userDAO.updateUser( user );
 
         return user;
     }
+
+    public User findById(Long id) {
+        User user = userDAO.getUser(id);
+        return user;
+    }
+
 }

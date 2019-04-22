@@ -127,7 +127,7 @@ enabled | true | Enables or disables export functionality
 divId | | ID or a reference to div object in case you want the menu in a separate container.
 fabric | {} | Overwrites the default drawing settings (fabricJS library)
 fallback | {} | Holds the messages to guide the user to copy the generated output; `false` will disable the fallback feature
-fileName | amCharts | A file name to use for generated export files (an extension will be appended to it based on the export format)
+fileName | amCharts | A file username to use for generated export files (an extension will be appended to it based on the export format)
 legend | {} | Places the legend in case it is within an external container ([skip to chapter](#adding-external-legend))
 libs | | 3rd party required library settings (see the above section)
 menu | [] | A list of menu or submenu items (see the next chapter for details)
@@ -662,7 +662,7 @@ afterCapture | [menu item setup](#a-list-of-menu-item-properties) | Called right
 Property | Description
 -------- | -----------
 action | Set to "draw" if you want the item to trigger annotation mode
-class | Class name applied to the tag
+class | Class username applied to the tag
 click | Function handler invoked upon click on menu item
 format | A format to export chart/map to upon click (see below for a list of available formats)
 icon | Icon file (will use chart's [path](http://docs.amcharts.com/3/javascriptcharts/AmSerialChart#path) if the URL is not full)
@@ -670,7 +670,7 @@ label | Text label to be displayed
 menu | An array of submenu items
 title | A title attribute of the link
 backgroundColor | The background color of the canvas
-fileName | A file name to use for generated export files (an extension will be appended to it based on the export format)
+fileName | A file username to use for generated export files (an extension will be appended to it based on the export format)
 extension | File extension for the generated export file (uses format default if not defined)
 mimeType | Internet media type to generate the export file (usses format default if not defined)
 pageSize | A string or { width: number, height: number } ([details](#exporting-to-pdf))

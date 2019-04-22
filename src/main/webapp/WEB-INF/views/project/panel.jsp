@@ -13,7 +13,7 @@
 <head>
     <title>Modeling</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
     <style type="text/css">
         .passed {
@@ -95,12 +95,12 @@
                                 <div class="form-group">
                                     <label for="serviceName" class="control-label pull-left"
                                            style="padding-right: 1em;">Step: </label>
-                                    <input id="serviceName" name="serviceName" class="form-control" readonly>
+                                    <input id="serviceName" username="serviceName" class="form-control" readonly>
                                 <div class="form-group" id="displayNameDiv">
                                     <%--<label for="displayName" class="control-label pull-left" style="padding-right: 1em;">--%>
                                         <%--DisplayName:--%>
                                     <%--</label>--%>
-                                    <%--<input id="displayName" class="form-control" name="displayName" placeholder="display name">--%>
+                                    <%--<input id="displayName" class="form-control" username="displayName" placeholder="display username">--%>
                                 </div>
 
                                 </div>
@@ -123,17 +123,17 @@
                                 <div class="form-group" id="stageDiv">
                                     <%--<label for="stageName" class="control-label pull-left"--%>
                                            <%--style="padding-right: 1em;">所属Stage:</label>--%>
-                                    <%--<input id="stageName" name="stageName" class="form-control" placeholder="building">--%>
+                                    <%--<input id="stageName" username="stageName" class="form-control" placeholder="building">--%>
                                 </div>
                                 <%--<div class="form-group">--%>
                                     <%--<label for="nodePort" class="control-label pull-left">节点端口:</label>--%>
-                                    <%--<input type="number" id="nodePort" name="nodePort"--%>
+                                    <%--<input type="number" id="nodePort" username="nodePort"--%>
                                            <%--class="form-control" placeholder="30303">--%>
                                 <%--</div>--%>
                                 <%--<div class="form-group">--%>
                                     <%--<label for="containerPort" class="control-label pull-left"--%>
                                            <%--style="padding-right: 2em;">容器端口:</label> <input--%>
-                                        <%--type="number" id="containerPort" name="containerPort"--%>
+                                        <%--type="number" id="containerPort" username="containerPort"--%>
                                         <%--class="form-control" placeholder="3306">--%>
                                 <%--</div>--%>
 
@@ -185,11 +185,11 @@
                                         <legend><h4>构建的执行策略</h4></legend>
 
                                         <label><input type="checkbox" id="timeIntervalCheckBox" />距上一次任务执行时间大于
-                                            <input type="text" id="timeIntervalText" class="form-control" name="time" value="0.5" onkeyup="appPanel.inputSize(this)" size="2"/>
+                                            <input type="text" id="timeIntervalText" class="form-control" username="time" value="0.5" onkeyup="appPanel.inputSize(this)" size="2"/>
                                             小时</label><br>
 
                                         <label><input type="checkbox" id="modifiedLinesCheckBox" />距上一次任务执行累积变更大于
-                                            <input type="text" id="modifiedLinesText" class="input-underline" name="loc" value="50" onkeyup="appPanel.inputSize(this)" size="2"/>行</label><br>
+                                            <input type="text" id="modifiedLinesText" class="input-underline" username="loc" value="50" onkeyup="appPanel.inputSize(this)" size="2"/>行</label><br>
 
                                         <label><input type="checkbox" id="modelChangedCheckBox" />流水线模型发生改变</label><br>
 
@@ -222,7 +222,7 @@
                                 <form id="target">
                                     <legend><h4>作用对象</h4></legend>
                                     <label id="target-label">
-                                        <input type="checkbox" name="targetHobby" value="build" />整个构建
+                                        <input type="checkbox" username="targetHobby" value="build" />整个构建
                                     </label>
                                 </form>
 
@@ -293,7 +293,7 @@
                         <div class="form-group">
                             <label for="appName">当前项目名</label> <input type="text"
                                                                       class="form-control" id="appName"
-                                                                      placeholder="application name" readonly>
+                                                                      placeholder="application username" readonly>
                         </div>
                     </div>
                     <div style="width: 50%";>

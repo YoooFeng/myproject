@@ -1,34 +1,51 @@
 package com.iscas.yf.IntelliPipeline.entity.user;
 
 import com.iscas.yf.IntelliPipeline.common.entity.IdEntity;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springside.modules.utils.Encodes;
 import org.springside.modules.security.utils.Digests;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "d_user", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})})
+@Table(name = "d_user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User extends IdEntity{
 
-    private String name;
+    // 已经默认存在Id属性
+    private String username;
     private String email;
     private String password;
-    // salt是什么?
+    // salt用于加密
     private String salt;
 
-    public User(){
-        this.salt = Encodes.encodeHex(PasswordEncryptor.genrateSalt());
-    }
-    public String getName() {
-        return name;
+    // 一个用户只能属于一种角色
+    @ManyToOne
+    @JoinTable(name = "users_roles")
+    private Role role;
+
+    public User() {
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
+    @Basic(optional = false)
+    @Column(length=100)
+    public String getUsername() {
+        return username;
+    }
+
+
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -44,43 +61,26 @@ public class User extends IdEntity{
     }
 
     public void setPassword(String password) {
-        this.password = encryptPwd(password);
+        this.password = password;
+    }
+
+    public String getCredentialSalt() {
+        return username + salt;
     }
 
     public String getSalt() {
         return salt;
     }
+
     public void setSalt(String salt) {
         this.salt = salt;
     }
-    public boolean verifyPassword(String plainPassword) {
-        return encryptPwd(plainPassword).equals(this.password);
+
+    public Role getRole() {
+        return role;
     }
 
-    private String encryptPwd(String plainPassword){
-        return PasswordEncryptor.encriptPassword(plainPassword, salt);
+    public void setRole(Role role) {
+        this.role = role;
     }
-
-    private static class PasswordEncryptor {
-
-        public static int SALT_SIZE = 8;
-        public static int ITERATION_TIME = 1024;
-
-        static byte[] genrateSalt() {
-            return Digests.generateSalt(SALT_SIZE);
-        }
-
-        static String encriptPassword(String plainPassword, String salt) {
-            byte[] password = Digests.sha1(plainPassword.getBytes(),
-                    Encodes.decodeHex(salt), ITERATION_TIME);
-            return Encodes.encodeHex(password);
-        }
-    }
-
-    // public static void main(String[] args){
-    //     User user = new User();
-    //     user.setPassword("111111");
-    //     System.out.println(user.getSalt());
-    //     System.out.println(user.getPassword());
-    // }
 }

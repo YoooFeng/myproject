@@ -596,6 +596,7 @@ var appPanel = {
 			var saveBtn = $("#save-app-btn");
 			saveBtn.unbind("click");
 			saveBtn.click(function() {
+                $('#saveModal').modal('hide');
 				appPanel.executeBuild();
 			});
 			$('#saveModal').modal('show');
@@ -1203,8 +1204,10 @@ var appPanel = {
         // 要有接收到返回数据, 这样才能判断是否执行成功
         // ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId, null, appPanel.triggerBuildCallBack, null);
         ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId,
-            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)), showError("构建执行失败!"));
+            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null))
+            , showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)));
     },
+
 
     // 直接返回到项目列表界面
     triggerBuildCallBack : function (result) {

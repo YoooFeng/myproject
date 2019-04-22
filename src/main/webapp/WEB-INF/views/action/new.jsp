@@ -13,7 +13,7 @@
 <head>
     <title>添加动作</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div id="d-main-content">
@@ -28,8 +28,8 @@
         <table style="margin-bottom: 0px; border-bottom: 0px;"
                class="table table-bordered table-condensed deploy-table" id="param-table">
             <thead>
-            <div name="newAction">
-                动作名称: <input type="text" name="actionName" id="actionName"
+            <div username="newAction">
+                动作名称: <input type="text" username="actionName" id="actionName"
                             onmouseover="this.style.borderColor='black';this.style.backgroundColor='azure'"
                             onmouseout="this.style.borderColor='black';this.style.backgroundColor='#ffffff'"
                             style="border-width: 1px;border-color: black"/>
@@ -41,7 +41,7 @@
             <%--</tr>--%>
             <div id="paramWrapper">
                 <div>
-                    <input type="text" name="param[]" id="param_1" placeholder="Param 1" />
+                    <input type="text" username="param[]" id="param_1" placeholder="Param 1" />
                     <input id="optional_1" type="checkbox">optional</input>
                     <a href="#" class="removeParam"> X </a>
                 </div>

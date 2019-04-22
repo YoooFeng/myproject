@@ -5,21 +5,20 @@
          version="3.1">
     <display-name>IntelliPipeline Web Server</display-name>
 
-    <!--<welcome-file-list>-->
-        <!--<welcome-file>login</welcome-file>-->
-    <!--</welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
-    <!--数据库相关的优先加载-->
+    <!--数据库\权限认证相关的优先加载-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/spring-dao.xml</param-value>
+        <param-value>classpath:spring/spring-dao.xml, classpath:spring/spring-shiro.xml</param-value>
     </context-param>
 
     <context-param>
         <param-name>webAppRootKey</param-name>
         <param-value>webapp.root</param-value>
     </context-param>
-
 
     <!-- 配置加载log4j.xml文件路径 -->
     <context-param>
@@ -43,6 +42,16 @@
         <param-value>6000</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>shiroEnvironmentClass</param-name>
+        <param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>shiroConfigLocations</param-name>
+        <param-value>classpath:shiro.ini</param-value>
+    </context-param>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -56,6 +65,10 @@
     <!-- 配置log4j.xml监听器 -->
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
     </listener>
 
     <!--主要是解决编码的问题-->
@@ -106,9 +119,24 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--shiro相关的filter-->
+    <filter>
+        <!--filter-name与applicationContext.xml中的Bean匹配-->
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- 据说写在dispatcher前面性能最优 -->
     <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
+        <!--<servlet-username>default</servlet-username>-->
         <!--<url-pattern>*.css</url-pattern>-->
         <!--<url-pattern>*.gif</url-pattern>-->
         <!--<url-pattern>*.jpg</url-pattern>-->

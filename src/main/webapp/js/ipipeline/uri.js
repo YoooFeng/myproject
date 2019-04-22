@@ -59,6 +59,9 @@ var dURIs = {
         actionListView : rootURI() + "/views/action/list",
         createAction : rootURI() + "/views/action/new",
 
+		// about user login
+		loginView : rootURI() + "/views/login",
+
 	},
 
     // Added for IntelliPipeline
@@ -88,6 +91,10 @@ var dURIs = {
 		updateModel : rootURI() + "/classifier/update",
         showTreeString : rootURI() + "/classifier/string"
     },
+
+	userDataURI:{
+		userData : rootURI() + "/user/",
+	},
 
 	swfs : rootURI() + "/swf",
 };

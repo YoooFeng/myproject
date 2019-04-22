@@ -13,7 +13,7 @@
 <head>
     <title>Projects</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div id="d-main-content">
@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <label for="appName">当前项目名</label> <input type="text"
                                                                       class="form-control" id="appName"
-                                                                      placeholder="application name" readonly>
+                                                                      placeholder="application username" readonly>
                         </div>
                     </div>
                     <div style="width: 50%";>

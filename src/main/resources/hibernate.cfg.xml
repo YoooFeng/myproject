@@ -75,6 +75,11 @@
 
         <!--===========================================================================-->
 
+        <!-- 配置Hibernate启用二级缓存, 缓存用户登录信息 -->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+        <!--===========================================================================-->
 
         <!-- 使用注解方式处理映射关系 -->
         <mapping class="com.iscas.yf.IntelliPipeline.entity.record.BuildRecord"/>

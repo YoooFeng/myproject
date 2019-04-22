@@ -147,19 +147,29 @@ public class BuildController {
 
         // request的内容解析＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
         String requestType = request.get("requestType");
-        logger.info("Request type: " + requestType);
+        String buildNumber = request.get("buildNumber");
+
+        // 获取/WEB-INF/resources/ 本地路径
+        String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
+
+        if(requestType.equals("FAILURE")) {
+            this.build.changeStatusToFail();
+            buildService.saveBuild(this.build);
+            JenkinsUtils.getConsoleOutput(this.build.getProject().getProjectName(), buildNumber, rootPath);
+            res.setDecisionType("END");
+            return res;
+        }
 
         String projectName = request.get("jobName");
 
         // step的序号
         int stepNumber = Integer.parseInt(request.get("stepNumber"));
-        String buildNumber = request.get("buildNumber");
+
 
         // currentResult 是Jenkins返回的目前构建结果
         String currentResult = request.get("currentResult");
         logger.info("Current result: " + currentResult);
-
-        //==========================================================
+        logger.info("Request type: " + requestType);
 
         // 第一次收到Jenkins发来的请求, 标识为START
         if(requestType.equals("START")) {
@@ -200,9 +210,6 @@ public class BuildController {
             return res;
         }
 
-        // 获取/WEB-INF/resources/ 本地路径
-        String rootPath = servletContext.getRealPath("/WEB-INF/resources/");
-
         String decision = "";
 
         // 在这里获取两次构建之间的changeSet
@@ -217,8 +224,6 @@ public class BuildController {
             this.build.setRecord(record);
             // recordService.createBuildRecord(record);
         }
-
-
 
         switch (requestType) {
             case "START":
@@ -237,7 +242,7 @@ public class BuildController {
                 decision = DecisionMaker.getInitDecision(request, this.build, analysis, git);
                 break;
             case "FAILURE":
-                // 将本次构建以及构建所有的step状态都改为FAIL
+                // 将本次构建以及构建执行中的step状态改为FAIL
                 this.build.changeStatusToFail();
                 decision = "END";
 

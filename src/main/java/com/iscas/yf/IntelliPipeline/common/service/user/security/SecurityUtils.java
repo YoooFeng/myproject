@@ -1,5 +1,6 @@
 package com.iscas.yf.IntelliPipeline.common.service.user.security;
 
+@Deprecated
 public class SecurityUtils {
     private static ThreadLocal<Subject> subject = new ThreadLocal<>();
 

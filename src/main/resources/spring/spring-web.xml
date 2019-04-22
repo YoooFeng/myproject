@@ -47,9 +47,11 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"-->
+          <!--depends-on="lifecycleBeanPostProcessor" />-->
     <!--<bean buildId="config"-->
           <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
+        <!--<property username="locations">-->
             <!--<list>-->
                 <!--<value>classpath:db-config.properties</value>-->
             <!--</list>-->

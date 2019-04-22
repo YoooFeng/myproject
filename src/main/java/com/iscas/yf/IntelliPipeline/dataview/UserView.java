@@ -10,7 +10,7 @@ import java.util.List;
 public class UserView {
     public static class Item{
         public Long id;
-        public String name;
+        public String username;
         public String email;
         public String password;
     }
@@ -21,7 +21,7 @@ public class UserView {
             if(user == null) return null;
             Item userItem = new Item();
             userItem.id = user.getId();
-            userItem.name = user.getName();
+            userItem.username = user.getUsername();
             userItem.password = user.getPassword();
             return userItem;
         }
