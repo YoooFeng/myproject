@@ -5,9 +5,9 @@
          version="3.1">
     <display-name>IntelliPipeline Web Server</display-name>
 
-    <!--<welcome-file-list>-->
-        <!--<welcome-file>login</welcome-file>-->
-    <!--</welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
 
     <!--数据库相关的优先加载-->
     <context-param>

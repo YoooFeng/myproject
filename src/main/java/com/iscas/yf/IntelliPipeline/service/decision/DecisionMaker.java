@@ -448,9 +448,9 @@ public class DecisionMaker {
         } else {
 
             // 先把源代码目录删除
-            if (!localPath.delete()) {
-                throw new IOException("Could not delete temporary file " + localPath);
-            }
+            // if (!localPath.delete()) {
+            //     throw new IOException("Could not delete temporary file " + localPath);
+            // }
 
             // clone的时候会新建文件目录
             try (Repository repository = Git.cloneRepository()

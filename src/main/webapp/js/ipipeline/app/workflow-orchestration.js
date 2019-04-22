@@ -1,41 +1,41 @@
 var appPanel = {
-	// cachedHosts : new Map(),
-	cachedComponents : new Map(),
-	cachedNodes : new Map(),
-	currentApp : null,
-	cachedContainers : new Map(),
-	cachedContainersById : new Map(),
-	cachedCustomFiles : null,
-	cachedTemplate : new Map(),
-	initReady : 0,// 001 hosts ready,010 components ready
-	currentTab : -1,
+    // cachedHosts : new Map(),
+    cachedComponents : new Map(),
+    cachedNodes : new Map(),
+    currentApp : null,
+    cachedContainers : new Map(),
+    cachedContainersById : new Map(),
+    cachedCustomFiles : null,
+    cachedTemplate : new Map(),
+    initReady : 0,// 001 hosts ready,010 components ready
+    currentTab : -1,
     currentBuild : null,
     currentTimer : null,
-	init : function(param) {
-		// this.requestHosts();
+    init : function(param) {
+        // this.requestHosts();
 
-		// this.initCustomFileList();
+        // this.initCustomFileList();
 
-		this.initReady = 2;
-	},
+        this.initReady = 2;
+    },
 
     /**
      * @Param appId
      * @Param tab
      * */
-	initForEdit : function(param) {
-		console.log("初始化拓扑图"+appPanel.initReady);
-		if (appPanel.initReady == 2) {
-			console.log("进入初始化");
+    initForEdit : function(param) {
+        console.log("初始化拓扑图"+appPanel.initReady);
+        if (appPanel.initReady == 2) {
+            console.log("进入初始化");
 
             // 清空画板
-			appPanel.clearGraph();
+            appPanel.clearGraph();
 
-			// 请求project
-			appPanel.requestApp(param.appId);
+            // 请求project
+            appPanel.requestApp(param.appId);
 
-			// 保存按钮暂时不需要
-			// appPanel.showSaveAsBtn();
+            // 保存按钮暂时不需要
+            // appPanel.showSaveAsBtn();
 
             // 初始化策略配置按钮
             appPanel.showStrategyBtn();
@@ -50,39 +50,39 @@ var appPanel = {
             // 初始化组件列表(Step列表)
             appPanel.requestComponentList();
 
-			appPanel.currentTab = param.tab;
-			if (appPanel.currentTab == 2 || appPanel.currentTab == 3) {
-				$("#group-list").hide();
-			}
-			$(".operation-list li[data-view-id='" + appPanel.currentTab + "']")
-					.css('display', 'inline-block');
+            appPanel.currentTab = param.tab;
+            if (appPanel.currentTab == 2 || appPanel.currentTab == 3) {
+                $("#group-list").hide();
+            }
+            $(".operation-list li[data-view-id='" + appPanel.currentTab + "']")
+                .css('display', 'inline-block');
 
-		} else {
-			setTimeout(function() {
-				appPanel.initForEdit(param);
-			}, 2000);
-		}
-	},
+        } else {
+            setTimeout(function() {
+                appPanel.initForEdit(param);
+            }, 2000);
+        }
+    },
 
     // 可视化构建过程初始化
     initForBuildProcess : function(buildId) {
 
-	    // 初始化分类器按钮
+        // 初始化分类器按钮
         appPanel.showClassifierBtn(buildId);
 
         // 初始化当前构建的统计信息
     },
 
-	// 初始化用户编写的workflow.yaml文件, 可从文件中读取CI流
-	initCustomFileList : function(selectedFile) {
-		if (null == appPanel.cachedCustomFiles) {
-			ajaxGetJsonAuthc(dURIs.customFilesURI, null,
-					appPanel.requestCustomFileListCallback, null);
-		} else {
-			orcheHtml.paintCustomFileList(appPanel.cachedCustomFiles.values(),
-					selectedFile);
-		}
-	},
+    // 初始化用户编写的workflow.yaml文件, 可从文件中读取CI流
+    initCustomFileList : function(selectedFile) {
+        if (null == appPanel.cachedCustomFiles) {
+            ajaxGetJsonAuthc(dURIs.customFilesURI, null,
+                appPanel.requestCustomFileListCallback, null);
+        } else {
+            orcheHtml.paintCustomFileList(appPanel.cachedCustomFiles.values(),
+                selectedFile);
+        }
+    },
 
 
     /**
@@ -124,16 +124,16 @@ var appPanel = {
     },
 
 
-	/**
-	 * 请求文件列表的回调函数
-	 * 
-	 * @param data
-	 */
-	requestCustomFileListCallback : function(data) {
-		var files = data;
-		appPanel.cachedCustomFiles = data;
-		// orcheHtml.paintCustomFileList(files);
-	},
+    /**
+     * 请求文件列表的回调函数
+     *
+     * @param data
+     */
+    requestCustomFileListCallback : function(data) {
+        var files = data;
+        appPanel.cachedCustomFiles = data;
+        // orcheHtml.paintCustomFileList(files);
+    },
 
     /**
      * 显示分类器预测结果的窗口
@@ -344,7 +344,7 @@ var appPanel = {
 
         // 点击保存按钮的事件
         $("#strategySave").bind("click", function () {
-        	console.log("strategy save");
+            console.log("strategy save");
             // 策略应该是与当前的App绑定的, 将修改之后的数据存进数据库中进行更新
             appPanel.saveStrategies(appPanel.currentApp.id);
             // 隐藏配置窗口
@@ -353,7 +353,7 @@ var appPanel = {
 
     },
     /**
-	 * 从数据库中读取配置的策略,并显示在策略配置窗口上
+     * 从数据库中读取配置的策略,并显示在策略配置窗口上
      * 已经获取到最新的策略,但是窗口上的数据没有同步更新!
      * */
     loadStrategy : function(){
@@ -411,9 +411,9 @@ var appPanel = {
 
             strategyModal.find('#committerText').val(strategy.key_paths);
             // $("#strategyModal #keyPathText").val(strategy.key_paths);
-		}
+        }
 
-		// 根据填写的stage信息生成复选框
+        // 根据填写的stage信息生成复选框
 
         return;
     },
@@ -528,108 +528,109 @@ var appPanel = {
     },
 
     genCheckbox : function() {
-    	var nodes = appPanel.cachedNodes;
+        var nodes = appPanel.cachedNodes;
 
-    	console.log("cachedNodes: " + nodes.elements);
-    	for(let value of nodes.values()) {
+        console.log("cachedNodes: " + nodes.elements);
+        for(let value of nodes.values()) {
 
-    		console.log("Value: " + value);
+            console.log("Value: " + value);
 
-    		var node = value;
-    		console.log("node: " + node);
+            var node = value;
+            console.log("node: " + node);
 
-    		if(node == undefined || node.stageName == undefined || node.stageName == "") continue;
-    		// 已经存在同名checkbox的情况
-    		else if(document.getElementById("target-" + node.stageName) != undefined) {
-    			continue;
-			}
-			// 新建checkbox
-    		else {
-    			console.log("begin to generate checkboxes");
-    			var container = document.getElementById("target-label");
+            if(node == undefined || node.stageName == undefined || node.stageName == "") continue;
+            // 已经存在同名checkbox的情况
+            else if(document.getElementById("target-" + node.stageName) != undefined) {
+                continue;
+            }
+            // 新建checkbox
+            else {
+                console.log("begin to generate checkboxes");
+                var container = document.getElementById("target-label");
 
-    			var checkbox = document.createElement('input');
-    			checkbox.type = "checkbox";
-    			checkbox.name = "targetHobby";
-    			checkbox.value = node.stageName;
-    			checkbox.id = "target-" + node.stageName;
+                var checkbox = document.createElement('input');
+                checkbox.type = "checkbox";
+                checkbox.name = "targetHobby";
+                checkbox.value = node.stageName;
+                checkbox.id = "target-" + node.stageName;
 
-    			var label = document.createElement('label');
-    			label.htmlFor = node.stageName;
-    			label.appendChild(document.createTextNode('' + node.stageName));
+                var label = document.createElement('label');
+                label.htmlFor = node.stageName;
+                label.appendChild(document.createTextNode('' + node.stageName));
 
-				container.appendChild(checkbox);
-				container.appendChild(label);
-    		}
+                container.appendChild(checkbox);
+                container.appendChild(label);
+            }
         }
 
-	},
-
-	// 自适应的输入框大小
-	inputSize : function (event) {
-    	var size = event.value.length;
-    	event.setAttribute("size", size);
-    	event.setAttribute("style", "width:auto");
     },
 
-	showSaveAsBtn : function() {
-		$("#btn-save-as").show();
-		$("#btn-save-as").unbind("click");
-		$("#btn-save-as").click(function() {
-			$("#save-app-btn").unbind("click");
-			$("#save-app-btn").click(function() {
-				console.log("另存?");
-				appPanel.saveAs();
-			});
-			$('#saveModal').modal('show');
-		});
-	},
+    // 自适应的输入框大小
+    inputSize : function (event) {
+        var size = event.value.length;
+        event.setAttribute("size", size);
+        event.setAttribute("style", "width:auto");
+    },
 
-	// 初始化点击执行构建的事件
-	initEvents : function() {
-		// 构建按钮(名字是save系列没改)
+    showSaveAsBtn : function() {
+        $("#btn-save-as").show();
+        $("#btn-save-as").unbind("click");
+        $("#btn-save-as").click(function() {
+            $("#save-app-btn").unbind("click");
+            $("#save-app-btn").click(function() {
+                console.log("另存?");
+                appPanel.saveAs();
+            });
+            $('#saveModal').modal('show');
+        });
+    },
+
+    // 初始化点击执行构建的事件
+    initEvents : function() {
+        // 构建按钮(名字是save系列没改)
         $("#btn-save").show();
-		$("#btn-save").unbind("click");
-		$("#btn-save").click(function() {
-			// 模态框的保存按钮(真正提交任务的按钮)
+        $("#btn-save").unbind("click");
+        $("#btn-save").click(function() {
+            // 模态框的保存按钮(真正提交任务的按钮)
             // 点击弹出框的确定按钮之后才真正开始执行构建
-			var saveBtn = $("#save-app-btn");
-			saveBtn.unbind("click");
-			saveBtn.click(function() {
-				appPanel.executeBuild();
-			});
-			$('#saveModal').modal('show');
-		});
-		// $("#addEnvBtn").unbind("click");
-		// $("#addEnvBtn")
-		// .click(
-		// function() {
-		// var envs = $("#envs");
-		// var id = dateToId();
-		// envs
-		// .append('<div id='
-		// + id
-		// + '>'
-		// + ' <input name="variableKeyName" class="input ng-pristine
-		// ng-untouched ng-valid" type="text" ng-model="vm.variableName"
-		// placeholder="key">'
-		// + '<input name="variableValueName" class="input ng-pristine
-		// ng-untouched ng-valid" type="text" ng-model="vm.variableName"
-		// placeholder="vale">'
-		// + '<button type="button" class="btn btn-danger"
-		// onclick="appPanel.remove('
-		// + id1 + ',' + id2 + ',' + id3
-		// + ')">delete</button>' + '</div>');
-		// });
-	},
+            var saveBtn = $("#save-app-btn");
+            saveBtn.unbind("click");
+            saveBtn.click(function() {
+                $('#saveModal').modal('hide');
+                appPanel.executeBuild();
+            });
+            $('#saveModal').modal('show');
+        });
+        // $("#addEnvBtn").unbind("click");
+        // $("#addEnvBtn")
+        // .click(
+        // function() {
+        // var envs = $("#envs");
+        // var id = dateToId();
+        // envs
+        // .append('<div id='
+        // + id
+        // + '>'
+        // + ' <input name="variableKeyName" class="input ng-pristine
+        // ng-untouched ng-valid" type="text" ng-model="vm.variableName"
+        // placeholder="key">'
+        // + '<input name="variableValueName" class="input ng-pristine
+        // ng-untouched ng-valid" type="text" ng-model="vm.variableName"
+        // placeholder="vale">'
+        // + '<button type="button" class="btn btn-danger"
+        // onclick="appPanel.remove('
+        // + id1 + ',' + id2 + ',' + id3
+        // + ')">delete</button>' + '</div>');
+        // });
+    },
 
     // 新建node的函数, 两种创建方式
-	nodeFactory : {
-	    // 通过nodeId和提供的Action创建新的node
-		createNode : function(nodeId, component) {
-			var node = new ContainerNode(nodeId, component.id);
-			return node;
-		},
+    nodeFactory : {
+        // 通过nodeId和提供的Action创建新的node
+        createNode : function(nodeId, component) {
+            var node = new ContainerNode(nodeId, component.id);
+            return node;
+        },
 
         createNodeFromTemplate : function (nodeId, stepNode) {
             var node = new templateNode(nodeId, stepNode.stepName, stepNode.displayName, stepNode.stageName, stepNode.xPos, stepNode.yPos, stepNode.params);
@@ -638,7 +639,7 @@ var appPanel = {
 
         // 这里要改为从step新建节点对象, 因为stage只是逻辑上的概念, 后期再进行划分和识别
         // 通过已有的container创建节点
-		createNodeFromContainer : function(container) {
+        createNodeFromContainer : function(container) {
 //			var hosts = new Array();
 //			var host = appPanel.cachedHosts.get(container.masterId);
 //			hosts.push(host);
@@ -649,105 +650,105 @@ var appPanel = {
 //					container.maxCount, container.status, container.id);
 //			containerNode.setTemplates(container.templates);
 //			containerNode.setAttributes(container.attributes);
-			console.log("从容器中新建节点对象");
-			var containerNode = new ContainerNode(container);
-			return containerNode;
-		},
+            console.log("从容器中新建节点对象");
+            var containerNode = new ContainerNode(container);
+            return containerNode;
+        },
 
-		createNodeFromContainerInstance : function(containerInstance,
-				containerId, nodeId) {
-			return new ContainerInstanceNode(nodeId, containerInstance.name,
-					containerInstance.port, containerInstance.status,
-					containerInstance.id, containerId);
-		},
+        createNodeFromContainerInstance : function(containerInstance,
+                                                   containerId, nodeId) {
+            return new ContainerInstanceNode(nodeId, containerInstance.name,
+                containerInstance.port, containerInstance.status,
+                containerInstance.id, containerId);
+        },
 
-		createRunningNode : function (nodeId, nodeName, nodeDisplayName, nodeStageName, nodeParams, nodeStatus, xPos, yPos) {
+        createRunningNode : function (nodeId, nodeName, nodeDisplayName, nodeStageName, nodeParams, nodeStatus, xPos, yPos) {
             var node = new RunningStep(nodeId, nodeName, nodeDisplayName, nodeStageName, nodeParams, nodeStatus, xPos, yPos);
             return node;
         }
-	},
+    },
 
-	/**
-	 * 请求主机列表，暂时木有使用
-	 */
-	requestHosts : function() {
-		ajaxGetJsonAuthc(dURIs.hostURI, null, appPanel.requestHostsCallback,
-				null);
-	},
+    /**
+     * 请求主机列表，暂时木有使用
+     */
+    requestHosts : function() {
+        ajaxGetJsonAuthc(dURIs.hostURI, null, appPanel.requestHostsCallback,
+            null);
+    },
 
-	requestHostsCallback : function(data) {
-		var hosts = data;
-		appPanel.cachedHosts.clear();
-		for ( var i in hosts) {
-			appPanel.cachedHosts.put(hosts[i].id, hosts[i]);
-		}
-		appPanel.initReady |= 1;
-	},
+    requestHostsCallback : function(data) {
+        var hosts = data;
+        appPanel.cachedHosts.clear();
+        for ( var i in hosts) {
+            appPanel.cachedHosts.put(hosts[i].id, hosts[i]);
+        }
+        appPanel.initReady |= 1;
+    },
 
-	/**
-	 * 请求组件类型,暂时木有使用
-	 */
-	requestComponentTypes : function() {
-		ajaxGetJsonAuthc(dURIs.chartsURI, null,
-				appPanel.requestComponentTypesCallback, null);
-	},
+    /**
+     * 请求组件类型,暂时木有使用
+     */
+    requestComponentTypes : function() {
+        ajaxGetJsonAuthc(dURIs.chartsURI, null,
+            appPanel.requestComponentTypesCallback, null);
+    },
 
-	requestComponentTypesCallback : function(data) {
-		// orcheHtml.paintComponentMeta(data);
-		appPanel.requestComponentList();
-	},
+    requestComponentTypesCallback : function(data) {
+        // orcheHtml.paintComponentMeta(data);
+        appPanel.requestComponentList();
+    },
 
-	/**
-	 * 请求Action列表, Action即是定制化的Step, 同时也应该允许用户新建自定义的Step
-	 */
-	requestComponentList : function() {
-		ajaxGetJsonAuthc(dURIs.actionURI.actionList, null,
-				appPanel.requestComponentsCallback, null);
-	},
+    /**
+     * 请求Action列表, Action即是定制化的Step, 同时也应该允许用户新建自定义的Step
+     */
+    requestComponentList : function() {
+        ajaxGetJsonAuthc(dURIs.actionURI.actionList, null,
+            appPanel.requestComponentsCallback, null);
+    },
     /**
      * 请求成功组件后, 回调函数画图, 将所有component列在右边,
      * 之后新建node的时候一个component对应一个node
      * 这里的component实际上就是action
      * */
-	requestComponentsCallback : function(data) {
-		var components = data;
-		// 清除组件的缓存
-		appPanel.cachedComponents.clear();
-		for ( var i in components) {
-		    console.log("StepName: " + components[i].stepName);
-			appPanel.cachedComponents.put(components[i].id, components[i]);
-		}
-		// 绘制组件列表和绑定事件
-		orcheHtml.paintComponentList(components);
-		appPanel.initReady |= 2;
-	},
+    requestComponentsCallback : function(data) {
+        var components = data;
+        // 清除组件的缓存
+        appPanel.cachedComponents.clear();
+        for ( var i in components) {
+            console.log("StepName: " + components[i].stepName);
+            appPanel.cachedComponents.put(components[i].id, components[i]);
+        }
+        // 绘制组件列表和绑定事件
+        orcheHtml.paintComponentList(components);
+        appPanel.initReady |= 2;
+    },
 
-	/**
-	 * 请求project
-	 * 
-	 * @param appId
-	 */
-	requestApp : function(appId) {
-		ajaxGetJsonAuthc(dURIs.projectDataURI.getProject + "/" + appId, null,
-				appPanel.requestAppCallback, null);
-	},
+    /**
+     * 请求project
+     *
+     * @param appId
+     */
+    requestApp : function(appId) {
+        ajaxGetJsonAuthc(dURIs.projectDataURI.getProject + "/" + appId, null,
+            appPanel.requestAppCallback, null);
+    },
 
-	requestAppCallback : function(data) {
-		console.log("请求一个project的拓扑数据");
-		console.log("------------------");
-		// console.log(JSON.stringify(data));
-		// console.log("------------------");
-		var app = data;
-		appPanel.currentApp = app;
-		// appPanel.cachedContainers.clear();
-		// appPanel.cachedContainersById.clear();
-		// set app name
+    requestAppCallback : function(data) {
+        console.log("请求一个project的拓扑数据");
+        console.log("------------------");
+        // console.log(JSON.stringify(data));
+        // console.log("------------------");
+        var app = data;
+        appPanel.currentApp = app;
+        // appPanel.cachedContainers.clear();
+        // appPanel.cachedContainersById.clear();
+        // set app name
         console.log("ProjectName: " + app.name);
-		$("#appName").val(app.name);
+        $("#appName").val(app.name);
 
-		appPanel.cachedNodes.clear();
+        appPanel.cachedNodes.clear();
 
-		// 重新绘制最新一次构建的执行流程图
+        // 重新绘制最新一次构建的执行流程图
         if(app.template != undefined && app.template.steps != undefined) {
             var steps = app.template.steps;
             console.log("Template: " + JSON.stringify(app.template));
@@ -800,53 +801,53 @@ var appPanel = {
         }
 
 
-	},
+    },
 
-	getEndpointIds : function(container) {
-		var ids = new Array();
-		if (container.status == "CREATED") {
-			ids.push(container.nodeId);
-		} else if (container.status == "DEPLOYED") {
-			for ( var j in container.instances) {
-				var instance = container.instances[j];
-				ids.push(container.nodeId + "-" + instance.seq);
-			}
-		}
-		return ids;
-	},
+    getEndpointIds : function(container) {
+        var ids = new Array();
+        if (container.status == "CREATED") {
+            ids.push(container.nodeId);
+        } else if (container.status == "DEPLOYED") {
+            for ( var j in container.instances) {
+                var instance = container.instances[j];
+                ids.push(container.nodeId + "-" + instance.seq);
+            }
+        }
+        return ids;
+    },
 
-	rearrangeElementWithPos : function(id, xPos, yPos) {
-		var element = $("#" + id);
-		var offset = element.offset();
-		offset.left = xPos;
-		offset.top = yPos;
-		element.offset(offset);
-	},
-	/**
-	 * 向绘图区添加一个新的节点
-	 * 添加的节点应该是一个Step
+    rearrangeElementWithPos : function(id, xPos, yPos) {
+        var element = $("#" + id);
+        var offset = element.offset();
+        offset.left = xPos;
+        offset.top = yPos;
+        element.offset(offset);
+    },
+    /**
+     * 向绘图区添加一个新的节点
+     * 添加的节点应该是一个Step
      *
-	 * @param componentId
-	 */
-	addNode : function(componentId) {
-		var component = appPanel.cachedComponents.get(componentId);
-		var nodeId = dateToId();
-		console.log("addNode: " + nodeId);
+     * @param componentId
+     */
+    addNode : function(componentId) {
+        var component = appPanel.cachedComponents.get(componentId);
+        var nodeId = dateToId();
+        console.log("addNode: " + nodeId);
 
-		console.log("component: " + JSON.stringify(component));
+        console.log("component: " + JSON.stringify(component));
 
-		// TODO: 新加的Node实际上共用一个component的params, 这里需要新建自己的params
-		var params = component.params;
+        // TODO: 新加的Node实际上共用一个component的params, 这里需要新建自己的params
+        var params = component.params;
         console.log("component params: " + JSON.stringify(params));
 
-		// 通过actionItem请求step
-		// var step = appPanel.requestStep(actionItem);
+        // 通过actionItem请求step
+        // var step = appPanel.requestStep(actionItem);
 
-		//
-		var node = appPanel.nodeFactory.createNode(nodeId, component);
-		appPanel.cachedNodes.put(nodeId, node);
-		orcheHtml.paintNode(nodeId);
-	},
+        //
+        var node = appPanel.nodeFactory.createNode(nodeId, component);
+        appPanel.cachedNodes.put(nodeId, node);
+        orcheHtml.paintNode(nodeId);
+    },
 
     // /**
     //  * 获取一个新的step的函数
@@ -857,40 +858,40 @@ var appPanel = {
     //         actionItem, appPanel.actionToStep, null);
     // },
 
-	addEnv : function() {
-		var envsHtml="";
-		var divid=myuid();
-		envsHtml += '<div id="' + divid + '"> ';
-		envsHtml += '<input type="text"  placeholder="key">'
-				 + '<input  type="text"  placeholder="value">';
-		envsHtml += '<button onclick="appPanel.removeEnv('+ divid+')" type="button" class="btn btn-danger">Delete</button>';
-		envsHtml += '</div>';
-		$("#envs").append(envsHtml);
-	},
+    addEnv : function() {
+        var envsHtml="";
+        var divid=myuid();
+        envsHtml += '<div id="' + divid + '"> ';
+        envsHtml += '<input type="text"  placeholder="key">'
+            + '<input  type="text"  placeholder="value">';
+        envsHtml += '<button onclick="appPanel.removeEnv('+ divid+')" type="button" class="btn btn-danger">Delete</button>';
+        envsHtml += '</div>';
+        $("#envs").append(envsHtml);
+    },
 
-	removeEnv : function(divId) {
-		$("#"+divId+"").remove();
-	},
-	/**
-	 * paintNode 节点的双击事件, 弹出配置框, 设置和修改params
-	 * 
-	 * @param nodeId
-	 */
-	nodeClick : function(nodeId) {
+    removeEnv : function(divId) {
+        $("#"+divId+"").remove();
+    },
+    /**
+     * paintNode 节点的双击事件, 弹出配置框, 设置和修改params
+     *
+     * @param nodeId
+     */
+    nodeClick : function(nodeId) {
 
-		var node = appPanel.cachedNodes.get(nodeId);
+        var node = appPanel.cachedNodes.get(nodeId);
 
-		console.log("双击节点: " + nodeId);
+        console.log("双击节点: " + nodeId);
 
-		if (node instanceof ContainerInstanceNode) {
-			console.log("ContainerInstanceNode : 节点双击事件");
-			$('.operation-list li').unbind('dblclick');
-			$('#operationModal').modal('show');
-			$('.operation-list li').bind('dblclick', function() {
-				appPanel.doOperationOnInstance(node.getInstanceId(), $(this));
-			});
+        if (node instanceof ContainerInstanceNode) {
+            console.log("ContainerInstanceNode : 节点双击事件");
+            $('.operation-list li').unbind('dblclick');
+            $('#operationModal').modal('show');
+            $('.operation-list li').bind('dblclick', function() {
+                appPanel.doOperationOnInstance(node.getInstanceId(), $(this));
+            });
 
-		} else if (node instanceof ContainerNode || node instanceof templateNode) {
+        } else if (node instanceof ContainerNode || node instanceof templateNode) {
             console.log("ContainerNode : 节点双击事件");
 
             orcheHtml.paintNodeDetail(node, nodeId);
@@ -927,7 +928,7 @@ var appPanel = {
             });
 
         } else if(node instanceof RunningStep) {
-		    console.log("RunningStep : 节点双击事件");
+            console.log("RunningStep : 节点双击事件");
             orcheHtml.paintRunningStepDetail(node, nodeId);
             $('#detailModal').modal('show');
 
@@ -938,66 +939,66 @@ var appPanel = {
                 $('#detailModal').modal('hide');
             });
 
-		} else {
-			console.log("弹出对话框，进行对话");
-			$('#detailModal').modal('show');
-			var component = node.component;
-			orcheHtml.paintNodeDetailHost(appPanel.cachedHosts.values(),
-					node.hosts);
-			orcheHtml.paintNodeDetailAction(node);
-			orcheHtml.paintTemplateParams(node);
-			orcheHtml.paintAttributes(node);
+        } else {
+            console.log("弹出对话框，进行对话");
+            $('#detailModal').modal('show');
+            var component = node.component;
+            orcheHtml.paintNodeDetailHost(appPanel.cachedHosts.values(),
+                node.hosts);
+            orcheHtml.paintNodeDetailAction(node);
+            orcheHtml.paintTemplateParams(node);
+            orcheHtml.paintAttributes(node);
 
-			$("#templates #addTemplate").unbind("click");
-			$("#templates #addTemplate").click(function() {
-				orcheHtml.addTemplate();
-			});
+            $("#templates #addTemplate").unbind("click");
+            $("#templates #addTemplate").click(function() {
+                orcheHtml.addTemplate();
+            });
 
-			$("#attributes #addAttribute").unbind("click");
-			$("#attributes #addAttribute").click(function() {
-				orcheHtml.addAttribute();
-			});
+            $("#attributes #addAttribute").unbind("click");
+            $("#attributes #addAttribute").click(function() {
+                orcheHtml.addAttribute();
+            });
 
-			$("#detailModal #initCount").unbind('change');
-			$("#detailModal #initCount")
-					.bind(
-							'change',
-							function() {
-								if (parseInt($(this).val()) > parseInt($(
-										"#detailModal #maxCount").val())) {
-									$(this).val(
-											$("#detailModal #maxCount").val());
-									alert("primary instances must be less than max instances！")
-								}
-							});
-			$(".editSave").unbind("click");
-			$(".editSave").bind("click", function() {
-				appPanel.nodeEditSave(nodeId);
-				$('#detailModal').modal('hide');
-			});
-		}
+            $("#detailModal #initCount").unbind('change');
+            $("#detailModal #initCount")
+                .bind(
+                    'change',
+                    function() {
+                        if (parseInt($(this).val()) > parseInt($(
+                                "#detailModal #maxCount").val())) {
+                            $(this).val(
+                                $("#detailModal #maxCount").val());
+                            alert("primary instances must be less than max instances！")
+                        }
+                    });
+            $(".editSave").unbind("click");
+            $(".editSave").bind("click", function() {
+                appPanel.nodeEditSave(nodeId);
+                $('#detailModal').modal('hide');
+            });
+        }
 
-	},
+    },
 
-	/**
-	 * 保存节点(Step)的配置信息
-	 * 
-	 * @param nodeId
-	 */
-	nodeEditSave : function(nodeId) {
-		var node = appPanel.cachedNodes.get(nodeId);
-		console.log("----------------nodeEditSave-----------------");
-		console.log("保存节点信息" + node.getStepName());
+    /**
+     * 保存节点(Step)的配置信息
+     *
+     * @param nodeId
+     */
+    nodeEditSave : function(nodeId) {
+        var node = appPanel.cachedNodes.get(nodeId);
+        console.log("----------------nodeEditSave-----------------");
+        console.log("保存节点信息" + node.getStepName());
 
-		// 思考: 有没有必要清空params? 还是只需要修改params[i].paramValue?
+        // 思考: 有没有必要清空params? 还是只需要修改params[i].paramValue?
         // 不能清空, 应该赋值
-		// node.params = [];
+        // node.params = [];
 
-		// node.containerPort = $("#containerPort").val();
-		// node.nodePort = $("#nodePort").val();
+        // node.containerPort = $("#containerPort").val();
+        // node.nodePort = $("#nodePort").val();
 
-		// 保存stepName 所属stageName还有displayName
-		node.stepName = $("#serviceName").val();
+        // 保存stepName 所属stageName还有displayName
+        node.stepName = $("#serviceName").val();
 
         node.displayName = document.getElementById(nodeId + "displayName").value;
         node.stageName = document.getElementById(nodeId + "stageName").value;
@@ -1005,123 +1006,123 @@ var appPanel = {
         // 编辑过
         node.status = "EDITED";
 
-		// $('#envs div').each(
-		// 		function(index) {
-		// 			var key="";
-		// 			var value="";
-		// 			// 是不是从上到下按顺序遍历?
-		// 			$(this).children("input").each(
-		// 					function(index) {
-		// 						console.log("遍历input" + index + ":"
-		// 								+ $(this).val());
-		// 						// 这里是通过序号来遍历, 0就是key, 1就是value
-		// 						if(index == 0){
-		// 							key=$(this).val();
-		// 						}
-		// 						if(index == 1){
-		// 							value=$(this).val();
-		// 						}
-		// 					});
-		// 			if(trim(key).length != 0 && trim(value).length != 0){
+        // $('#envs div').each(
+        // 		function(index) {
+        // 			var key="";
+        // 			var value="";
+        // 			// 是不是从上到下按顺序遍历?
+        // 			$(this).children("input").each(
+        // 					function(index) {
+        // 						console.log("遍历input" + index + ":"
+        // 								+ $(this).val());
+        // 						// 这里是通过序号来遍历, 0就是key, 1就是value
+        // 						if(index == 0){
+        // 							key=$(this).val();
+        // 						}
+        // 						if(index == 1){
+        // 							value=$(this).val();
+        // 						}
+        // 					});
+        // 			if(trim(key).length != 0 && trim(value).length != 0){
         //
-		// 				var item=new KV(key,value);
-		// 				console.log("KV: " + JSON.stringify(item));
+        // 				var item=new KV(key,value);
+        // 				console.log("KV: " + JSON.stringify(item));
         //
-		// 				node.params.push(item);
-		// 			}
-		// 		});
+        // 				node.params.push(item);
+        // 			}
+        // 		});
 
         var params = node.params;
-		// 换种思路, 遍历params, 然后通过id在div中找相对应的input框
-		for(var i in params){
-		    console.log("Element Id: " + nodeId + params[i].paramsKey + '-value');
-		    console.log("Input Element: " + document.getElementById(nodeId + params[i].paramsKey + '-value').value);
+        // 换种思路, 遍历params, 然后通过id在div中找相对应的input框
+        for(var i in params){
+            console.log("Element Id: " + nodeId + params[i].paramsKey + '-value');
+            console.log("Input Element: " + document.getElementById(nodeId + params[i].paramsKey + '-value').value);
             params[i].paramValue = document.getElementById(nodeId + params[i].paramsKey + '-value').value;
 
             console.log(nodeId + ": " + params[i].paramValue);
         }
 
 
-		// var node = appPanel.cachedNodes.get(nodeId);
-		// console.log("");
-		// var component = node.component;
-		// var newParams = new Array();
-		// var newTemplates = new Array();
-		// var newAttributes = new Array();
-		// $("#actionParams tbody tr").each(function(index, element) {
-		// var value = $(element).find('.paramValue textarea').val();
-		// var key = $(element).find('.paramKey').text();
-		// if (key != "") {
-		// newParams.push({
-		// key : key,
-		// value : value
-		// });
-		// }
-		// });
-		// $("#templates tbody tr").each(function(index, element) {
-		// var source = $(element).find('.temSource [name="source"]').val();
-		// var target = $(element).find('.temTarget textarea').val();
-		// var command = $(element).find('.temCommand textarea').val();
-		// if (source != "" && target != "") {
-		// newTemplates.push({
-		// source : source,
-		// target : target,
-		// command: command
-		// });
-		// }
-		// });
-		// for(var i in newTemplates){
-		// alert(newTemplates[i].source)
-		// }
-		// $("#attributes tbody tr").each(function(index, element) {
-		// var attrKey = $(element).find('.attrKey textarea').val();
-		// var attrValue = $(element).find('.attrValue textarea').val();
-		// if (attrKey != "" && attrValue != "") {
-		// newAttributes.push({
-		// attrKey : attrKey,
-		// attrValue : attrValue
-		// });
-		// }
-		// });
-		// node.setParams(newParams);
-		// node.setTemplates(newTemplates);
-		// node.setAttributes(newAttributes);
-		// node.setHosts(appPanel.getTargetHosts());
-		// node.setName($("#detailModal #containerName").val());
-		// node.setPort(parseInt($("#detailModal #containerPort").val()));
-		// node.setInitCount(parseInt($("#detailModal #initCount").val()));
-		// node.setMaxCount(parseInt($("#detailModal #maxCount").val()));
+        // var node = appPanel.cachedNodes.get(nodeId);
+        // console.log("");
+        // var component = node.component;
+        // var newParams = new Array();
+        // var newTemplates = new Array();
+        // var newAttributes = new Array();
+        // $("#actionParams tbody tr").each(function(index, element) {
+        // var value = $(element).find('.paramValue textarea').val();
+        // var key = $(element).find('.paramKey').text();
+        // if (key != "") {
+        // newParams.push({
+        // key : key,
+        // value : value
+        // });
+        // }
+        // });
+        // $("#templates tbody tr").each(function(index, element) {
+        // var source = $(element).find('.temSource [name="source"]').val();
+        // var target = $(element).find('.temTarget textarea').val();
+        // var command = $(element).find('.temCommand textarea').val();
+        // if (source != "" && target != "") {
+        // newTemplates.push({
+        // source : source,
+        // target : target,
+        // command: command
+        // });
+        // }
+        // });
+        // for(var i in newTemplates){
+        // alert(newTemplates[i].source)
+        // }
+        // $("#attributes tbody tr").each(function(index, element) {
+        // var attrKey = $(element).find('.attrKey textarea').val();
+        // var attrValue = $(element).find('.attrValue textarea').val();
+        // if (attrKey != "" && attrValue != "") {
+        // newAttributes.push({
+        // attrKey : attrKey,
+        // attrValue : attrValue
+        // });
+        // }
+        // });
+        // node.setParams(newParams);
+        // node.setTemplates(newTemplates);
+        // node.setAttributes(newAttributes);
+        // node.setHosts(appPanel.getTargetHosts());
+        // node.setName($("#detailModal #containerName").val());
+        // node.setPort(parseInt($("#detailModal #containerPort").val()));
+        // node.setInitCount(parseInt($("#detailModal #initCount").val()));
+        // node.setMaxCount(parseInt($("#detailModal #maxCount").val()));
 
         // 先删再存
-		appPanel.cachedNodes.removeByKey(nodeId);
-		appPanel.cachedNodes.put(nodeId, node);
+        appPanel.cachedNodes.removeByKey(nodeId);
+        appPanel.cachedNodes.put(nodeId, node);
 
-		// 更新node小框上显示的信息
-		$("#" + nodeId).find(".node-name span").html(node.getStepName());
-		$("#" + nodeId).find(".node-displayName span").html(node.getDisplayName());
+        // 更新node小框上显示的信息
+        $("#" + nodeId).find(".node-name span").html(node.getStepName());
+        $("#" + nodeId).find(".node-displayName span").html(node.getDisplayName());
         $("#" + nodeId).find(".node-stageName span").html(node.getStageName());
         $("#" + nodeId).find(".node-status span").html(node.getStatus());
-		console.log("---------------nodeEditSave-End---------------");
-	},
+        console.log("---------------nodeEditSave-End---------------");
+    },
 
-	/**
-	 * 获取选中的机器节点
-	 * 
-	 * @returns {Array}
-	 */
-	getTargetHosts : function() {
-		var hosts = new Array();
-		$("#hostNames input[name='hostName']").each(function() {
-			if ($(this).prop('checked')) {
-				var hostId = parseInt($(this).val());
-				var host = appPanel.cachedHosts.get(hostId);
-				if (host != false) {
-					hosts.push(host);
-				}
-			}
-		});
-		return hosts;
-	},
+    /**
+     * 获取选中的机器节点
+     *
+     * @returns {Array}
+     */
+    getTargetHosts : function() {
+        var hosts = new Array();
+        $("#hostNames input[name='hostName']").each(function() {
+            if ($(this).prop('checked')) {
+                var hostId = parseInt($(this).val());
+                var host = appPanel.cachedHosts.get(hostId);
+                if (host != false) {
+                    hosts.push(host);
+                }
+            }
+        });
+        return hosts;
+    },
 
     /**
      * 执行构建的函数
@@ -1203,8 +1204,10 @@ var appPanel = {
         // 要有接收到返回数据, 这样才能判断是否执行成功
         // ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId, null, appPanel.triggerBuildCallBack, null);
         ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId,
-            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)), showError("构建执行失败!"));
+            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null))
+            , showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)));
     },
+
 
     // 直接返回到项目列表界面
     triggerBuildCallBack : function (result) {
@@ -1213,38 +1216,38 @@ var appPanel = {
         return result;
     },
 
-	/**
-	 * 保存应用
-	 * 
-	 * @param appId
-	 */
-	appSubmit : function() {
-		if (!appPanel.validateApp()) {
-			console.log("APP合法");
-			return;
-		}
-		console.log("app Name 不空"+appPanel.currentApp);
-		// 重置画板的滚动条，保证保存后能正常显示
-		appPanel.resetGraphPanelScroll();
-		var cachedNodes = appPanel.cachedNodes.values();
-		// 新建一个矩阵图
-		var nodes = new Map();
-		for ( var i in cachedNodes) {
-			var node = cachedNodes[i];
-			console.log("组件节点服务名:"+node.serviceName);
-			//console.log(JSON.stringify(node));
-//			if (node instanceof ContainerNode) {			
-				//var cloneNode=node.clone();
-				if (!nodes.containsKey(node.nodeId)) {
-					var element=$("#"+node.nodeId);
-					console.log("组件节点坐标:"+element.offset());
-					node.xPos=element.offset().left;
-					node.yPos=element.offset().top;				
-					console.log("------------------");
-					console.log(JSON.stringify(node));
-					console.log("------------------");
-					nodes.put(node.nodeId, node);
-				}
+    /**
+     * 保存应用
+     *
+     * @param appId
+     */
+    appSubmit : function() {
+        if (!appPanel.validateApp()) {
+            console.log("APP合法");
+            return;
+        }
+        console.log("app Name 不空"+appPanel.currentApp);
+        // 重置画板的滚动条，保证保存后能正常显示
+        appPanel.resetGraphPanelScroll();
+        var cachedNodes = appPanel.cachedNodes.values();
+        // 新建一个矩阵图
+        var nodes = new Map();
+        for ( var i in cachedNodes) {
+            var node = cachedNodes[i];
+            console.log("组件节点服务名:"+node.serviceName);
+            //console.log(JSON.stringify(node));
+//			if (node instanceof ContainerNode) {
+            //var cloneNode=node.clone();
+            if (!nodes.containsKey(node.nodeId)) {
+                var element=$("#"+node.nodeId);
+                console.log("组件节点坐标:"+element.offset());
+                node.xPos=element.offset().left;
+                node.yPos=element.offset().top;
+                console.log("------------------");
+                console.log(JSON.stringify(node));
+                console.log("------------------");
+                nodes.put(node.nodeId, node);
+            }
 //			} else {
 //				var container = appPanel.cachedContainersById.get(n
 //						.getContainerId());
@@ -1252,31 +1255,31 @@ var appPanel = {
 //					nodes.put(container.nodeId, container);
 //				}
 //			}
-		}
-		var connections = appInstance.getAllConnections();
-		var edges = new Map();
-		for ( var i in connections) {
-			var conn = connections[i];
-			var sourceId = conn.sourceId, targetId = conn.targetId;
-			console.log(sourceId+"->"+targetId);
-			var sourceNode = appPanel.cachedNodes.get(sourceId);
-			var targetNode = appPanel.cachedNodes.get(targetId);
-			var edge = {
-				from : sourceId,
-				to : targetId,
-			};
-			edges.put(edge.from,edge);
-		}
-		var graph = {
-			name : $("#appName").val(),
-			nodes : nodes.values(),
-			relations : edges.values()
-		};
-		console.log("------------------graph------------------");
-		console.log(JSON.stringify(graph));
-		console.log("------------------graph------------------");
-		ajaxPostJsonAuthcWithJsonContent(dURIs.apps.deployApp, graph,
-				appPanel.createAppCallBack, defaultErrorFunc, true);
+        }
+        var connections = appInstance.getAllConnections();
+        var edges = new Map();
+        for ( var i in connections) {
+            var conn = connections[i];
+            var sourceId = conn.sourceId, targetId = conn.targetId;
+            console.log(sourceId+"->"+targetId);
+            var sourceNode = appPanel.cachedNodes.get(sourceId);
+            var targetNode = appPanel.cachedNodes.get(targetId);
+            var edge = {
+                from : sourceId,
+                to : targetId,
+            };
+            edges.put(edge.from,edge);
+        }
+        var graph = {
+            name : $("#appName").val(),
+            nodes : nodes.values(),
+            relations : edges.values()
+        };
+        console.log("------------------graph------------------");
+        console.log(JSON.stringify(graph));
+        console.log("------------------graph------------------");
+        ajaxPostJsonAuthcWithJsonContent(dURIs.apps.deployApp, graph,
+            appPanel.createAppCallBack, defaultErrorFunc, true);
 //		if (appPanel.currentApp != null) {
 //			ajaxPutJsonAuthcWithJsonContent(dURIs.appURI + "/"
 //					+ appPanel.currentApp.id, graph,
@@ -1284,89 +1287,89 @@ var appPanel = {
 //		} else {
 //			alert("应用名为空!");
 //			// 推送数据到后端
-//			
+//
 //		}
-		$('#saveModal').modal('hide');
-	},
+        $('#saveModal').modal('hide');
+    },
 
-	/**
-	 * 另存为新的应用
-	 */
-	saveAs : function() {
-		var cachedNodes = appPanel.cachedNodes.values();
-		appPanel.cachedNodes.clear();
-		var idMap = new Map();
-		for ( var i in cachedNodes) {
-			var node = cachedNodes[i];
-			idMap.put(node.id, dateToId());
-			node.id = idMap.get(node.id);
-			appPanel.cachedNodes.put(node.id, node);
-		}
-		var edges = new Array();
-		var connections = appInstance.getAllConnections();
-		// change ids of source&target of each connection
-		for ( var i in connections) {
-			var conn = connections[i];
-			edges.push({
-				from : idMap.get(parseInt(conn.sourceId)),
-				to : idMap.get(parseInt(conn.targetId)),
-			});
-		}
-		appInstance.deleteEveryEndpoint();
-		for ( var i in idMap.keys()) {
-			var oldId = idMap.keys()[i];
-			var newId = idMap.get(oldId);
-			var element = $("#" + oldId);
-			element.attr("id", newId);
-			element.unbind("dblclick");
-			element.dblclick(function() {
-				appPanel.nodeClick($(this).attr("id"));
-			});
+    /**
+     * 另存为新的应用
+     */
+    saveAs : function() {
+        var cachedNodes = appPanel.cachedNodes.values();
+        appPanel.cachedNodes.clear();
+        var idMap = new Map();
+        for ( var i in cachedNodes) {
+            var node = cachedNodes[i];
+            idMap.put(node.id, dateToId());
+            node.id = idMap.get(node.id);
+            appPanel.cachedNodes.put(node.id, node);
+        }
+        var edges = new Array();
+        var connections = appInstance.getAllConnections();
+        // change ids of source&target of each connection
+        for ( var i in connections) {
+            var conn = connections[i];
+            edges.push({
+                from : idMap.get(parseInt(conn.sourceId)),
+                to : idMap.get(parseInt(conn.targetId)),
+            });
+        }
+        appInstance.deleteEveryEndpoint();
+        for ( var i in idMap.keys()) {
+            var oldId = idMap.keys()[i];
+            var newId = idMap.get(oldId);
+            var element = $("#" + oldId);
+            element.attr("id", newId);
+            element.unbind("dblclick");
+            element.dblclick(function() {
+                appPanel.nodeClick($(this).attr("id"));
+            });
 
-			orcheHtml.paintEndPoint(newId);
-		}
-		for ( var i in edges) {
-			var edge = edges[i];
-			orcheHtml.paintEdge(edge.from, edge.to);
-		}
-		appPanel.currentApp = null;
-		appPanel.appSubmit();
-		$('#saveModal').modal('hide');
-	},
+            orcheHtml.paintEndPoint(newId);
+        }
+        for ( var i in edges) {
+            var edge = edges[i];
+            orcheHtml.paintEdge(edge.from, edge.to);
+        }
+        appPanel.currentApp = null;
+        appPanel.appSubmit();
+        $('#saveModal').modal('hide');
+    },
 
-	/**
-	 * 在instance上做操作
-	 * 
-	 * @param instanceId
-	 */
-	doOperationOnInstance : function(instanceId, element) {
-		if (confirm("execute " + element.find(".oper-text").html() + " action?")) {
-			ajaxPutJsonAuthc(dURIs.appInstanceURI + "/" + instanceId
-					+ "?operation=" + element.attr("data-oper-type"), null,
-					appPanel.doOperationSuccess, appPanel.doOperationError,
-					true);
-			$('#operationModal').modal('hide');
-		}
-	},
+    /**
+     * 在instance上做操作
+     *
+     * @param instanceId
+     */
+    doOperationOnInstance : function(instanceId, element) {
+        if (confirm("execute " + element.find(".oper-text").html() + " action?")) {
+            ajaxPutJsonAuthc(dURIs.appInstanceURI + "/" + instanceId
+                + "?operation=" + element.attr("data-oper-type"), null,
+                appPanel.doOperationSuccess, appPanel.doOperationError,
+                true);
+            $('#operationModal').modal('hide');
+        }
+    },
 
-	doOperationSuccess : function() {
-		appPanel.initForEdit({
-			appId : appPanel.currentApp.id
-		});
-		defaultSuccessFunc();
-	},
+    doOperationSuccess : function() {
+        appPanel.initForEdit({
+            appId : appPanel.currentApp.id
+        });
+        defaultSuccessFunc();
+    },
 
-	doOperationError : function(data) {
-		alert(data.message);
-	},
+    doOperationError : function(data) {
+        alert(data.message);
+    },
 
-	/**
-	 * 创建新应用的回调函数
-	 * 
-	 * @param data
-	 */
-	createAppCallBack : function(data) {
-		
+    /**
+     * 创建新应用的回调函数
+     *
+     * @param data
+     */
+    createAppCallBack : function(data) {
+
 //		var app = data;
 //		appPanel.initForEdit({
 //			appId : app.id
@@ -1380,14 +1383,14 @@ var appPanel = {
 //		}
 //		$(".operation-list li[data-view-id='" + appPanel.currentTab + "']")
 //				.css('display', 'inline-block');
-		loadPage(dURIs.viewsURI.projectListView, null);
-		defaultSuccessFunc();
-	},
+        loadPage(dURIs.viewsURI.projectListView, null);
+        defaultSuccessFunc();
+    },
 
-	/**
+    /**
      * 显示执行中的build的函数
      * */
-	showBuildingProcess : function(build){
+    showBuildingProcess : function(build){
         // 首先清理缓存, TODO: 并且把不需要的按钮和列表隐藏起来
         appPanel.cachedNodes.clear();
 
@@ -1429,86 +1432,86 @@ var appPanel = {
         appInstance.repaintEverything();
     },
 
-	/**
-	 * 参数验证
-	 * 
-	 * @returns
-	 */
-	validateApp : function() {
-		var appName = $("#appName").val().replace(/ /, "");
-		if (appName.length <= 0) {
-			showError("appname can not be empty");
-			return false;
-		}else{
-			// appPanel.currentApp=appName;
-		}
-		// return appPanel.checkHostSelect();
-		return true;
-	},
+    /**
+     * 参数验证
+     *
+     * @returns
+     */
+    validateApp : function() {
+        var appName = $("#appName").val().replace(/ /, "");
+        if (appName.length <= 0) {
+            showError("appname can not be empty");
+            return false;
+        }else{
+            // appPanel.currentApp=appName;
+        }
+        // return appPanel.checkHostSelect();
+        return true;
+    },
 
-	/**
-	 * 检查是否所有节点都选择了主机
-	 * 
-	 * @returns {Boolean}
-	 */
-	checkHostSelect : function() {
-		var cachedNodes = appPanel.cachedNodes.values();
-		for ( var i in cachedNodes) {
-			var node = cachedNodes[i];
-			if (node instanceof ContainerNode
-					&& (!verifyParam(node.getHosts()) || node.getHosts().length <= 0)) {
-				showError("please select hosts for\"" + node.getName() | +"\"");
-				return false;
-			}
-		}
-		return true;
-	},
+    /**
+     * 检查是否所有节点都选择了主机
+     *
+     * @returns {Boolean}
+     */
+    checkHostSelect : function() {
+        var cachedNodes = appPanel.cachedNodes.values();
+        for ( var i in cachedNodes) {
+            var node = cachedNodes[i];
+            if (node instanceof ContainerNode
+                && (!verifyParam(node.getHosts()) || node.getHosts().length <= 0)) {
+                showError("please select hosts for\"" + node.getName() | +"\"");
+                return false;
+            }
+        }
+        return true;
+    },
 
-	/**
-	 * 清除图
-	 */
-	clearGraph : function() {
-		if (verifyParam(appInstance)) {
-			appInstance.deleteEveryEndpoint();
-		}
-		for ( var i in appPanel.cachedNodes.keys()) {
-			var node = $("#" + appPanel.cachedNodes.keys()[i]);
-			node.remove();
-		}
-		appPanel.cachedNodes.clear();
-		appPanel.currentApp = null;
-	},
+    /**
+     * 清除图
+     */
+    clearGraph : function() {
+        if (verifyParam(appInstance)) {
+            appInstance.deleteEveryEndpoint();
+        }
+        for ( var i in appPanel.cachedNodes.keys()) {
+            var node = $("#" + appPanel.cachedNodes.keys()[i]);
+            node.remove();
+        }
+        appPanel.cachedNodes.clear();
+        appPanel.currentApp = null;
+    },
 
-	/**
-	 * 将graph panel的滚动条滑动到开始位置
-	 */
-	resetGraphPanelScroll : function() {
-		appPanel.resetScroll($("#graph-panel"));
-	},
+    /**
+     * 将graph panel的滚动条滑动到开始位置
+     */
+    resetGraphPanelScroll : function() {
+        appPanel.resetScroll($("#graph-panel"));
+    },
 
-	/**
-	 * 滑动scrollTo 到container的左上角
-	 * 
-	 * @param container
-	 * @param scrollTo
-	 */
-	resetScroll : function(scrollTo) {
-		scrollTo.scrollTop(0);
-		scrollTo.scrollLeft(0);
-	},
+    /**
+     * 滑动scrollTo 到container的左上角
+     *
+     * @param container
+     * @param scrollTo
+     */
+    resetScroll : function(scrollTo) {
+        scrollTo.scrollTop(0);
+        scrollTo.scrollLeft(0);
+    },
 
-	deleteNode : function(nodeId) {
-		console.log("deleteNode : " + nodeId);
-		if (confirm("delete this node?")) {
-			var node = $("#" + nodeId);
-			var endPoints = appInstance.getEndpoints(node);
-			for ( var i in endPoints) {
-				appInstance.deleteEndpoint(endPoints[i].getUuid());
-			}
-			appPanel.cachedNodes.removeByKey(nodeId);
-			node.remove();
-		}
-	}
+    deleteNode : function(nodeId) {
+        console.log("deleteNode : " + nodeId);
+        if (confirm("delete this node?")) {
+            var node = $("#" + nodeId);
+            var endPoints = appInstance.getEndpoints(node);
+            for ( var i in endPoints) {
+                appInstance.deleteEndpoint(endPoints[i].getUuid());
+            }
+            appPanel.cachedNodes.removeByKey(nodeId);
+            node.remove();
+        }
+    }
 };
 
 var orcheHtml = {
@@ -1554,14 +1557,14 @@ var orcheHtml = {
             // 参数名: 参数值输入框 的格式. 参数与nodeId绑定起来, 确保每个参数值独立不受影响
             paramsHtml += '<label type="text" for="' + nodeId + params[i].paramsKey + '-value" id = "' + nodeId + params[i].paramsKey + '">'
                 + params[i].paramsKey + optional + ': ' + '<label/>'
-                    + '<input type="text" id = "' + nodeId + params[i].paramsKey + '-value" value="' + params[i].paramValue + '">';
+                + '<input type="text" id = "' + nodeId + params[i].paramsKey + '-value" value="' + params[i].paramValue + '">';
 
 
 
             // if (i == 0) {
-             //    paramsHtml += '<button onclick="javascript:appPanel.addEnv()" type="button"  class="btn btn-success">Add</button>';
+            //    paramsHtml += '<button onclick="javascript:appPanel.addEnv()" type="button"  class="btn btn-success">Add</button>';
             // } else {
-             //    paramsHtml += '<button onclick="javascript:appPanel.removeEnv('+divid+')" type="button" class="btn btn-danger">Delete</button>';
+            //    paramsHtml += '<button onclick="javascript:appPanel.removeEnv('+divid+')" type="button" class="btn btn-danger">Delete</button>';
             // }
             paramsHtml += "</div>";
         }
@@ -1671,113 +1674,113 @@ var orcheHtml = {
         else return '';
     },
 
-	/**
-	 * 暂时不需要，以前用来分类绘制组件的
-	 * 
-	 * @param componentTypes
-	 */
-	paintComponentMeta : function(componentTypes) {
-		var types = componentTypes;
-		console.log("paintComponentMeta " + componentTypes);
-		var html = '';
-		for ( var i in types) {
-			var type = types[i];
-			if (type.name != "PACKAGE::DOCKER") {
-				continue;
-			}
-			var typeName = type.name.replace(/::/g, "_");
-			var headingId = 'heading-' + typeName, bodyId = typeName + '-list';
-			html += '<div class="panel panel-default">'
-					+ '<div class="panel-heading" role="tab" id="'
-					+ headingId
-					+ '">'
-					+ '<h4 class="panel-title">'
-					+ '<a data-toggle="collapse" data-parent="#panel-group-operations"'
-					+ ' href="#'
-					+ bodyId
-					+ '" aria-expanded="true" aria-controls="'
-					+ bodyId
-					+ '">'
-					+ type.displayName
-					+ ' <span class="badge">0</span></a>'
-					+ '</h4></div>'
-					+ '<div id="'
-					+ bodyId
-					+ '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="'
-					+ headingId + '">' + '<ul class="list-group"></ul>'
-					+ '</div></div>';
-		}
-		$("#panel-group-operations").html(html);
-	},
+    /**
+     * 暂时不需要，以前用来分类绘制组件的
+     *
+     * @param componentTypes
+     */
+    paintComponentMeta : function(componentTypes) {
+        var types = componentTypes;
+        console.log("paintComponentMeta " + componentTypes);
+        var html = '';
+        for ( var i in types) {
+            var type = types[i];
+            if (type.name != "PACKAGE::DOCKER") {
+                continue;
+            }
+            var typeName = type.name.replace(/::/g, "_");
+            var headingId = 'heading-' + typeName, bodyId = typeName + '-list';
+            html += '<div class="panel panel-default">'
+                + '<div class="panel-heading" role="tab" id="'
+                + headingId
+                + '">'
+                + '<h4 class="panel-title">'
+                + '<a data-toggle="collapse" data-parent="#panel-group-operations"'
+                + ' href="#'
+                + bodyId
+                + '" aria-expanded="true" aria-controls="'
+                + bodyId
+                + '">'
+                + type.displayName
+                + ' <span class="badge">0</span></a>'
+                + '</h4></div>'
+                + '<div id="'
+                + bodyId
+                + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="'
+                + headingId + '">' + '<ul class="list-group"></ul>'
+                + '</div></div>';
+        }
+        $("#panel-group-operations").html(html);
+    },
 
-	/**
-	 * 绘制所有Step列表, step可以枚举, 人工选择可用的易用性强的step列在左边
-	 * 
-	 * @param components
-	 */
-	paintComponentList : function(components) {
-		var group = $("#panel-group-operations");
-		for ( var i in components) {
-			var component = components[i];
-			// var listId = component.type.name.replace(/::/g, "_") + "-list";
-			console.log("paintComponentList:" + component.stepName);
-			var html = '<li class="list-group-item">'
-					+ component.stepName
-					+ '<i class="fa fa-plus pull-right" onclick="javascript:appPanel.addNode('
-					+ component.id + ')"></i></li>';
-			// panel-group-operations
-			group.append(html);
-			// var badge = group.prev().find(".badge");
-			// badge.html(String(parseInt(badge.html()) + 1));
-		}
-	},
+    /**
+     * 绘制所有Step列表, step可以枚举, 人工选择可用的易用性强的step列在左边
+     *
+     * @param components
+     */
+    paintComponentList : function(components) {
+        var group = $("#panel-group-operations");
+        for ( var i in components) {
+            var component = components[i];
+            // var listId = component.type.name.replace(/::/g, "_") + "-list";
+            console.log("paintComponentList:" + component.stepName);
+            var html = '<li class="list-group-item">'
+                + component.stepName
+                + '<i class="fa fa-plus pull-right" onclick="javascript:appPanel.addNode('
+                + component.id + ')"></i></li>';
+            // panel-group-operations
+            group.append(html);
+            // var badge = group.prev().find(".badge");
+            // badge.html(String(parseInt(badge.html()) + 1));
+        }
+    },
 
-	/**
-	 * 绘制节点
-	 * 
-	 * @param component
-	 * @param nodeId
-	 * @param actionName
-	 * @returns
-	 */
-	paintNode : function(nodeId) {
-		// 根据节点
-		var node = appPanel.cachedNodes.get(nodeId);
-		console.log("paintNode:nodeId " + node.nodeId);
-		console.log("paintNode:cId " + node.componentId);
+    /**
+     * 绘制节点
+     *
+     * @param component
+     * @param nodeId
+     * @param actionName
+     * @returns
+     */
+    paintNode : function(nodeId) {
+        // 根据节点
+        var node = appPanel.cachedNodes.get(nodeId);
+        console.log("paintNode:nodeId " + node.nodeId);
+        console.log("paintNode:cId " + node.componentId);
 
         var nodeDisplayName = node.displayName;
 
-		var nodeName = node.stepName;
+        var nodeName = node.stepName;
 
-		var nodeStatus = node.nodeStatus;
+        var nodeStatus = node.nodeStatus;
 
-		var nodeStageName = node.stageName;
+        var nodeStageName = node.stageName;
 
-		// 画布上的小框
-		var html = '<div id='
-				+ nodeId
-				+ ' data-component-id="'
-				+ node.componentId
-				+ '" class="graph-node" data-toggle="tooltip" data-placement="left" title="'
-				+ nodeName
-				+ '">'
-				+ '<div class="node-title"><i class="fa fa-minus-circle node-del-btn" onclick="javascript:appPanel.deleteNode('
-				+ nodeId + ')"></i></div>'
-				+ '<div class="node-name">step: <span>' + nodeName + '</span></div>'
-                + '<div class="node-displayName">name:<span>' + nodeDisplayName + '</span></div>'
-                + '<div class="node-stageName">stage:<span>' + nodeStageName + '</span></div>'
-				+ '<div class="node-status" style="background: '+ orcheHtml.paintColorByStatus(nodeStatus) +'"><span style="text-align: center">' + nodeStatus + '</span></div>'
-				+ '</div>';
-		$("#tmp-panel").append(html);
-		$("#" + nodeId).unbind("dblclick");
-		$("#" + nodeId).dblclick(function() {
-			// 节点双击事件
-			appPanel.nodeClick(nodeId);
-		});
-		orcheHtml.paintEndPoint(nodeId);
-		return nodeId;
-	},
+        // 画布上的小框
+        var html = '<div id='
+            + nodeId
+            + ' data-component-id="'
+            + node.componentId
+            + '" class="graph-node" data-toggle="tooltip" data-placement="left" title="'
+            + nodeName
+            + '">'
+            + '<div class="node-title"><i class="fa fa-minus-circle node-del-btn" onclick="javascript:appPanel.deleteNode('
+            + nodeId + ')"></i></div>'
+            + '<div class="node-name">step: <span>' + nodeName + '</span></div>'
+            + '<div class="node-displayName">name:<span>' + nodeDisplayName + '</span></div>'
+            + '<div class="node-stageName">stage:<span>' + nodeStageName + '</span></div>'
+            + '<div class="node-status" style="background: '+ orcheHtml.paintColorByStatus(nodeStatus) +'"><span style="text-align: center">' + nodeStatus + '</span></div>'
+            + '</div>';
+        $("#tmp-panel").append(html);
+        $("#" + nodeId).unbind("dblclick");
+        $("#" + nodeId).dblclick(function() {
+            // 节点双击事件
+            appPanel.nodeClick(nodeId);
+        });
+        orcheHtml.paintEndPoint(nodeId);
+        return nodeId;
+    },
 
     /**
      * 根据绘制的节点状态改变背景的颜色
@@ -1837,309 +1840,308 @@ var orcheHtml = {
         appPanel.rearrangeElementWithPos(nodeId, xPos, yPos);
     },
 
-	/**
-	 * 绘制部署实例节点
-	 * 
-	 * @param nodeId
-	 * @param nodeName
-	 * @param nodePort
-	 * @param nodeStatus
-	 * @returns
-	 */
-	paintInstanceNode : function(nodeId, nodeName, nodePort, nodeStatus) {
-		var id = verifyParam(nodeId) ? nodeId : dateToId();
-		var nodeName = verifyParam(nodeName) ? nodeName : component.displayName;
-		var nodePort = verifyParam(nodePort) ? nodePort : "";
-		var statusStyle = "graph-node-" + nodeStatus.toLowerCase();
-		var nodeStatus = appMain.statusMap
-				.get(verifyParam(nodeStatus) ? nodeStatus : "RUNNING");
-		var html = '<div id=' + id + ' class="graph-node graph-node-deployed '
-				+ statusStyle
-				+ '" data-toggle="tooltip" data-placement="left" title="'
-				+ nodeName + '">' + '<div class="node-title"></div>'
-				+ '<div class="node-name">name:<span>' + nodeName
-				+ '</span></div>' + '<div class="node-port">port:<span>'
-				+ nodePort + '</span></div>'
-				+ '<div class="node-status">status:<span>' + nodeStatus
-				+ '</span></div></div>';
-		$("#tmp-panel").append(html);
-		$("#" + id).unbind("dblclick");
-		$("#" + id).dblclick(function() {
-			appPanel.nodeClick(id);
-		});
-		orcheHtml.paintEndPoint(id);
-		return id;
-	},
+    /**
+     * 绘制部署实例节点
+     *
+     * @param nodeId
+     * @param nodeName
+     * @param nodePort
+     * @param nodeStatus
+     * @returns
+     */
+    paintInstanceNode : function(nodeId, nodeName, nodePort, nodeStatus) {
+        var id = verifyParam(nodeId) ? nodeId : dateToId();
+        var nodeName = verifyParam(nodeName) ? nodeName : component.displayName;
+        var nodePort = verifyParam(nodePort) ? nodePort : "";
+        var statusStyle = "graph-node-" + nodeStatus.toLowerCase();
+        var nodeStatus = appMain.statusMap
+            .get(verifyParam(nodeStatus) ? nodeStatus : "RUNNING");
+        var html = '<div id=' + id + ' class="graph-node graph-node-deployed '
+            + statusStyle
+            + '" data-toggle="tooltip" data-placement="left" title="'
+            + nodeName + '">' + '<div class="node-title"></div>'
+            + '<div class="node-name">name:<span>' + nodeName
+            + '</span></div>' + '<div class="node-port">port:<span>'
+            + nodePort + '</span></div>'
+            + '<div class="node-status">status:<span>' + nodeStatus
+            + '</span></div></div>';
+        $("#tmp-panel").append(html);
+        $("#" + id).unbind("dblclick");
+        $("#" + id).dblclick(function() {
+            appPanel.nodeClick(id);
+        });
+        orcheHtml.paintEndPoint(id);
+        return id;
+    },
 
-	/**
-	 * 绘制连接点
-	 * 
-	 * @param id
-	 */
-	paintEndPoint : function(id) {
-		var instance = appInstance;
-		instance.doWhileSuspended(function() {
+    /**
+     * 绘制连接点
+     *
+     * @param id
+     */
+    paintEndPoint : function(id) {
+        var instance = appInstance;
+        instance.doWhileSuspended(function() {
 
-			instance.addEndpoint('' + id, targetEndpoint, {
-				anchor : [ "Left" ],
-				uuid : id + "Left"
-			});
-			instance.addEndpoint('' + id, sourceEndpoint, {
-				anchor : [ "Right" ],
-				uuid : id + "Right"
-			});
-			instance.draggable($("#" + id));
-		});
-	},
+            instance.addEndpoint('' + id, targetEndpoint, {
+                anchor : [ "Left" ],
+                uuid : id + "Left"
+            });
+            instance.addEndpoint('' + id, sourceEndpoint, {
+                anchor : [ "Right" ],
+                uuid : id + "Right"
+            });
+            instance.draggable($("#" + id));
+        });
+    },
 
-	/**
-	 * 绘制配置对话框中的主机列表
-	 * 
-	 * @param hosts
-	 * @param currentHosts
-	 */
-	paintNodeDetailHost : function(hosts, currentHosts) {
-		var html = '';
-		for ( var i in hosts) {
-			var host = hosts[i];
-			html += '<li><div class="checkbox"><label><input type="checkbox" name="hostName" value="'
-					+ host.id
-					+ '"> '
-					+ host.hostName
-					+ ' ('
-					+ host.hostIP
-					+ ')</label></div></li>';
-		}
-		$("#detailModal #hostNames ul").html(html);
-		for ( var i in currentHosts) {
-			var host = currentHosts[i];
-			$("#hostNames input[name='hostName'][value='" + host.id + "']")
-					.prop("checked", true);
-		}
-	},
+    /**
+     * 绘制配置对话框中的主机列表
+     *
+     * @param hosts
+     * @param currentHosts
+     */
+    paintNodeDetailHost : function(hosts, currentHosts) {
+        var html = '';
+        for ( var i in hosts) {
+            var host = hosts[i];
+            html += '<li><div class="checkbox"><label><input type="checkbox" name="hostName" value="'
+                + host.id
+                + '"> '
+                + host.hostName
+                + ' ('
+                + host.hostIP
+                + ')</label></div></li>';
+        }
+        $("#detailModal #hostNames ul").html(html);
+        for ( var i in currentHosts) {
+            var host = currentHosts[i];
+            $("#hostNames input[name='hostName'][value='" + host.id + "']")
+                .prop("checked", true);
+        }
+    },
 
-	
 
-	/**
-	 * 绘制配置对话框中的节点参数信息
-	 * 
-	 * @param params
-	 * @param userParams
-	 */
-	paintActionParams : function(params, userParams) {
-		var html = '';
-		if (params.length > 0) {
-			for ( var i in params) {
-				var param = params[i];
-				var value = param.defaultValue;
-				if (verifyParam(userParams)) {
-					for ( var j in userParams) {
-						if (userParams[j].key == param.paramKey) {
-							value = userParams[j].value;
-						}
-					}
-				}
-				value = escapeToHtml(value);
-				html += '<tr style="'
-						+ (param.paramKey == "port" ? "display:none" : "")
-						+ '"><td class="paramKey">' + param.paramKey
-						+ '</td><td class="paramValue">'
-						+ '<textarea class="form-control" rows="1">' + value
-						+ '</textarea></td><td>' + param.description
-						+ '</td></tr>';
-			}
-		} else {
-			html = DHtml.emptyRow(3);
-		}
 
-		$("#detailModal #actionParams tbody").html(html);
-	},
-	/**
-	 * 画边
-	 * 
-	 * @param from
-	 * @param to
-	 * @param label
-	 */
-	paintEdge : function(from, to) {
-		console.log("绘制在");
-		var conn = appInstance.connect({
-			uuids : [ from + "Right", to + "Left" ]
-		});
-		conn.unbind("dblclick");
-		conn.bind("dblclick", function(connection, originalEvent) {
-			var srcId=connInfo.connection.sourceId;
-			var tarId=connInfo.connection.targetId;
-			console.log(connInfo.connection.sourceId+"->"+connInfo.connection.targetId);
-			if (confirm("delete edge? "+connInfo.connection.sourceId+"->"+connInfo.connection.targetId)) {
-				jsPlumb.detach(conn);
-			}
-		});
+    /**
+     * 绘制配置对话框中的节点参数信息
+     *
+     * @param params
+     * @param userParams
+     */
+    paintActionParams : function(params, userParams) {
+        var html = '';
+        if (params.length > 0) {
+            for ( var i in params) {
+                var param = params[i];
+                var value = param.defaultValue;
+                if (verifyParam(userParams)) {
+                    for ( var j in userParams) {
+                        if (userParams[j].key == param.paramKey) {
+                            value = userParams[j].value;
+                        }
+                    }
+                }
+                value = escapeToHtml(value);
+                html += '<tr style="'
+                    + (param.paramKey == "port" ? "display:none" : "")
+                    + '"><td class="paramKey">' + param.paramKey
+                    + '</td><td class="paramValue">'
+                    + '<textarea class="form-control" rows="1">' + value
+                    + '</textarea></td><td>' + param.description
+                    + '</td></tr>';
+            }
+        } else {
+            html = DHtml.emptyRow(3);
+        }
 
-	},
+        $("#detailModal #actionParams tbody").html(html);
+    },
+    /**
+     * 画边
+     *
+     * @param from
+     * @param to
+     * @param label
+     */
+    paintEdge : function(from, to) {
+        console.log("绘制在");
+        var conn = appInstance.connect({
+            uuids : [ from + "Right", to + "Left" ]
+        });
+        conn.unbind("dblclick");
+        conn.bind("dblclick", function(connection, originalEvent) {
+            var srcId=connInfo.connection.sourceId;
+            var tarId=connInfo.connection.targetId;
+            console.log(connInfo.connection.sourceId+"->"+connInfo.connection.targetId);
+            if (confirm("delete edge? "+connInfo.connection.sourceId+"->"+connInfo.connection.targetId)) {
+                jsPlumb.detach(conn);
+            }
+        });
 
-	/**
-	 * 增加templates
-	 */
-	paintTemplateParams : function(node) {
-		var html = '';
-		var thead = '';
-		var templates = node.templates;
-		if (templates.length > 0) {
-			thead += "<tr>" + "<th>template</th>" + "<th>target path</th>"
-					+ "<th>reload cmd(optional)</th>"
-					+ '<th class="deleterow">'
-					+ '<a href="#" role="button" class="text-warning">'
-					+ '<i class="fa fa-minus-circle"></i>'
-			'</a>' + '</th>' + "</tr>";
-			$("#detailModal #templates thead").html(thead);
+    },
 
-			for ( var i in templates) {
-				var template = templates[i];
-				html += "<tr>" + '<td class="temSource">'
-						+ '<textarea class="form-control" name="source">'
-						+ template.source + '</textarea>' + "</td>"
-						+ '<td class="temTarget">'
-						+ '<textarea class="form-control" name="target">'
-						+ template.target + '</textarea>' + "</td>"
-						+ '<td class="temCommand">'
-						+ '<textarea class="form-control" name="command">'
-						+ template.command + '</textarea>' + "</td>"
-						+ '<td class="deleterow">'
-						+ '<a href="#" role="button" class="text-warning">'
-						+ '<i class="fa fa-minus-circle"></i>'
-				'</a>' + "</td>"
-				"</tr>";
-			}
-			$(".deleterow").unbind("click");
-			$(".deleterow").bind('click', function() {
-				var $killrow = $(this).parent('tr');
-				$killrow.addClass("danger");
-				$killrow.fadeOut(1000, function() {
-					$(this).remove();
-				});
-			});
-		}
-		$("#detailModal #templates tbody").html(html);
-	},
+    /**
+     * 增加templates
+     */
+    paintTemplateParams : function(node) {
+        var html = '';
+        var thead = '';
+        var templates = node.templates;
+        if (templates.length > 0) {
+            thead += "<tr>" + "<th>template</th>" + "<th>target path</th>"
+                + "<th>reload cmd(optional)</th>"
+                + '<th class="deleterow">'
+                + '<a href="#" role="button" class="text-warning">'
+                + '<i class="fa fa-minus-circle"></i>'
+            '</a>' + '</th>' + "</tr>";
+            $("#detailModal #templates thead").html(thead);
 
-	addTemplate : function() {
-		var html = "";
-		var thead = "";
-		var fileSelect = '<select class="form-control" name="source">';
-		for ( var i in appPanel.cachedCustomFiles) {
-			fileSelect += '<option value="'
-					+ appPanel.cachedCustomFiles[i].fileKey + '">'
-					+ appPanel.cachedCustomFiles[i].name + '</option>';
-		}
-		fileSelect += "</select>";
-		if ($("#detailModal #templates thead tr").length <= 0) {
-			thead += "<tr>" + "<th>template</th>" + "<th>target path</th>"
-					+ "<th>reload command(optional)</th>"
-					+ '<th class="deleterow">'
-					+ '<a href="#" role="button" class="text-warning">'
-					+ '<i class="fa fa-minus-circle"></i>'
-			'</a>' + '</th>' + "</tr>";
-			$("#detailModal #templates thead").html(thead);
-		}
-		html += "<tr>" + '<td class="temSource">' + fileSelect + "</td>"
-				+ '<td class="temTarget">'
-				+ '<textarea class="form-control" name="target">'
-				+ '</textarea>' + "</td>" + '<td class="temCommand">'
-				+ '<textarea class="form-control" name="command">'
-				+ '</textarea>' + "</td>" + '<td class="deleterow">'
-				+ '<a href="#" role="button" class="text-warning">'
-				+ '<i class="fa fa-minus-circle"></i>'
-		'</a>' + "</td>"
-		"</tr>";
-		$("#detailModal #templates tbody").append(html);
-		$(".deleterow").unbind("click");
-		$(".deleterow").bind('click', function() {
-			var $killrow = $(this).parent('tr');
-			$killrow.addClass("danger");
-			$killrow.fadeOut(1000, function() {
-				$(this).remove();
-			});
-		});
-	},
+            for ( var i in templates) {
+                var template = templates[i];
+                html += "<tr>" + '<td class="temSource">'
+                    + '<textarea class="form-control" name="source">'
+                    + template.source + '</textarea>' + "</td>"
+                    + '<td class="temTarget">'
+                    + '<textarea class="form-control" name="target">'
+                    + template.target + '</textarea>' + "</td>"
+                    + '<td class="temCommand">'
+                    + '<textarea class="form-control" name="command">'
+                    + template.command + '</textarea>' + "</td>"
+                    + '<td class="deleterow">'
+                    + '<a href="#" role="button" class="text-warning">'
+                    + '<i class="fa fa-minus-circle"></i>'
+                '</a>' + "</td>"
+                "</tr>";
+            }
+            $(".deleterow").unbind("click");
+            $(".deleterow").bind('click', function() {
+                var $killrow = $(this).parent('tr');
+                $killrow.addClass("danger");
+                $killrow.fadeOut(1000, function() {
+                    $(this).remove();
+                });
+            });
+        }
+        $("#detailModal #templates tbody").html(html);
+    },
 
-	paintAttributes : function(node) {
-		var attributes = node.attributes;
-		var html = '';
-		var thead = '';
-		if (attributes.length > 0) {
-			thead += "<tr>" + "<th>AttrKey</th>" + "<th>AttrValue</th>"
-					+ '<th class="deleterow">'
-					+ '<a href="#" role="button" class="text-warning">'
-					+ '<i class="fa fa-minus-circle"></i>'
-			'</a>' + '</th>' + "</tr>";
-			$("#detailModal #attributes thead").html(thead);
-			for ( var i in attributes) {
-				var attribute = attributes[i];
-				html += "<tr>" + '<td class="attrKey">'
-						+ '<textarea class="form-control" name="attrKey">'
-						+ attribute.attrKey + '</textarea>' + "</td>"
-						+ '<td class="attrValue">'
-						+ '<textarea class="form-control" name="attrValue">'
-						+ attribute.attrValue + '</textarea>' + "</td>"
-						+ '<td class="deleterow">'
-						+ '<a href="#" role="button" class="text-warning">'
-						+ '<i class="fa fa-minus-circle"></i>'
-				'</a>' + "</td>"
-				"</tr>";
-			}
-			$(".deleterow").unbind("click");
-			$(".deleterow").bind('click', function() {
-				var $killrow = $(this).parent('tr');
-				$killrow.addClass("danger");
-				$killrow.fadeOut(1000, function() {
-					$(this).remove();
-				});
-			});
-		}
-		$("#detailModal #attributes tbody").html(html);
-	},
+    addTemplate : function() {
+        var html = "";
+        var thead = "";
+        var fileSelect = '<select class="form-control" name="source">';
+        for ( var i in appPanel.cachedCustomFiles) {
+            fileSelect += '<option value="'
+                + appPanel.cachedCustomFiles[i].fileKey + '">'
+                + appPanel.cachedCustomFiles[i].name + '</option>';
+        }
+        fileSelect += "</select>";
+        if ($("#detailModal #templates thead tr").length <= 0) {
+            thead += "<tr>" + "<th>template</th>" + "<th>target path</th>"
+                + "<th>reload command(optional)</th>"
+                + '<th class="deleterow">'
+                + '<a href="#" role="button" class="text-warning">'
+                + '<i class="fa fa-minus-circle"></i>'
+            '</a>' + '</th>' + "</tr>";
+            $("#detailModal #templates thead").html(thead);
+        }
+        html += "<tr>" + '<td class="temSource">' + fileSelect + "</td>"
+            + '<td class="temTarget">'
+            + '<textarea class="form-control" name="target">'
+            + '</textarea>' + "</td>" + '<td class="temCommand">'
+            + '<textarea class="form-control" name="command">'
+            + '</textarea>' + "</td>" + '<td class="deleterow">'
+            + '<a href="#" role="button" class="text-warning">'
+            + '<i class="fa fa-minus-circle"></i>'
+        '</a>' + "</td>"
+        "</tr>";
+        $("#detailModal #templates tbody").append(html);
+        $(".deleterow").unbind("click");
+        $(".deleterow").bind('click', function() {
+            var $killrow = $(this).parent('tr');
+            $killrow.addClass("danger");
+            $killrow.fadeOut(1000, function() {
+                $(this).remove();
+            });
+        });
+    },
 
-	addAttribute : function() {
-		var html = "";
-		var thead = "";
-		if ($("#detailModal #attributes thead tr").length <= 0) {
-			thead += "<tr>" + "<th>AttrKey</th>" + "<th>AttrValue</th>"
-					+ '<th class="deleterow">'
-					+ '<a href="#" role="button" class="text-warning">'
-					+ '<i class="fa fa-minus-circle"></i>'
-			'</a>' + '</th>' + "</tr>";
-			$("#detailModal #attributes thead").html(thead);
-		}
-		html += "<tr>" + '<td class="attrKey">'
-				+ '<textarea class="form-control" name="attrKey">'
-				+ '</textarea>' + "</td>" + '<td class="attrValue">'
-				+ '<textarea class="form-control" name="attrValue">'
-				+ '</textarea>' + "</td>" + '<td class="deleterow">'
-				+ '<a href="#" role="button" class="text-warning">'
-				+ '<i class="fa fa-minus-circle"></i>'
-		'</a>' + "</td>"
-		"</tr>";
-		$("#detailModal #attributes tbody").append(html);
-		$(".deleterow").unbind("click");
-		$(".deleterow").bind('click', function() {
-			var $killrow = $(this).parent('tr');
-			$killrow.addClass("danger");
-			$killrow.fadeOut(1000, function() {
-				$(this).remove();
-			});
-		});
-	},
+    paintAttributes : function(node) {
+        var attributes = node.attributes;
+        var html = '';
+        var thead = '';
+        if (attributes.length > 0) {
+            thead += "<tr>" + "<th>AttrKey</th>" + "<th>AttrValue</th>"
+                + '<th class="deleterow">'
+                + '<a href="#" role="button" class="text-warning">'
+                + '<i class="fa fa-minus-circle"></i>'
+            '</a>' + '</th>' + "</tr>";
+            $("#detailModal #attributes thead").html(thead);
+            for ( var i in attributes) {
+                var attribute = attributes[i];
+                html += "<tr>" + '<td class="attrKey">'
+                    + '<textarea class="form-control" name="attrKey">'
+                    + attribute.attrKey + '</textarea>' + "</td>"
+                    + '<td class="attrValue">'
+                    + '<textarea class="form-control" name="attrValue">'
+                    + attribute.attrValue + '</textarea>' + "</td>"
+                    + '<td class="deleterow">'
+                    + '<a href="#" role="button" class="text-warning">'
+                    + '<i class="fa fa-minus-circle"></i>'
+                '</a>' + "</td>"
+                "</tr>";
+            }
+            $(".deleterow").unbind("click");
+            $(".deleterow").bind('click', function() {
+                var $killrow = $(this).parent('tr');
+                $killrow.addClass("danger");
+                $killrow.fadeOut(1000, function() {
+                    $(this).remove();
+                });
+            });
+        }
+        $("#detailModal #attributes tbody").html(html);
+    },
 
-	paintCustomFileList : function(files, selectedFile) {
+    addAttribute : function() {
+        var html = "";
+        var thead = "";
+        if ($("#detailModal #attributes thead tr").length <= 0) {
+            thead += "<tr>" + "<th>AttrKey</th>" + "<th>AttrValue</th>"
+                + '<th class="deleterow">'
+                + '<a href="#" role="button" class="text-warning">'
+                + '<i class="fa fa-minus-circle"></i>'
+            '</a>' + '</th>' + "</tr>";
+            $("#detailModal #attributes thead").html(thead);
+        }
+        html += "<tr>" + '<td class="attrKey">'
+            + '<textarea class="form-control" name="attrKey">'
+            + '</textarea>' + "</td>" + '<td class="attrValue">'
+            + '<textarea class="form-control" name="attrValue">'
+            + '</textarea>' + "</td>" + '<td class="deleterow">'
+            + '<a href="#" role="button" class="text-warning">'
+            + '<i class="fa fa-minus-circle"></i>'
+        '</a>' + "</td>"
+        "</tr>";
+        $("#detailModal #attributes tbody").append(html);
+        $(".deleterow").unbind("click");
+        $(".deleterow").bind('click', function() {
+            var $killrow = $(this).parent('tr');
+            $killrow.addClass("danger");
+            $killrow.fadeOut(1000, function() {
+                $(this).remove();
+            });
+        });
+    },
 
-	}
+    paintCustomFileList : function(files, selectedFile) {
+
+    }
 };
 
 $(document).ready(function() {
-	appPanel.init();
+    appPanel.init();
 });
-
 
 
 

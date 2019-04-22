@@ -156,7 +156,7 @@ public class Build extends IdEntity {
     public void changeStatusToFail(){
         this.status = Status.FAIL;
         for(Step step : this.steps){
-            if(!step.getStepName().equals("mail")) step.setStatus(Step.Status.FAIL);
+            if(!step.getStepName().equals("mail") && step.getStatus().equals(Step.Status.RUNNING)) step.setStatus(Step.Status.FAIL);
         }
     }
 
