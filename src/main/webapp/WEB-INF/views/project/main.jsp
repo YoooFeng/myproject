@@ -26,6 +26,9 @@
     <link href="<c:url value='/css/new/style.css'/>" type="text/css"
           rel="stylesheet" />
 
+    <link href="<c:url value='/css/ipipeline/info.css'/>" type="text/css"
+          rel="stylesheet" />
+
     <link href="<c:url value='/css/ipipeline/pie.css' />"
           type="text/css" rel="stylesheet">
 

@@ -362,6 +362,7 @@ public class GitHubRepoService {
         ObjectId localCommit = repo.exactRef("HEAD").getObjectId();
         ObjectId fetchCommit = repo.exactRef("FETCH_HEAD").getObjectId();
 
+        // 获取代码提交的hashId
         // String latestCommit = fetchCommit.getName();
         String latestCommit = localCommit.getName();
 

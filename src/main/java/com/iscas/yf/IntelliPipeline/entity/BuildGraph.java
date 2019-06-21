@@ -46,15 +46,15 @@ public class BuildGraph {
 
             // 浏览器坐标的配适
             if(this.xPos.length() >= 7){
-                step.setxPos(Integer.parseInt(this.xPos.substring(0, 6)));
+                step.setxPos((int)Double.parseDouble(this.xPos.substring(0, 6)));
             } else {
-                step.setxPos(Integer.parseInt(this.xPos));
+                step.setxPos((int)Double.parseDouble(this.xPos));
             }
 
             if(this.yPos.length() >= 7){
-                step.setxPos(Integer.parseInt(this.yPos.substring(0, 6)));
+                step.setyPos((int)Double.parseDouble(this.yPos.substring(0, 6)));
             } else {
-                step.setyPos(Integer.parseInt(this.yPos));
+                step.setyPos((int)Double.parseDouble(this.yPos));
             }
 
             step.setNodeId(this.nodeId);

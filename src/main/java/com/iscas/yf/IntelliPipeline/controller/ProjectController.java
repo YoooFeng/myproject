@@ -12,6 +12,7 @@ import com.iscas.yf.IntelliPipeline.entity.pipelinecomponent.StepParam;
 import com.iscas.yf.IntelliPipeline.service.dataservice.BuildService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.ProjectService;
 import com.iscas.yf.IntelliPipeline.service.dataservice.StepService;
+import com.iscas.yf.IntelliPipeline.service.util.JenkinsUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

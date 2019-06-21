@@ -15,6 +15,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
+
     <style type="text/css">
         .passed {
             font-family : 'Open Sans Condensed', sans-serif;
@@ -189,7 +190,7 @@
                                             小时</label><br>
 
                                         <label><input type="checkbox" id="modifiedLinesCheckBox" />距上一次任务执行累积变更大于
-                                            <input type="text" id="modifiedLinesText" class="input-underline" name="loc" value="50" onkeyup="appPanel.inputSize(this)" size="2"/>行</label><br>
+                                            <input type="text" id="modifiedLinesText" class="myInputUnderline" name="loc" value="50" onkeyup="appPanel.inputSize(this)" size="2"/>行</label><br>
 
                                         <label><input type="checkbox" id="modelChangedCheckBox" />流水线模型发生改变</label><br>
 

@@ -103,7 +103,7 @@ var appList = {
                 // 遍历builds对象获取对象的详细信息
                 for ( var i = app.builds.length - 1; i >= 0; i--) {
                     var build = app.builds[i];
-                    // console.log("Build: " + JSON.stringify(build));
+                    console.log("Build: " + JSON.stringify(build));
                     if(build != null){
                         var status = build.status;
                         var consoleOutput = build.consoleOutputFilePath;
@@ -116,20 +116,21 @@ var appList = {
                         // 只显示前五位,然后使其可点击,直接到commit详情页面.
                         var commitUrl = "http://github.com/YoooFeng/shipping" + "/commit/" + commitId;
 
-                        console.log("Commit Hash: " + commitId);
-                        console.log("commit url:" + commitUrl);
-
                         // console.log("DurationTime: " + durationTime);
                         // console.log("Build status: " + status);
-                        if(commitId == undefined) {
+                        if(commitId === undefined) {
                             commitId = "-";
                         } else {
                             commitId = commitId.substring(0, 6);
                         }
+
+                        console.log("Commit Hash: " + commitId);
+                        console.log("commit url:" + commitUrl);
+
                         html += '<tr>'
                             +'<td style="font-weight:bold;">构建序号:'+ i + '</td>'
                             + '<td>构建时间:'+ appList.transformDurationTime(durationTime) +'</td>'
-                            + '<td style=\'cursor:pointer\' onclick=\'appList.commitClick(\"' + commitUrl + '\");\'>代码提交:'+ commitId.substring(0, 6) + '</td>'
+                            + '<td style=\'cursor:pointer\' onclick=\'appList.commitClick(\"' + commitUrl + '\");\'>代码提交:'+ commitId + '</td>'
                             +'<td>构建状态:'+ status + '</td>';
 
                         html += '<td>'+ appList.getBuildGraphBtnHtml(app.id, build.id)
@@ -480,10 +481,11 @@ var appList = {
 
     deleteApp: function(appId){
         if(confirm("delete application?")){
-            ajaxDeleteJsonAuthc(dURIs.projectDataURI.deleteProject + "/" + appId, null,
+            ajaxDeleteJsonAuthc(dURIs.projectDataURI.deleteProject + "/" + appId,
+                null,
                 showSuccess("删除项目成功!", loadPage(dURIs.viewsURI.projectListView, null)),
-                showSuccess("删除项目成功!", loadPage(dURIs.viewsURI.projectListView, null)), true);
-            // loadPage(dURIs.viewsURI.projectListView, null)
+                showSuccess("删除项目成功!", loadPage(dURIs.viewsURI.projectListView, null)),
+                true);
         }
     }
 };

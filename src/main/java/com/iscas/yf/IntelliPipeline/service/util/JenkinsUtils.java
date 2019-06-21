@@ -90,7 +90,7 @@ public class JenkinsUtils {
     }
 
     /**
-     * 驱动Jenkins开始执行构建, 从IntelliPipeline获取Step
+     * 在Jenkins中创建新项目
      * @Param projectName - 项目名
      * @Param gitURL - git仓库地址
      * @return true
@@ -144,13 +144,13 @@ public class JenkinsUtils {
         HttpResponse response = httpClient.execute(host, httpPost, localContext);
 
         // 获取Jenkins返回的新建项目的操作结果, 200 -> 创建成功返回true, else -> 创建失败返回false
-        if(response.getStatusLine().getStatusCode() == 200) return true;
-        else return false;
+        return (response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300);
+
 
     }
 
     /**
-     * 指定项目名执行远程构建
+     * 驱动Jenkins开始执行构建, 指定项目名执行远程构建
      * */
     public static boolean executeBuild(String projectName) throws Exception{
 
@@ -189,8 +189,8 @@ public class JenkinsUtils {
         // 带有用户名密码的授权请求
         HttpResponse response = httpClient.execute(host, httpPost, localContext);
 
-        if(response.getStatusLine().getStatusCode() == 201) return true;
-        else return false;
+        return (response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300);
+
     }
 
     /**
@@ -221,9 +221,49 @@ public class JenkinsUtils {
     }
 
 
-    // TODO: 删除Jenkins上的项目
-    public static boolean deleteProject(String projectName) throws Exception{
-        return false;
+    /**
+     * 删除Jenkins上的项目
+     * @Param String 项目名
+     * */
+    public static boolean deleteJenkinsProject(String projectName) throws Exception {
+
+        // 删除Jenkins上项目的URL格式
+        String url = "http://" + JENKINS_HOST + "/job/" + projectName + "/doDelete";
+
+        URI uri = URI.create(url);
+
+        HttpHost host = new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme());
+
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+
+        credsProvider.setCredentials(new AuthScope(uri.getHost(), uri.getPort()),
+                new UsernamePasswordCredentials(JENKINS_USERNAME, JENKINS_USER_TOKEN));
+
+        AuthCache authCache = new BasicAuthCache();
+
+        BasicScheme basicAuth = new BasicScheme();
+
+        authCache.put(host, basicAuth);
+
+        CloseableHttpClient httpClient = HttpClients
+                .custom()
+                .setDefaultCredentialsProvider(credsProvider)
+                .build();
+
+        HttpClientContext localContext = HttpClientContext.create();
+
+        localContext.setAuthCache(authCache);
+
+        HttpPost httpPost = new HttpPost(url);
+
+        httpPost.setHeader("Content-Type", "application/xml");
+
+        // 带有用户名密码的授权请求
+        HttpResponse response = httpClient.execute(host, httpPost, localContext);
+
+        // 获取Jenkins返回的新建项目的操作结果, 删除成功返回true, else -> 创建失败返回false
+        return (response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300);
+
     }
 
     /**

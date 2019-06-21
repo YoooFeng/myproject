@@ -40,7 +40,9 @@ var appPanel = {
             // 初始化策略配置按钮
             appPanel.showStrategyBtn();
 
+            // 在流水线建模页面中隐藏按钮
             $("#refresh-btn").hide();
+
             // 初始化分类器按钮
             // appPanel.showClassifierBtn();
 
@@ -106,9 +108,9 @@ var appPanel = {
                     url: dURIs.buildDataURI.getBuildById + "/" + appPanel.currentBuild.id,
                     timeout: 20000,
                     success:function (data) {
-                        console.log("BuildData: " + JSON.stringify(data));
-                        // 直接重绘流程图
-                        appPanel.showBuildingProcess(data);
+                        // console.log("BuildData: " + JSON.stringify(data));
+                        // 不是直接重绘流程图, 而是更新每个节点的状态, 否则会出现任务重复绘制问题
+                        appPanel.updateTaskStatus(data);
                     },
                     error: function () {
                         alert("获取构建信息失败!");
@@ -123,6 +125,35 @@ var appPanel = {
         }
     },
 
+    /**
+     * 根据传输的数据, 不重绘整个面板的情况下更新任务状态
+     * */
+    updateTaskStatus : function(build) {
+        var nodes = build.nodes;
+        for(var i in nodes){
+            var node = nodes[i];
+            var id = node.nodeId;
+
+            // 进行判断, 对于状态发生了改变的节点进行绘制
+            var cacheNode = appPanel.cachedNodes.get(id);
+
+            console.log(node.stepStatus + " V.S " + cacheNode.nodeStatus);
+            // console.log(JSON.stringify(node));
+            // console.log(JSON.stringify(cacheNode));
+            if(node.stepStatus !== cacheNode.nodeStatus) {
+                // 刷新节点
+                // '<div class="node-status" style="background: '+ orcheHtml.paintColorByStatus(nodeStatus) +'"><span style="text-align: center">' + nodeStatus + '</span></div>'
+                // orcheHtml.paintNode(id);
+                var taskCube = document.getElementById(id);
+                console.log("TaskCube: " + typeof taskCube);
+                var statusBar = taskCube.getElementsByClassName("node-status")[0];
+                console.log("StatusBar: " + typeof statusBar);
+                statusBar.style.backgroundColor = orcheHtml.paintColorByStatus(node.stepStatus);
+                statusBar.firstChild.innerText = node.stepStatus;
+                // $(".node-status span").text(node.stepStatus);
+            }
+        }
+    },
 
     /**
      * 请求文件列表的回调函数
@@ -273,32 +304,75 @@ var appPanel = {
         console.log("attributes");
         var attsDiv = document.getElementById("predictParams");
 
-        var committerLabel = document.createElement("label");
-        committerLabel.innerText = "开发者人数: " + nCommitter + " (开发者人数指的是最近三个月代码提交的参与开发者人数)";
+        var committerLabel = document.createElement("div");
+        committerLabel.innerText = "开发者人数: " + nCommitter + " 人";
         committerLabel.style.fontSize = "20px";
 
-        var lineLabel = document.createElement("label");
-        lineLabel.innerText = "修改代码行数: " + nLine + " (本次构建涉及修改代码的总行数)";
+        var committerDiv = document.createElement("div");
+        committerDiv.classList.add('help-tip');
+
+        var committerP = document.createElement("p");
+        committerP.innerText = "最近三个月进行过代码提交的开发者人数";
+
+        committerDiv.appendChild(committerP);
+        committerLabel.appendChild(committerDiv);
+
+        var lineLabel = document.createElement("div");
+        lineLabel.innerText = "修改代码行数: " + nLine + " 行";
         lineLabel.style.fontSize = "20px";
 
-        var lastBuildLabel = document.createElement("label");
-        lastBuildLabel.innerText = "上次构建结果为: " + lastBuild
-            + " (上次构建的结果反映了构建上下文)";
+        var lineDiv = document.createElement("div");
+        lineDiv.classList.add('help-tip');
+
+        var lineP = document.createElement("p");
+        lineP.innerText = "本次构建涉及修改代码的总行数";
+
+        lineDiv.appendChild(lineP);
+        lineLabel.appendChild(lineDiv);
+
+        var lastBuildLabel = document.createElement("div");
+        lastBuildLabel.innerText = "上次构建结果为: " + ((lastBuild === "1")?"成功":"失败");
         lastBuildLabel.style.fontSize = "20px";
 
-        var projectHistoryLabel = document.createElement("label");
-        projectHistoryLabel.innerText = "项目历史构建成功率为: " + projectHistory
-            + " (历史构建成功率指的是当前项目的所有构建中成功构建的占比)";
+        var lastBuildDiv = document.createElement("div");
+        lastBuildDiv.classList.add('help-tip');
+
+        var lastBuildP = document.createElement("p");
+        lastBuildP.innerText = "上次构建的结果反映了构建上下文";
+
+        lastBuildDiv.appendChild(lastBuildP);
+        lastBuildLabel.appendChild(lastBuildDiv);
+
+        var projectHistoryLabel = document.createElement("div");
+        projectHistoryLabel.innerText = "项目历史构建成功率为: " + projectHistory;
         projectHistoryLabel.style.fontSize = "20px";
 
-        var projectRecentLabel = document.createElement("label");
-        projectRecentLabel.innerText = "项目近期构建成功率为: " + projectRecent
-            + " (近期构建成功率指的是当前构建的前五次构建的成功率)";
+        var projectHistoryDiv = document.createElement("div");
+        projectHistoryDiv.classList.add('help-tip');
+
+        var projectHistoryP = document.createElement("p");
+        projectHistoryP.innerText = "当前项目的所有构建中成功构建的占比";
+
+        projectHistoryDiv.appendChild(projectHistoryP);
+        projectHistoryLabel.appendChild(projectHistoryDiv);
+
+        var projectRecentLabel = document.createElement("div");
+        projectRecentLabel.innerText = "项目近期构建成功率为: " + projectRecent;
         projectRecentLabel.style.fontSize = "20px";
+
+        var projectRecentDiv = document.createElement("div");
+        projectRecentDiv.classList.add('help-tip');
+
+        var projectRecentP = document.createElement("p");
+        projectRecentP.innerText = "当前构建的前五次构建的成功率";
+
+        projectRecentDiv.appendChild(projectRecentP);
+        projectRecentLabel.appendChild(projectRecentDiv);
 
         // 没有child
         if(!attsDiv.hasChildNodes()) {
             attsDiv.appendChild(committerLabel);
+            // attsDiv.appendChild(committerDiv);
             attsDiv.appendChild(document.createElement("br"));
             attsDiv.appendChild(lineLabel);
             attsDiv.appendChild(document.createElement("br"));
@@ -1204,8 +1278,10 @@ var appPanel = {
         // 要有接收到返回数据, 这样才能判断是否执行成功
         // ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId, null, appPanel.triggerBuildCallBack, null);
         ajaxGetJsonAuthc(dURIs.buildDataURI.triggerBuild + '/' + buildId,
-            null, showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null))
-            , showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)));
+            null,
+            showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)),
+            showSuccess("构建执行成功!", loadPage(dURIs.viewsURI.projectListView, null)),
+            true);
     },
 
 
@@ -1408,7 +1484,6 @@ var appPanel = {
 
         for(var i in nodes){
             var node = nodes[i];
-
 
             console.log("node: " + JSON.stringify(node));
             var runningNode = appPanel.nodeFactory.createRunningNode(node.nodeId, node.stepName, node.displayName, node.stageName, node.params, node.stepStatus, node.xPos, node.yPos);
@@ -1792,7 +1867,7 @@ var orcheHtml = {
         else if(nodeStatus == "SKIPPED") return "#737875";
         else if(nodeStatus == "FAIL") return "#d81217";
         else if(nodeStatus == "EDITED") return "#8bafd8";
-        else if(nodeStatus == "RUNNING") return "#0d11d8"
+        else if(nodeStatus == "RUNNING") return "#5abad8"
     },
 
     /**

@@ -447,7 +447,7 @@ public class DecisionMaker {
             git = Git.open(new File(localPath + "/.git"));
         } else {
 
-            // 先把源代码目录删除
+            // 先把源代码目录删除, 可能存在项目权限问题
             // if (!localPath.delete()) {
             //     throw new IOException("Could not delete temporary file " + localPath);
             // }

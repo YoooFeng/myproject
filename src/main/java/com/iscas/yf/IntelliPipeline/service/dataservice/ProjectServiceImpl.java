@@ -87,12 +87,24 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public boolean deleteProject(Long projectId){
+
         Project project = projectDAO.findOne(projectId);
+
+        boolean jenkinsResponse = true;
+
+        // 先删除Jenkins上的该项目
+        try {
+            jenkinsResponse = JenkinsUtils.deleteJenkinsProject(project.getProjectName());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         // 删除数据库中所有相关的build
         buildDAO.delete(project.getBuilds());
         // 再删除项目
         projectDAO.delete(projectId);
-        return true;
+
+        return jenkinsResponse;
     }
 
     /**

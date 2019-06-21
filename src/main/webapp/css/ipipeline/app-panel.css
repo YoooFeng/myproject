@@ -76,15 +76,17 @@
 }
 
 /* 新加的特效, 显示下划线输入框 */
-.input-underline {
+.myInputUnderline {
     background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #CCC;
-    color: #555;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
+	border: none;
+	border-bottom: 2px solid #fff;
+	outline: none;
+	padding-bottom: 10px;
+	text-align: center;
+	width: 400px;
+	font-size: 300%;
+	color: #fff;
+	font-weight: 100;
 }
 
 /*graph related style*/
@@ -243,3 +245,11 @@ ul.operation-list li .oper-text {
 	text-align: center;
 	margin-top: 5px;
 }
+
+
+
+
+
+
+
+
