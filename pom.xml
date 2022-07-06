@@ -39,7 +39,7 @@
         <org.json.version>20140107</org.json.version>
         <siteMesh.version>3.0-alpha-2</siteMesh.version>
         <slf4j.version>1.7.7</slf4j.version>
-        <spring-data-jpa.version>1.6.4.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
         <springside.version>4.2.1.GA</springside.version>
         <org.yaml.version>1.14</org.yaml.version>
     </properties>
